@@ -15,9 +15,10 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "RealHER Conference 2026 — Empowering Women Leaders",
+  title:
+    "Built for More — A Leadership Symposium for Women Who Build | The UpHer Room",
   description:
-    "Join Africa's premier women leadership conference. Network, learn, and grow with trailblazing women across industries.",
+    "A two-day diagnostic and strategic experience for women building inside ecosystems that need redesign. May 29–30, 2026 in Indianapolis, Indiana. Hosted by The UpHer Room Inc.",
 };
 
 export default function RootLayout({

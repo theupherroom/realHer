@@ -1,219 +1,149 @@
 import Image from "next/image";
 import Countdown from "./components/countdown";
-import FAQ from "./components/faq";
+import ContactForm from "./components/contact-form";
+import MobileNav from "./components/mobile-nav";
+import ContributorsCarousel from "./components/contributors-carousel";
 
 /* ─── data ──────────────────────────────────────────────── */
 
 const NAV = [
-  { label: "About", href: "#about" },
-  { label: "Speakers", href: "#speakers" },
+  { label: "Overview", href: "#overview" },
+  { label: "Who Should Attend", href: "#who" },
+  { label: "Why Attend", href: "#why" },
+  { label: "Topics", href: "#topics" },
   { label: "Schedule", href: "#schedule" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
+  { label: "Tickets", href: "#tickets" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const AUDIENCE = [
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
-        <circle cx="12" cy="7" r="4" />
-      </svg>
-    ),
-    title: "Women Entrepreneurs",
-    desc: "Building and scaling businesses across Africa and beyond.",
+    title: "Nonprofit Founders & Executive Directors",
+    desc: "Leading organizations that expand access and opportunity for women and communities.",
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <rect x="2" y="3" width="20" height="14" rx="2" />
-        <path d="M8 21h8M12 17v4" />
-      </svg>
-    ),
-    title: "Tech Leaders",
-    desc: "Driving innovation and digital transformation in their industries.",
+    title: "Women Entrepreneurs & Business Owners",
+    desc: "Building businesses that create economic pathways and redefine industry norms.",
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
-        <path d="M6 12v5c0 1.657 2.686 3 6 3s6-1.343 6-3v-5" />
-      </svg>
-    ),
-    title: "Students & Graduates",
-    desc: "Launching careers with mentorship and real-world connections.",
+    title: "Corporate Leaders & Managers",
+    desc: "Driving change within organizations and championing inclusive leadership.",
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 2L2 7l10 5 10-5-10-5z" />
-        <path d="M2 17l10 5 10-5M2 12l10 5 10-5" />
-      </svg>
-    ),
-    title: "Corporate Executives",
-    desc: "Championing diversity, equity, and inclusion at scale.",
+    title: "Heads of People, Culture & Engagement",
+    desc: "Shaping workplace culture and employee development strategies.",
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z" />
-        <path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-      </svg>
-    ),
-    title: "Policy & NGO Leaders",
-    desc: "Shaping policies that empower women and communities.",
+    title: "Community Leaders & Advocates",
+    desc: "Mobilizing communities and building grassroots infrastructure for change.",
   },
   {
-    icon: (
-      <svg viewBox="0 0 24 24" fill="none" className="w-7 h-7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 1 1 7.072 0l-.548.547A3.374 3.374 0 0 0 12 18.469a3.374 3.374 0 0 0-1.988-.822l-.548-.547z" />
-      </svg>
-    ),
-    title: "Creatives & Innovators",
-    desc: "Using art, design, and storytelling to drive change.",
+    title: "High-Capacity Emerging Leaders",
+    desc: "Rising women ready to step into greater influence and responsibility.",
   },
 ];
 
-const WHY_ATTEND = [
-  {
-    stat: "2,500+",
-    label: "Attendees",
-    desc: "Join a powerful community of women leaders from 30+ countries.",
-  },
-  {
-    stat: "50+",
-    label: "Speakers",
-    desc: "Learn from trailblazers in business, tech, policy, and the arts.",
-  },
-  {
-    stat: "40+",
-    label: "Sessions",
-    desc: "Keynotes, panels, workshops, and fireside chats over two days.",
-  },
-  {
-    stat: "100+",
-    label: "Companies",
-    desc: "Connect with organizations committed to gender equity.",
-  },
+const WHY_POINTS = [
+  "Because many leaders are trying to solve structural problems with personal effort.",
+  "Because collaboration is often encouraged, but rarely structured well enough to produce real outcomes.",
+  "Because partnership can look aligned on the surface while quietly pulling you away from what you are actually called to build.",
+  "Because proximity to other leaders does not automatically create clarity, trust, or alignment.",
 ];
 
-const SPEAKERS = [
-  {
-    name: "Dr. Amina Osei",
-    role: "CEO, AfriHealth Ventures",
-    img: "https://images.unsplash.com/photo-1589156280159-27698a70f29e?w=400&h=400&fit=crop&crop=face",
-  },
-  {
-    name: "Ngozi Adeyemi",
-    role: "Founder, TechSisters Africa",
-    img: "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=400&h=400&fit=crop&crop=face",
-  },
-  {
-    name: "Fatima El-Amin",
-    role: "VP Engineering, Nova Systems",
-    img: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&crop=face",
-  },
-  {
-    name: "Zara Mensah",
-    role: "Director, UN Women West Africa",
-    img: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&crop=face",
-  },
-  {
-    name: "Blessing Okoro",
-    role: "Managing Partner, Bloom Capital",
-    img: "https://images.unsplash.com/photo-1611432579699-484f7990b127?w=400&h=400&fit=crop&crop=face",
-  },
-  {
-    name: "Chioma Nwogu",
-    role: "Creative Director, Ubuntu Studios",
-    img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=400&fit=crop&crop=face",
-  },
+const READY_FOR = [
+  "understand where their work is being limited",
+  "recognize where alignment actually exists",
+  "engage in conversations that go beyond visibility",
+  "begin identifying what building differently could look like",
 ];
 
-const SCHEDULE = [
-  {
-    day: "Day 1 — September 18",
-    slots: [
-      { time: "8:00 AM", title: "Registration & Networking Breakfast", type: "break" },
-      { time: "9:00 AM", title: "Opening Keynote: The Future is HER", type: "keynote" },
-      { time: "10:30 AM", title: "Panel: Breaking Barriers in African Tech", type: "panel" },
-      { time: "12:00 PM", title: "Lunch & Exhibition Hall", type: "break" },
-      { time: "1:30 PM", title: "Workshop: Fundraising Masterclass", type: "workshop" },
-      { time: "3:00 PM", title: "Fireside Chat: From Startup to Scale-up", type: "keynote" },
-      { time: "4:30 PM", title: "Breakout Sessions (3 tracks)", type: "workshop" },
-      { time: "7:00 PM", title: "VIP Gala Dinner & Awards", type: "break" },
-    ],
-  },
-  {
-    day: "Day 2 — September 19",
-    slots: [
-      { time: "8:30 AM", title: "Morning Wellness Session", type: "break" },
-      { time: "9:30 AM", title: "Keynote: Policy & Power — Women in Governance", type: "keynote" },
-      { time: "11:00 AM", title: "Panel: Building Inclusive Workplaces", type: "panel" },
-      { time: "12:30 PM", title: "Lunch & Mentorship Speed-Dating", type: "break" },
-      { time: "2:00 PM", title: "Workshop: Personal Branding & Storytelling", type: "workshop" },
-      { time: "3:30 PM", title: "Panel: Creative Industries & Social Impact", type: "panel" },
-      { time: "5:00 PM", title: "Closing Keynote & Call to Action", type: "keynote" },
-    ],
-  },
+const UNPACKING = [
+  "Where trust breaks down in leadership and collaboration",
+  "Why impact becomes fragmented across organizations",
+  "The difference between performative and productive collaboration",
+  "Navigating power and alignment in partnerships",
+  "Building without losing vision, identity, or direction",
 ];
 
-const PRICING = [
+const LEAVE_WITH = [
+  "A sharper understanding of where your work is being limited and where alignment actually exists",
+  "Language and perspective to approach collaboration, partnership, and growth differently",
+  "Clarity on where your work connects within a broader ecosystem",
+  "Relationships built through context, not surface-level connection",
+  "A Certificate in Strategic Leadership and Ecosystem Building",
+  "A gifted item from Legacy Goods, The UpHer Room\u2019s premier goods and gifting collection",
+  "Participation in the Strategy Lab, where one team will be selected for recognition and a featured prize during the symposium",
+];
+
+const FRIDAY_SCHEDULE = [
+  { time: "6:30 PM", title: "Arrival" },
+  { time: "6:45 PM", title: "Opening" },
+  { time: "7:00 PM", title: "Strategy Lab Begins" },
+  { time: "7:50 PM", title: "Presentations" },
+  { time: "8:10 PM", title: "Room Reflection" },
+  { time: "8:20 PM", title: "Saturday Preview" },
+  { time: "8:30 PM", title: "Close" },
+];
+
+const SATURDAY_SCHEDULE = [
+  { time: "9:30 AM", title: "Arrival + Check-In" },
+  { time: "10:00 AM", title: "Opening" },
+  { time: "10:30 AM", title: "Built for More" },
+  { time: "11:15 AM", title: "What Are We Building?" },
+  { time: "12:00 PM", title: "Lunch + Table Conversations" },
+  { time: "1:00 PM", title: "Featured Conversation" },
+  { time: "2:00 PM", title: "Working Session" },
+  { time: "3:00 PM", title: "Room Reflections" },
+  { time: "3:30 PM", title: "What Comes Next" },
+  { time: "4:00 PM", title: "Close" },
+];
+
+const TICKETS = [
   {
-    name: "Standard",
-    price: "₦75,000",
-    usd: "~$95",
+    name: "Symposium Pass",
+    subtitle: "Saturday Only",
+    earlyPrice: "$95",
+    price: "$125",
+    desc: "Full access to the leadership symposium",
     features: [
-      "Access to all keynotes & panels",
-      "Networking lounge access",
-      "Conference materials & swag bag",
-      "Lunch & refreshments (2 days)",
-      "Digital certificate of attendance",
+      "All keynote sessions & panels",
+      "Table conversations & working sessions",
+      "Lunch & refreshments",
+      "Legacy Goods gifted item",
+      "Certificate of completion",
     ],
-    cta: "Get Standard Ticket",
     highlighted: false,
   },
   {
-    name: "VIP",
-    price: "₦150,000",
-    usd: "~$190",
+    name: "Full Experience",
+    subtitle: "Friday + Saturday",
+    earlyPrice: "$145",
+    price: "$175",
+    desc: "Access to both experiences",
     features: [
-      "Everything in Standard",
-      "Priority front-row seating",
-      "Exclusive VIP workshops",
-      "Gala dinner invitation",
-      "90-day session recordings access",
-      "VIP networking mixer",
+      "Everything in Symposium Pass",
+      "Friday Strategy Lab session",
+      "Eligibility for Strategy Lab recognition & prize",
+      "Extended networking & connection",
+      "Priority seating on Saturday",
     ],
-    cta: "Get VIP Ticket",
     highlighted: true,
   },
   {
-    name: "Premium",
-    price: "₦300,000",
-    usd: "~$380",
+    name: "Strategy Lab",
+    subtitle: "Friday Evening",
+    earlyPrice: "$45",
+    price: "$65",
+    desc: "Structured pre-symposium experience",
     features: [
-      "Everything in VIP",
-      "1-on-1 speaker sessions (15 min)",
-      "Private lounge & concierge",
-      "Complimentary hotel stay (2 nights)",
-      "Lifetime community membership",
-      "Exclusive post-event mastermind",
+      "Strategy Lab working session",
+      "Small group problem-solving",
+      "Team presentations",
+      "Saturday preview & connection",
+      "Eligibility for featured recognition",
     ],
-    cta: "Get Premium Ticket",
     highlighted: false,
   },
-];
-
-const PARTNERS = [
-  "Google Women Techmakers",
-  "UN Women",
-  "Mastercard Foundation",
-  "Africa Development Bank",
-  "Flutterwave",
-  "Microsoft for Africa",
-  "Dangote Foundation",
-  "Tony Elumelu Foundation",
 ];
 
 /* ─── page ──────────────────────────────────────────────── */
@@ -222,71 +152,79 @@ export default function Home() {
   return (
     <>
       {/* ── NAVBAR ── */}
-      <header className="fixed top-0 inset-x-0 z-50 bg-white/80 backdrop-blur-md border-b border-primary/10">
+      <header className="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary/8">
         <div className="container-site flex items-center justify-between h-16">
-          <a href="#" className="font-bold text-xl tracking-tight text-primary-dk">
-            Real<span className="text-primary">HER</span>
+          <a href="#" className="font-bold text-lg tracking-tight text-primary-dk">
+            The UpHer <span className="text-primary">Room</span>
           </a>
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md2:flex items-center gap-6">
             {NAV.map((n) => (
               <a
                 key={n.href}
                 href={n.href}
-                className="text-sm font-medium text-foreground/70 hover:text-primary transition-colors"
+                className="text-[13px] font-medium text-foreground/60 hover:text-primary transition-colors"
               >
                 {n.label}
               </a>
             ))}
           </nav>
           <a
-            href="#pricing"
-            className="hidden sm:inline-flex items-center px-5 h-10 rounded-full bg-primary text-white text-sm font-semibold hover:bg-primary-fg transition-colors"
+            href="#tickets"
+            className="hidden sm:inline-flex items-center px-5 h-9 rounded-full bg-primary text-white text-sm font-semibold hover:bg-primary-fg transition-colors"
           >
-            Get Tickets
+            Register Now
           </a>
+          <MobileNav />
         </div>
       </header>
 
       {/* ── HERO ── */}
       <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-16">
         <Image
-          src="https://images.unsplash.com/photo-1591115765373-5f9cf1da241d?w=1920&q=80"
-          alt="Women at a leadership conference"
+          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&q=80"
+          alt="Women leaders collaborating together"
           fill
-          className="object-cover"
+          sizes="100vw"
+          className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-gradient-to-br from-primary-dk/85 via-primary/70 to-secondary-fg/60" />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary-dk/90 via-primary-dk/80 to-primary/70" />
 
         <div className="relative z-10 container-site text-center flex flex-col items-center gap-6 py-20">
-          <span className="inline-block px-4 py-1.5 rounded-full bg-white/15 backdrop-blur-sm text-white/90 text-xs sm:text-sm font-medium tracking-wide uppercase">
-            September 18 – 19, 2026 &middot; Lagos, Nigeria
+          <span className="inline-block px-5 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/80 text-xs sm:text-sm font-medium tracking-wide border border-white/10">
+            May 29 &ndash; 30, 2026 &middot; Indianapolis, Indiana
           </span>
 
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-[1.1] max-w-4xl">
-            Empowering Women
-            <br />
-            <span className="text-secondary">to Lead &amp; Thrive</span>
+          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-[1.08] max-w-4xl">
+            Built for More
           </h1>
-
-          <p className="text-lg sm:text-xl text-white/80 max-w-2xl leading-relaxed font-source">
-            Africa&apos;s premier conference for women leaders, entrepreneurs,
-            and changemakers. Two days of powerful keynotes, hands-on workshops,
-            and connections that last a lifetime.
+          <p className="text-xl sm:text-2xl text-secondary font-semibold max-w-2xl -mt-2">
+            A Leadership Symposium for Women Who Build
           </p>
+
+          <p className="text-base sm:text-lg text-white/70 max-w-2xl leading-relaxed font-source">
+            A two-day diagnostic and strategic experience for women building
+            inside ecosystems that need redesign.
+          </p>
+
+          <div className="flex flex-col sm:flex-row items-center gap-2 text-sm text-white/50 font-source">
+            <span>Hosted by <strong className="text-white/70">The UpHer Room Inc.</strong></span>
+            <span className="hidden sm:inline">&middot;</span>
+            <span>Powered by <strong className="text-white/70">Truist Foundation</strong> &amp; <strong className="text-white/70">Watson Institute</strong></span>
+          </div>
 
           <Countdown />
 
-          <div className="flex flex-col sm:flex-row gap-4 mt-4">
+          <div className="flex flex-col sm:flex-row gap-4 mt-2">
             <a
-              href="#pricing"
+              href="#tickets"
               className="inline-flex items-center justify-center px-8 h-12 rounded-full bg-secondary text-primary-dk font-bold hover:bg-secondary/90 transition-colors text-base"
             >
-              Register Now
+              Reserve Your Seat
             </a>
             <a
-              href="#about"
-              className="inline-flex items-center justify-center px-8 h-12 rounded-full border-2 border-white/30 text-white font-semibold hover:bg-white/10 transition-colors text-base"
+              href="#overview"
+              className="inline-flex items-center justify-center px-8 h-12 rounded-full border-2 border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-base"
             >
               Learn More
             </a>
@@ -294,49 +232,98 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── MARQUEE PARTNERS ── */}
-      <div className="bg-primary-dk py-3 overflow-hidden">
-        <div className="flex animate-marquee whitespace-nowrap">
-          {[...PARTNERS, ...PARTNERS].map((p, i) => (
-            <span
-              key={i}
-              className="mx-8 text-white/50 text-sm font-medium uppercase tracking-widest"
-            >
-              {p}
-            </span>
-          ))}
+      {/* ── OVERVIEW ── */}
+      <section id="overview" className="py-20 sm:py-28 bg-white">
+        <div className="container-site max-w-4xl">
+          <span className="text-xs font-bold uppercase tracking-widest text-primary">
+            Event Overview
+          </span>
+
+          <div className="mt-8 space-y-6 text-lg sm:text-xl leading-relaxed text-foreground/80 font-source">
+            <p className="text-2xl sm:text-3xl font-bold text-primary-dk leading-snug font-sans">
+              Some women do not need more motivation.
+              <br />
+              <span className="text-primary">They need a clearer diagnosis.</span>
+            </p>
+
+            <p>
+              Because the issue is not always talent.
+              <br />
+              Not always vision.
+              <br />
+              Not always effort.
+            </p>
+
+            <p>
+              Sometimes the issue is broken trust. Fragmented impact.
+              Surface-level collaboration. Partnerships that look aligned on
+              paper but quietly cost women their clarity, capacity, and voice.
+            </p>
+
+            <p>
+              <strong className="text-primary-dk">Built for More</strong> is a
+              two-day diagnostic and strategic experience for women who are
+              building inside ecosystems that need redesign.
+            </p>
+
+            <p>
+              This is a room for women who are no longer interested in misnaming
+              structural problems as personal limitations, and who are ready to
+              build with greater clarity, alignment, and strength.
+            </p>
+          </div>
         </div>
+      </section>
+
+      {/* ── DIVIDER IMAGE ── */}
+      <div className="relative h-[220px] sm:h-[300px] md:h-[360px] lg:h-[420px] overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1598257006458-087169a1f08d?w=1920&q=80"
+          alt="Women professionals in discussion"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-primary-dk/30" />
       </div>
 
       {/* ── WHO SHOULD ATTEND ── */}
-      <section id="about" className="py-20 sm:py-28 bg-white">
+      <section id="who" className="py-20 sm:py-28 bg-primary-bg/30">
         <div className="container-site">
-          <div className="text-center mb-14">
+          <div className="max-w-2xl mb-14">
             <span className="text-xs font-bold uppercase tracking-widest text-primary">
               Who Should Attend
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3">
-              This Conference Is Built for You
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3 leading-tight">
+              This Room Is Curated
+              <br />
+              for Women Who Build
             </h2>
-            <p className="text-foreground/60 max-w-xl mx-auto mt-4 font-source">
-              Whether you&apos;re launching a startup, climbing the corporate
-              ladder, or shaping policy — RealHER is your space to grow.
-            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {AUDIENCE.map((a) => (
               <div
                 key={a.title}
-                className="group rounded-2xl border border-primary/10 p-7 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+                className="group rounded-2xl border border-primary/8 bg-white p-7 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
               >
-                <div className="w-14 h-14 rounded-xl bg-primary-bg flex items-center justify-center text-primary mb-5 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                  {a.icon}
+                <div className="w-10 h-10 rounded-lg bg-primary-bg flex items-center justify-center text-primary mb-5 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                  <svg
+                    viewBox="0 0 20 20"
+                    fill="currentColor"
+                    className="w-5 h-5"
+                  >
+                    <path
+                      fillRule="evenodd"
+                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                      clipRule="evenodd"
+                    />
+                  </svg>
                 </div>
-                <h3 className="text-lg font-bold text-primary-dk mb-2">
+                <h3 className="text-base font-bold text-primary-dk mb-2">
                   {a.title}
                 </h3>
-                <p className="text-foreground/60 text-sm leading-relaxed font-source">
+                <p className="text-foreground/55 text-sm leading-relaxed font-source">
                   {a.desc}
                 </p>
               </div>
@@ -346,228 +333,444 @@ export default function Home() {
       </section>
 
       {/* ── WHY ATTEND ── */}
-      <section className="py-20 sm:py-28 bg-primary-bg/40">
+      <section id="why" className="py-20 sm:py-28 bg-white">
         <div className="container-site">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
             <div>
               <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                Why Attend
+                Why You Should Attend
               </span>
               <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3 leading-tight">
-                Two Days That Will
+                The Problem Isn&apos;t You.
                 <br />
-                Transform Your Journey
+                <span className="text-primary">
+                  It&apos;s the System You&apos;re Building In.
+                </span>
               </h2>
-              <p className="text-foreground/60 mt-5 leading-relaxed font-source max-w-lg">
-                RealHER isn&apos;t just another conference. It&apos;s a
-                movement — a curated experience designed to unlock potential,
-                forge powerful alliances, and spark the leadership Africa
-                needs.
-              </p>
 
-              <div className="grid grid-cols-2 gap-6 mt-10">
-                {WHY_ATTEND.map((w) => (
-                  <div key={w.label}>
-                    <div className="text-3xl sm:text-4xl font-bold text-primary">
-                      {w.stat}
-                    </div>
-                    <div className="text-sm font-bold text-primary-dk mt-1">
-                      {w.label}
-                    </div>
-                    <p className="text-foreground/60 text-xs mt-1 leading-relaxed font-source">
-                      {w.desc}
+              <div className="mt-8 space-y-4">
+                {WHY_POINTS.map((point, i) => (
+                  <div key={i} className="flex gap-4 items-start">
+                    <span className="shrink-0 w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center mt-0.5">
+                      <span className="w-2 h-2 rounded-full bg-secondary-fg" />
+                    </span>
+                    <p className="text-foreground/70 leading-relaxed font-source">
+                      {point}
                     </p>
                   </div>
                 ))}
               </div>
             </div>
 
-            <div className="relative rounded-3xl overflow-hidden aspect-[4/5] max-h-[600px]">
-              <Image
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80"
-                alt="Women collaborating at a workshop"
-                fill
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary-dk/40 to-transparent" />
+            <div className="bg-primary-bg/40 rounded-2xl p-8 sm:p-10 border border-primary/8">
+              <h3 className="text-lg font-bold text-primary-dk mb-6">
+                Built for More is designed for women who are ready to:
+              </h3>
+              <div className="space-y-4">
+                {READY_FOR.map((item, i) => (
+                  <div key={i} className="flex gap-3 items-start">
+                    <svg
+                      className="w-5 h-5 shrink-0 text-primary mt-0.5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <p className="text-foreground/70 font-source leading-relaxed">
+                      {item}
+                    </p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── SPEAKERS ── */}
-      <section id="speakers" className="py-20 sm:py-28 bg-white">
+      {/* ── TWO-DAY EXPERIENCE ── */}
+      <section className="py-20 sm:py-28 bg-primary-dk text-white">
         <div className="container-site">
-          <div className="text-center mb-14">
-            <span className="text-xs font-bold uppercase tracking-widest text-primary">
-              Featured Speakers
+          <div className="text-center max-w-2xl mx-auto mb-16">
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary">
+              The Experience
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3">
-              Learn from Trailblazers
+            <h2 className="text-3xl sm:text-4xl font-bold mt-3">
+              Two Days. Two Formats.
+              <br />
+              One Transformative Experience.
             </h2>
-            <p className="text-foreground/60 max-w-xl mx-auto mt-4 font-source">
-              Industry leaders, innovators, and changemakers sharing their
-              stories and strategies.
-            </p>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {SPEAKERS.map((s) => (
-              <div
-                key={s.name}
-                className="group text-center"
-              >
-                <div className="relative w-48 h-48 mx-auto rounded-full overflow-hidden mb-5 ring-4 ring-primary-bg group-hover:ring-primary/30 transition-all duration-300">
-                  <Image
-                    src={s.img}
-                    alt={s.name}
-                    fill
-                    className="object-cover"
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Friday */}
+            <div className="rounded-2xl bg-white/5 border border-white/10 p-8 sm:p-10">
+              <span className="text-xs font-bold uppercase tracking-widest text-secondary">
+                Friday &mdash; May 29
+              </span>
+              <h3 className="text-2xl font-bold mt-3 mb-4">Strategy Lab</h3>
+              <p className="text-white/60 leading-relaxed font-source">
+                A structured working session designed to engage real challenges
+                and accelerate connection through action. Participants are placed
+                into small groups to think through real-world problems and begin
+                identifying where alignment and collaboration are possible.
+              </p>
+              <div className="mt-6 flex items-center gap-2 text-sm text-white/40">
+                <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.414L11 9.586V6z"
+                    clipRule="evenodd"
                   />
-                </div>
-                <h3 className="text-lg font-bold text-primary-dk">{s.name}</h3>
-                <p className="text-foreground/60 text-sm mt-1 font-source">
-                  {s.role}
-                </p>
+                </svg>
+                <span>6:30 PM &ndash; 8:30 PM</span>
               </div>
-            ))}
+            </div>
+
+            {/* Saturday */}
+            <div className="rounded-2xl bg-white/5 border border-white/10 p-8 sm:p-10">
+              <span className="text-xs font-bold uppercase tracking-widest text-secondary">
+                Saturday &mdash; May 30
+              </span>
+              <h3 className="text-2xl font-bold mt-3 mb-4">
+                Leadership Symposium
+              </h3>
+              <p className="text-white/60 leading-relaxed font-source">
+                A full-day, dialogue-driven experience focused on leadership,
+                collaboration, and how women build within and across systems.
+                Facilitated conversations, guided reflection, and intentionally
+                curated tables.
+              </p>
+              <div className="mt-6 flex items-center gap-2 text-sm text-white/40">
+                <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path
+                    fillRule="evenodd"
+                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.414L11 9.586V6z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span>9:30 AM &ndash; 4:00 PM</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── SCHEDULE ── */}
-      <section id="schedule" className="py-20 sm:py-28 bg-primary-dk text-white">
+      <section id="schedule" className="py-20 sm:py-28 bg-white">
         <div className="container-site">
-          <div className="text-center mb-14">
-            <span className="text-xs font-bold uppercase tracking-widest text-secondary">
-              Event Schedule
+          <div className="text-center mb-16">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary">
+              Schedule
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold mt-3">
-              Two Power-Packed Days
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3">
+              The Flow of the Experience
             </h2>
           </div>
 
-          <div className="grid lg:grid-cols-2 gap-10 max-w-5xl mx-auto">
-            {SCHEDULE.map((day) => (
-              <div key={day.day}>
-                <h3 className="text-xl font-bold text-secondary mb-6">
-                  {day.day}
-                </h3>
-                <div className="space-y-0">
-                  {day.slots.map((slot, i) => (
-                    <div
-                      key={i}
-                      className="flex gap-4 py-4 border-b border-white/10 last:border-0"
-                    >
-                      <span className="text-sm text-white/50 w-20 shrink-0 pt-0.5 font-source">
-                        {slot.time}
-                      </span>
-                      <div className="flex-1">
-                        <p className="font-semibold">{slot.title}</p>
-                        <span
-                          className={`inline-block mt-1.5 text-[10px] uppercase tracking-wider font-bold px-2.5 py-0.5 rounded-full ${
-                            slot.type === "keynote"
-                              ? "bg-secondary/20 text-secondary"
-                              : slot.type === "panel"
-                              ? "bg-primary/30 text-primary-bg"
-                              : slot.type === "workshop"
-                              ? "bg-white/10 text-white/70"
-                              : "bg-white/5 text-white/40"
-                          }`}
-                        >
-                          {slot.type}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
+          <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+            {/* Friday */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-full bg-primary-dk flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">Fri</span>
+                </div>
+                <div>
+                  <h3 className="font-bold text-primary-dk">
+                    Friday &mdash; May 29
+                  </h3>
+                  <p className="text-xs text-foreground/50 font-source">
+                    Strategy Lab
+                  </p>
                 </div>
               </div>
-            ))}
+              <div className="space-y-0 border-l-2 border-primary/15 ml-5">
+                {FRIDAY_SCHEDULE.map((slot, i) => (
+                  <div key={i} className="flex gap-4 pl-6 pb-5 relative">
+                    <span className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-primary" />
+                    <span className="text-sm text-foreground/40 w-[72px] shrink-0 font-source">
+                      {slot.time}
+                    </span>
+                    <p className="font-medium text-primary-dk text-sm">
+                      {slot.title}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Saturday */}
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                  <span className="text-white text-sm font-bold">Sat</span>
+                </div>
+                <div>
+                  <h3 className="font-bold text-primary-dk">
+                    Saturday &mdash; May 30
+                  </h3>
+                  <p className="text-xs text-foreground/50 font-source">
+                    Leadership Symposium
+                  </p>
+                </div>
+              </div>
+              <div className="space-y-0 border-l-2 border-primary/15 ml-5">
+                {SATURDAY_SCHEDULE.map((slot, i) => (
+                  <div key={i} className="flex gap-4 pl-6 pb-5 relative">
+                    <span className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-primary" />
+                    <span className="text-sm text-foreground/40 w-[72px] shrink-0 font-source">
+                      {slot.time}
+                    </span>
+                    <p className="font-medium text-primary-dk text-sm">
+                      {slot.title}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* ── CTA BANNER ── */}
-      <section className="relative py-20 overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1560439514-4e9645039924?w=1920&q=80"
-          alt="Conference audience"
-          fill
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-primary/80" />
-        <div className="relative z-10 container-site text-center text-white">
-          <h2 className="text-3xl sm:text-4xl font-bold">
-            Ready to Join the Movement?
-          </h2>
-          <p className="mt-4 text-white/80 max-w-lg mx-auto font-source">
-            Secure your spot at the most anticipated women&apos;s leadership
-            event in Africa. Early-bird pricing ends soon.
-          </p>
-          <a
-            href="#pricing"
-            className="inline-flex items-center justify-center px-8 h-12 rounded-full bg-secondary text-primary-dk font-bold hover:bg-secondary/90 transition-colors mt-8"
-          >
-            Get Your Ticket
-          </a>
+      {/* ── TOPICS ── */}
+      <section id="topics" className="py-20 sm:py-28 bg-primary-bg/30">
+        <div className="container-site">
+          <div className="grid lg:grid-cols-2 gap-16">
+            {/* What We're Unpacking */}
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-primary">
+                What We&apos;re Unpacking
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-primary-dk mt-3 mb-8 leading-tight">
+                The Conversations That Matter
+              </h2>
+
+              <div className="space-y-4">
+                {UNPACKING.map((item, i) => (
+                  <div
+                    key={i}
+                    className="flex gap-4 items-start bg-white rounded-xl p-5 border border-primary/8"
+                  >
+                    <span className="shrink-0 w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-sm font-bold">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <p className="text-foreground/70 font-source leading-relaxed pt-1">
+                      {item}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* What You'll Leave With */}
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-primary">
+                What You&apos;ll Leave With
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold text-primary-dk mt-3 mb-8 leading-tight">
+                More Than Inspiration
+              </h2>
+
+              <div className="space-y-4">
+                {LEAVE_WITH.map((item, i) => (
+                  <div key={i} className="flex gap-3 items-start">
+                    <svg
+                      className="w-5 h-5 shrink-0 text-secondary-fg mt-1"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <p className="text-foreground/70 font-source leading-relaxed">
+                      {item}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── STRATEGIC CONTRIBUTORS ── */}
+      <section className="py-20 sm:py-28 bg-white">
+        <div className="container-site">
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary">
+              Strategic Contributors
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3">
+              A Curated Room of Leaders
+            </h2>
+            <p className="text-foreground/60 mt-5 leading-relaxed font-source max-w-xl mx-auto">
+              Women leaders across nonprofit, corporate, and entrepreneurial
+              sectors — brought together to exchange insight, challenge
+              assumptions, and build what&apos;s next.
+            </p>
+            <a
+              href="https://theupherroom.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-primary hover:text-primary-fg transition-colors"
+            >
+              Learn more about The UpHer Room
+              <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                <path
+                  fillRule="evenodd"
+                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </a>
+          </div>
+
+          <ContributorsCarousel />
+        </div>
+      </section>
+
+      {/* ── PROFESSIONAL DEVELOPMENT ── */}
+      <section className="py-16 bg-primary-bg/30">
+        <div className="container-site">
+          <div className="max-w-4xl mx-auto bg-white rounded-2xl p-8 sm:p-12 border border-primary/8">
+            <div className="grid sm:grid-cols-[1fr,auto] gap-8 items-center">
+              <div>
+                <span className="text-xs font-bold uppercase tracking-widest text-primary">
+                  Professional Development / ERG Support
+                </span>
+                <h3 className="text-xl sm:text-2xl font-bold text-primary-dk mt-3">
+                  Your Organization May Cover This
+                </h3>
+                <p className="text-foreground/60 mt-3 leading-relaxed font-source">
+                  Many companies and organizations offer support for leadership
+                  development, employee resource group engagement, and
+                  professional growth experiences. Built for More may qualify for:
+                </p>
+                <ul className="mt-4 space-y-2 text-foreground/60 font-source text-sm">
+                  <li className="flex gap-2 items-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                    Professional development budgets
+                  </li>
+                  <li className="flex gap-2 items-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                    ERG-sponsored participation
+                  </li>
+                  <li className="flex gap-2 items-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                    Leadership development support
+                  </li>
+                  <li className="flex gap-2 items-center">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
+                    Community engagement funding
+                  </li>
+                </ul>
+              </div>
+              <div className="flex flex-col gap-3">
+                <button className="inline-flex items-center justify-center px-6 h-10 rounded-full bg-primary text-white text-sm font-semibold hover:bg-primary-fg transition-colors cursor-pointer whitespace-nowrap">
+                  Copy Employer Request Email
+                </button>
+                <button className="inline-flex items-center justify-center px-6 h-10 rounded-full border-2 border-primary/20 text-primary-dk text-sm font-semibold hover:bg-primary-bg/50 transition-colors cursor-pointer whitespace-nowrap">
+                  Download Support Template
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
       {/* ── PRICING ── */}
-      <section id="pricing" className="py-20 sm:py-28 bg-white">
+      <section id="tickets" className="py-20 sm:py-28 bg-white">
         <div className="container-site">
-          <div className="text-center mb-14">
+          <div className="text-center mb-16">
             <span className="text-xs font-bold uppercase tracking-widest text-primary">
-              Pricing
+              Reserve Your Seat
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3">
               Choose Your Experience
             </h2>
             <p className="text-foreground/60 max-w-xl mx-auto mt-4 font-source">
-              Every ticket grants you access to an unforgettable experience.
-              Choose the tier that fits your goals.
+              Many attendees may be able to utilize professional development or
+              ERG support to attend.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-            {PRICING.map((tier) => (
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {TICKETS.map((tier) => (
               <div
                 key={tier.name}
-                className={`rounded-2xl p-8 flex flex-col ${
+                className={`rounded-2xl p-8 flex flex-col relative ${
                   tier.highlighted
-                    ? "bg-primary-dk text-white ring-4 ring-primary/30 scale-[1.03]"
-                    : "bg-primary-bg/30 border border-primary/10"
+                    ? "bg-primary-dk text-white ring-2 ring-primary/40 md:scale-[1.04]"
+                    : "bg-primary-bg/20 border border-primary/10"
                 }`}
               >
-                <h3
-                  className={`text-lg font-bold ${
-                    tier.highlighted ? "text-secondary" : "text-primary"
-                  }`}
-                >
-                  {tier.name}
-                </h3>
-                <div className="mt-4">
-                  <span
-                    className={`text-4xl font-bold ${
-                      tier.highlighted ? "text-white" : "text-primary-dk"
+                {tier.highlighted && (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-secondary text-primary-dk text-xs font-bold uppercase tracking-wider">
+                    Best Value
+                  </span>
+                )}
+                <div>
+                  <h3
+                    className={`text-lg font-bold ${
+                      tier.highlighted ? "text-secondary" : "text-primary"
                     }`}
                   >
-                    {tier.price}
-                  </span>
-                  <span
-                    className={`text-sm ml-2 ${
-                      tier.highlighted ? "text-white/60" : "text-foreground/50"
+                    {tier.name}
+                  </h3>
+                  <p
+                    className={`text-xs mt-1 ${
+                      tier.highlighted ? "text-white/50" : "text-foreground/40"
                     }`}
                   >
-                    {tier.usd}
-                  </span>
+                    {tier.subtitle}
+                  </p>
                 </div>
 
-                <ul className="mt-8 space-y-3 flex-1">
+                <div className="mt-5">
+                  <div className="flex items-baseline gap-2">
+                    <span
+                      className={`text-3xl font-bold ${
+                        tier.highlighted ? "text-white" : "text-primary-dk"
+                      }`}
+                    >
+                      {tier.earlyPrice}
+                    </span>
+                    <span
+                      className={`text-sm ${
+                        tier.highlighted ? "text-white/40" : "text-foreground/40"
+                      }`}
+                    >
+                      early access
+                    </span>
+                  </div>
+                  <p
+                    className={`text-sm mt-1 ${
+                      tier.highlighted ? "text-white/50" : "text-foreground/50"
+                    }`}
+                  >
+                    {tier.price} standard
+                  </p>
+                </div>
+
+                <p
+                  className={`mt-4 text-sm font-source ${
+                    tier.highlighted ? "text-white/60" : "text-foreground/55"
+                  }`}
+                >
+                  {tier.desc}
+                </p>
+
+                <ul className="mt-6 space-y-3 flex-1">
                   {tier.features.map((f) => (
-                    <li key={f} className="flex items-start gap-3 text-sm">
+                    <li key={f} className="flex items-start gap-2.5 text-sm">
                       <svg
-                        className={`w-5 h-5 shrink-0 mt-0.5 ${
+                        className={`w-4 h-4 shrink-0 mt-0.5 ${
                           tier.highlighted ? "text-secondary" : "text-primary"
                         }`}
                         viewBox="0 0 20 20"
@@ -582,8 +785,8 @@ export default function Home() {
                       <span
                         className={
                           tier.highlighted
-                            ? "text-white/80"
-                            : "text-foreground/70"
+                            ? "text-white/75"
+                            : "text-foreground/65"
                         }
                       >
                         {f}
@@ -594,13 +797,13 @@ export default function Home() {
 
                 <a
                   href="#"
-                  className={`mt-8 flex items-center justify-center h-12 rounded-full font-bold text-sm transition-colors ${
+                  className={`mt-8 flex items-center justify-center h-11 rounded-full font-bold text-sm transition-colors ${
                     tier.highlighted
                       ? "bg-secondary text-primary-dk hover:bg-secondary/90"
                       : "bg-primary text-white hover:bg-primary-fg"
                   }`}
                 >
-                  {tier.cta}
+                  Register
                 </a>
               </div>
             ))}
@@ -608,19 +811,111 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── FAQ ── */}
-      <section id="faq" className="py-20 sm:py-28 bg-primary-bg/30">
-        <div className="container-site">
-          <div className="text-center mb-14">
-            <span className="text-xs font-bold uppercase tracking-widest text-primary">
-              FAQ
+      {/* ── CLOSING CTA ── */}
+      <section className="relative py-20 sm:py-28 overflow-hidden">
+        <Image
+          src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1920&q=80"
+          alt="Women at a leadership event"
+          fill
+          sizes="100vw"
+          className="object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-primary-dk/85" />
+        <div className="relative z-10 container-site max-w-3xl text-center text-white">
+          <h2 className="text-3xl sm:text-4xl font-bold leading-snug">
+            This is not about doing more.
+            <br />
+            <span className="text-secondary">
+              It&apos;s about building in a way that actually works.
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3">
-              Frequently Asked Questions
-            </h2>
-          </div>
+          </h2>
+          <p className="mt-6 text-white/65 text-lg leading-relaxed font-source max-w-2xl mx-auto">
+            If you&apos;ve been carrying more than you should, questioning
+            what&apos;s not working, or sensing that something deeper needs to
+            shift &mdash; this room was built with that in mind.
+          </p>
+          <a
+            href="#tickets"
+            className="inline-flex items-center justify-center px-8 h-12 rounded-full bg-secondary text-primary-dk font-bold hover:bg-secondary/90 transition-colors mt-8 text-base"
+          >
+            Reserve Your Seat
+          </a>
+        </div>
+      </section>
 
-          <FAQ />
+      {/* ── CONTACT ── */}
+      <section id="contact" className="py-20 sm:py-28 bg-white">
+        <div className="container-site">
+          <div className="grid lg:grid-cols-2 gap-16 max-w-5xl mx-auto">
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-primary">
+                Get in Touch
+              </span>
+              <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3 leading-tight">
+                Let&apos;s Connect
+              </h2>
+              <p className="text-foreground/60 mt-4 leading-relaxed font-source">
+                Whether you have a question about registration, want to explore
+                a partnership, or are interested in sponsoring — we&apos;d love
+                to hear from you.
+              </p>
+
+              <div className="mt-8 space-y-5">
+                <div className="flex gap-4 items-start">
+                  <div className="w-10 h-10 rounded-lg bg-primary-bg flex items-center justify-center shrink-0">
+                    <svg className="w-5 h-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                      <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-primary-dk">
+                      General Contact
+                    </p>
+                    <p className="text-sm text-foreground/50 font-source mt-0.5">
+                      admin@theupherroom.com
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4 items-start">
+                  <div className="w-10 h-10 rounded-lg bg-primary-bg flex items-center justify-center shrink-0">
+                    <svg className="w-5 h-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
+                      <path
+                        fillRule="evenodd"
+                        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-6-3a2 2 0 11-4 0 2 2 0 014 0zm-2 4a5 5 0 00-4.546 2.916A5.986 5.986 0 0010 16a5.986 5.986 0 004.546-2.084A5 5 0 0010 11z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-primary-dk">
+                      Partnership & Sponsorship
+                    </p>
+                    <p className="text-sm text-foreground/50 font-source mt-0.5">
+                      whitney@theupherroom.com
+                    </p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4 items-start">
+                  <div className="w-10 h-10 rounded-lg bg-primary-bg flex items-center justify-center shrink-0">
+                    <svg className="w-5 h-5 text-primary" viewBox="0 0 20 20" fill="currentColor">
+                      <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold text-primary-dk">Phone</p>
+                    <p className="text-sm text-foreground/50 font-source mt-0.5">
+                      (317) 721-8460
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <ContactForm />
+          </div>
         </div>
       </section>
 
@@ -628,26 +923,43 @@ export default function Home() {
       <footer className="bg-primary-dk text-white py-16">
         <div className="container-site">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
-            <div>
-              <a href="#" className="font-bold text-2xl tracking-tight">
-                Real<span className="text-secondary">HER</span>
-              </a>
-              <p className="mt-4 text-white/50 text-sm leading-relaxed font-source">
-                Empowering African women to lead, innovate, and transform
-                their communities — one conference at a time.
+            <div className="lg:col-span-2">
+              <h3 className="font-bold text-2xl">Built for More</h3>
+              <p className="text-white/50 text-sm mt-3 leading-relaxed font-source max-w-md">
+                A Leadership Symposium for Women Who Build
               </p>
+              <div className="mt-4 space-y-1 text-sm text-white/40 font-source">
+                <p>May 29 &ndash; 30, 2026</p>
+                <p>Indianapolis, Indiana</p>
+              </div>
+              <div className="mt-4 space-y-1 text-sm text-white/40 font-source">
+                <p>
+                  Hosted by{" "}
+                  <span className="text-white/60">The UpHer Room Inc.</span>
+                </p>
+                <p>
+                  Powered by{" "}
+                  <span className="text-white/60">Truist Foundation</span> &amp;{" "}
+                  <span className="text-white/60">Watson Institute</span>
+                </p>
+              </div>
             </div>
 
             <div>
-              <h4 className="font-bold text-sm uppercase tracking-wider text-white/70 mb-4">
+              <h4 className="font-bold text-sm uppercase tracking-wider text-white/60 mb-4">
                 Quick Links
               </h4>
-              <ul className="space-y-2 text-sm">
-                {NAV.map((n) => (
+              <ul className="space-y-2.5 text-sm">
+                {[
+                  { label: "Register", href: "#tickets" },
+                  { label: "Schedule", href: "#schedule" },
+                  { label: "Overview", href: "#overview" },
+                  { label: "Contact", href: "#contact" },
+                ].map((n) => (
                   <li key={n.href}>
                     <a
                       href={n.href}
-                      className="text-white/50 hover:text-secondary transition-colors"
+                      className="text-white/40 hover:text-secondary transition-colors"
                     >
                       {n.label}
                     </a>
@@ -657,45 +969,58 @@ export default function Home() {
             </div>
 
             <div>
-              <h4 className="font-bold text-sm uppercase tracking-wider text-white/70 mb-4">
-                Contact
-              </h4>
-              <ul className="space-y-2 text-sm text-white/50">
-                <li>hello@realherconference.com</li>
-                <li>+234 800 REAL HER</li>
-                <li>
-                  Eko Convention Centre
-                  <br />
-                  Victoria Island, Lagos
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-bold text-sm uppercase tracking-wider text-white/70 mb-4">
-                Follow Us
+              <h4 className="font-bold text-sm uppercase tracking-wider text-white/60 mb-4">
+                Connect
               </h4>
               <div className="flex gap-4">
-                {["X (Twitter)", "Instagram", "LinkedIn"].map((s) => (
+                {[
+                  {
+                    label: "Instagram",
+                    icon: (
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    label: "LinkedIn",
+                    icon: (
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                      </svg>
+                    ),
+                  },
+                  {
+                    label: "Facebook",
+                    icon: (
+                      <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                      </svg>
+                    ),
+                  },
+                ].map((s) => (
                   <a
-                    key={s}
+                    key={s.label}
                     href="#"
-                    className="text-white/50 hover:text-secondary transition-colors text-sm"
+                    aria-label={s.label}
+                    className="w-10 h-10 rounded-full bg-white/8 flex items-center justify-center text-white/40 hover:text-secondary hover:bg-white/15 transition-all"
                   >
-                    {s}
+                    {s.icon}
                   </a>
                 ))}
               </div>
             </div>
           </div>
 
-          <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/40">
-            <p>&copy; 2026 RealHER Conference. All rights reserved.</p>
+          <div className="mt-12 pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30">
+            <p>
+              &copy; 2026 The UpHer Room Inc. All rights reserved.
+            </p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-white/70 transition-colors">
+              <a href="#" className="hover:text-white/60 transition-colors">
                 Privacy Policy
               </a>
-              <a href="#" className="hover:text-white/70 transition-colors">
+              <a href="#" className="hover:text-white/60 transition-colors">
                 Terms of Service
               </a>
             </div>
