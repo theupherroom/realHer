@@ -45,6 +45,10 @@
   ::selection {
     background: var(--primary-bg);
   }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
 }
 
 html {
