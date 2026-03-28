@@ -154,8 +154,14 @@ export default function Home() {
       {/* ── NAVBAR ── */}
       <header className="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary/8">
         <div className="container-site flex items-center justify-between h-16">
-          <a href="#" className="font-bold text-lg tracking-tight text-primary-dk">
-            The UpHer <span className="text-primary">Room</span>
+          <a href="#" className="flex items-center">
+            <Image
+              src="/images/uhr-logo.png"
+              alt="The UpHer Room"
+              width={120}
+              height={40}
+              className="object-contain max-h-9 w-auto"
+            />
           </a>
           <nav className="hidden md2:flex items-center gap-6">
             {NAV.map((n) => (
@@ -179,16 +185,7 @@ export default function Home() {
       </header>
 
       {/* ── HERO ── */}
-      <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-16">
-        <Image
-          src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1920&q=80"
-          alt="Women leaders collaborating together"
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary-dk/90 via-primary-dk/80 to-primary/70" />
+      <section className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-16" style={{ background: "linear-gradient(135deg, #21172f 0%, #4a3468 40%, #8052a3 70%, #e7a8b2 100%)" }}>
 
         <div className="relative z-10 container-site text-center flex flex-col items-center gap-6 py-20">
           <span className="inline-block px-5 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/80 text-xs sm:text-sm font-medium tracking-wide border border-white/10">
@@ -460,13 +457,13 @@ export default function Home() {
       </section>
 
       {/* ── SCHEDULE ── */}
-      <section id="schedule" className="py-20 sm:py-28 bg-white">
+      <section id="schedule" className="py-20 sm:py-28 bg-primary-dk">
         <div className="container-site">
           <div className="text-center mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-primary">
+            <span className="text-xs font-bold uppercase tracking-widest text-secondary">
               Schedule
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3">
+            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-3">
               The Flow of the Experience
             </h2>
           </div>
@@ -475,26 +472,26 @@ export default function Home() {
             {/* Friday */}
             <div>
               <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-primary-dk flex items-center justify-center">
+                <div className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
                   <span className="text-white text-sm font-bold">Fri</span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-primary-dk">
+                  <h3 className="font-bold text-white">
                     Friday &mdash; May 29
                   </h3>
-                  <p className="text-xs text-foreground/50 font-source">
+                  <p className="text-xs text-white/40 font-source">
                     Strategy Lab
                   </p>
                 </div>
               </div>
-              <div className="space-y-0 border-l-2 border-primary/15 ml-5">
+              <div className="space-y-0 border-l-2 border-white/15 ml-5">
                 {FRIDAY_SCHEDULE.map((slot, i) => (
                   <div key={i} className="flex gap-4 pl-6 pb-5 relative">
-                    <span className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-primary" />
-                    <span className="text-sm text-foreground/40 w-[72px] shrink-0 font-source">
+                    <span className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-secondary" />
+                    <span className="text-sm text-white/40 w-[72px] shrink-0 font-source">
                       {slot.time}
                     </span>
-                    <p className="font-medium text-primary-dk text-sm">
+                    <p className="font-medium text-white text-sm">
                       {slot.title}
                     </p>
                   </div>
@@ -509,22 +506,22 @@ export default function Home() {
                   <span className="text-white text-sm font-bold">Sat</span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-primary-dk">
+                  <h3 className="font-bold text-white">
                     Saturday &mdash; May 30
                   </h3>
-                  <p className="text-xs text-foreground/50 font-source">
+                  <p className="text-xs text-white/40 font-source">
                     Leadership Symposium
                   </p>
                 </div>
               </div>
-              <div className="space-y-0 border-l-2 border-primary/15 ml-5">
+              <div className="space-y-0 border-l-2 border-white/15 ml-5">
                 {SATURDAY_SCHEDULE.map((slot, i) => (
                   <div key={i} className="flex gap-4 pl-6 pb-5 relative">
-                    <span className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-primary" />
-                    <span className="text-sm text-foreground/40 w-[72px] shrink-0 font-source">
+                    <span className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-secondary" />
+                    <span className="text-sm text-white/40 w-[72px] shrink-0 font-source">
                       {slot.time}
                     </span>
-                    <p className="font-medium text-primary-dk text-sm">
+                    <p className="font-medium text-white text-sm">
                       {slot.title}
                     </p>
                   </div>
@@ -807,6 +804,124 @@ export default function Home() {
                 </a>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── SPONSORS ── */}
+      <section className="py-20 sm:py-28 bg-primary-bg/20 border-y border-primary/8 overflow-hidden">
+        <div className="container-site">
+          {/* Intro copy */}
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary">
+              Sponsors &amp; Partners
+            </span>
+            <p className="mt-5 text-foreground/65 font-source leading-relaxed text-base sm:text-lg">
+              Built for More is powered by{" "}
+              <strong className="text-primary-dk">Truist Foundation</strong> and{" "}
+              <strong className="text-primary-dk">Watson Institute</strong> and is
+              designed to convene women leaders, founders, and ecosystem builders
+              for meaningful dialogue and strategic collaboration.
+            </p>
+          </div>
+
+          {/* Flowing logo marquee */}
+          <div className="relative mb-16">
+            {/* fade edges */}
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-primary-bg/20 to-transparent" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-primary-bg/20 to-transparent" />
+
+            <div className="flex overflow-hidden">
+              {/* duplicate the list so it loops seamlessly */}
+              {[0, 1].map((pass) => (
+                <div
+                  key={pass}
+                  aria-hidden={pass === 1}
+                  className="flex shrink-0 items-center gap-14 animate-marquee"
+                >
+                  {[
+                    { src: "/images/truist.png", alt: "Truist Foundation", w: 140 },
+                    { src: "/images/watson.png", alt: "Watson Institute", w: 140 },
+                    { src: "/images/uhr-logo.png", alt: "The UpHer Room", w: 120 },
+                    { src: "/images/truist.png", alt: "Truist Foundation", w: 140 },
+                    { src: "/images/watson.png", alt: "Watson Institute", w: 140 },
+                    { src: "/images/uhr-logo.png", alt: "The UpHer Room", w: 120 },
+                  ].map((logo, i) => (
+                    <div
+                      key={i}
+                      className="shrink-0 h-14 flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-sm border border-primary/8"
+                    >
+                      <Image
+                        src={logo.src}
+                        alt={logo.alt}
+                        width={logo.w}
+                        height={48}
+                        className="object-contain max-h-10 w-auto"
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Side-by-side sponsor write-ups */}
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Truist Foundation */}
+            <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5">
+              <div className="h-12 flex items-center">
+                <Image
+                  src="/images/truist.png"
+                  alt="Truist Foundation"
+                  width={160}
+                  height={48}
+                  className="object-contain max-h-10 w-auto"
+                />
+              </div>
+              <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">Lead Sponsor</p>
+              <p className="text-foreground/65 font-source leading-relaxed text-sm">
+                Truist Foundation is committed to building thriving communities by investing in people and programs that create economic mobility and opportunity. Their support of Built for More reflects a deep belief in the power of women-led leadership to transform organizations, communities, and systems.
+              </p>
+              <a
+                href="https://www.truist.com/about/truist-foundation"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+              >
+                Learn more
+                <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                </svg>
+              </a>
+            </div>
+
+            {/* Watson Institute */}
+            <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5">
+              <div className="h-12 flex items-center">
+                <Image
+                  src="/images/watson.png"
+                  alt="Watson Institute"
+                  width={160}
+                  height={48}
+                  className="object-contain max-h-10 w-auto"
+                />
+              </div>
+              <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">Strategic Partner</p>
+              <p className="text-foreground/65 font-source leading-relaxed text-sm">
+                Watson Institute develops the next generation of leaders through experiential education and purpose-driven programming. As a strategic partner for Built for More, Watson Institute brings a framework of applied leadership development that deepens the impact of every conversation in the room.
+              </p>
+              <a
+                href="https://www.watson.is"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+              >
+                Learn more
+                <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                </svg>
+              </a>
+            </div>
           </div>
         </div>
       </section>
