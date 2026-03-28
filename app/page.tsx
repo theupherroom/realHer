@@ -99,19 +99,13 @@ const UNPACKING = [
   "The difference between performative and productive collaboration",
   "Navigating power and alignment in partnerships",
   "Building without losing vision, identity, or direction",
+];
+
 const READY_FOR = [
   "understand where their work is being limited",
   "recognize where alignment actually exists",
   "engage in conversations that go beyond visibility",
   "begin identifying what building differently could look like",
-];
-
-const UNPACKING = [
-  "Where trust breaks down in leadership and collaboration",
-  "Why impact becomes fragmented across organizations",
-  "The difference between performative and productive collaboration",
-  "Navigating power and alignment in partnerships",
-  "Building without losing vision, identity, or direction",
 ];
 
 const LEAVE_WITH = [
