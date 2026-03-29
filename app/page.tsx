@@ -760,7 +760,7 @@ export default function Home() {
                   ].map((logo, i) => (
                     <div
                       key={i}
-                      className="shrink-0 h-14 flex items-center justify-center px-4 py-2 bg-white rounded-xl shadow-sm border border-primary/8"
+                      className="shrink-0 h-14 flex items-center justify-center px-4 py-2 rounded-xl shadow-sm border bg-white border-primary/8"
                     >
                       <Image
                         src={logo.src}
