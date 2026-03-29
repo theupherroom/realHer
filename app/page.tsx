@@ -31,7 +31,7 @@ const AUDIENCE = [
   },
   {
     title: "Heads of People, Culture & Engagement",
-    desc: "Shaping workplace culture and employee development strategies.",
+    desc: "Women shaping workplace culture and employee development strategies.",
   },
   {
     title: "Community Leaders & Advocates",
@@ -76,26 +76,26 @@ const LEAVE_WITH = [
 ];
 
 const FRIDAY_SCHEDULE = [
-  { time: "6:30 PM", title: "Arrival" },
-  { time: "6:45 PM", title: "Opening" },
-  { time: "7:00 PM", title: "Strategy Lab Begins" },
-  { time: "7:50 PM", title: "Presentations" },
-  { time: "8:10 PM", title: "Room Reflection" },
-  { time: "8:20 PM", title: "Saturday Preview" },
-  { time: "8:30 PM", title: "Close" },
+  { time: "6:30 PM", title: "Arrival", tag: "arrival" },
+  { time: "6:45 PM", title: "Opening", tag: "session" },
+  { time: "7:00 PM", title: "Strategy Lab Begins", tag: "workshop" },
+  { time: "7:50 PM", title: "Presentations", tag: "session" },
+  { time: "8:10 PM", title: "Room Reflection", tag: "session" },
+  { time: "8:20 PM", title: "Saturday Preview", tag: "break" },
+  { time: "8:30 PM", title: "Close", tag: "close" },
 ];
 
 const SATURDAY_SCHEDULE = [
-  { time: "9:30 AM", title: "Arrival + Check-In" },
-  { time: "10:00 AM", title: "Opening" },
-  { time: "10:30 AM", title: "Built for More" },
-  { time: "11:15 AM", title: "What Are We Building?" },
-  { time: "12:00 PM", title: "Lunch + Table Conversations" },
-  { time: "1:00 PM", title: "Featured Conversation" },
-  { time: "2:00 PM", title: "Working Session" },
-  { time: "3:00 PM", title: "Room Reflections" },
-  { time: "3:30 PM", title: "What Comes Next" },
-  { time: "4:00 PM", title: "Close" },
+  { time: "9:30 AM", title: "Arrival + Check-In", tag: "arrival" },
+  { time: "10:00 AM", title: "Opening", tag: "session" },
+  { time: "10:30 AM", title: "Built for More", tag: "keynote" },
+  { time: "11:15 AM", title: "What Are We Building?", tag: "session" },
+  { time: "12:00 PM", title: "Lunch + Table Conversations", tag: "break" },
+  { time: "1:00 PM", title: "Featured Conversation", tag: "keynote" },
+  { time: "2:00 PM", title: "Working Session", tag: "workshop" },
+  { time: "3:00 PM", title: "Room Reflections", tag: "session" },
+  { time: "3:30 PM", title: "What Comes Next", tag: "session" },
+  { time: "4:00 PM", title: "Close", tag: "close" },
 ];
 
 const TICKETS = [
@@ -202,8 +202,9 @@ export default function Home() {
           </p>
 
           <p className="text-base sm:text-lg text-white/70 max-w-2xl leading-relaxed font-source">
-            A two-day diagnostic and strategic experience for women building
-            inside ecosystems that need redesign.
+            A two-day leadership experience for women navigating misalignment,
+            fragmentation, and the realities of building inside systems that are
+            in need of redesign.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-2 text-sm text-white/50 font-source">
@@ -240,29 +241,35 @@ export default function Home() {
 
           <div className="mt-8 space-y-6 text-lg sm:text-xl leading-relaxed text-foreground/80 font-source">
             <p className="text-2xl sm:text-3xl font-bold text-primary-dk leading-snug font-sans">
-              Some women do not need more motivation.
+              You don&apos;t need more motivation.
               <br />
-              <span className="text-primary">They need a clearer diagnosis.</span>
+              <span className="text-primary">What you&apos;ve been searching for is a clearer diagnosis.</span>
             </p>
 
             <p>
-              Because the issue is not always talent.
+              It&apos;s not about talent.
               <br />
-              Not always vision.
+              It&apos;s not about capacity.
               <br />
-              Not always effort.
+              It&apos;s not about vision.
             </p>
 
             <p>
-              Sometimes the issue is broken trust. Fragmented impact.
-              Surface-level collaboration. Partnerships that look aligned on
-              paper but quietly cost women their clarity, capacity, and voice.
+              You&apos;ve already been building. You&apos;ve already been showing up.
+              You&apos;ve already been carrying more than most people see.
+            </p>
+
+            <p>
+              Sometimes the issue is broken trust, fragmented impact,
+              surface-level collaboration, and partnerships that look aligned on
+              paper but quietly cost you clarity, capacity, and voice.
             </p>
 
             <p>
               <strong className="text-primary-dk">Built for More</strong> is a
-              two-day diagnostic and strategic experience for women who are
-              building inside ecosystems that need redesign.
+              two-day leadership experience for women navigating misalignment,
+              fragmentation, and the realities of building inside systems that
+              need redesign.
             </p>
 
             <p>
@@ -375,13 +382,13 @@ export default function Home() {
       </section>
 
       {/* ── TWO-DAY EXPERIENCE ── */}
-      <section className="py-20 sm:py-28 bg-primary-dk text-white">
+      <section className="py-20 sm:py-28 bg-white">
         <div className="container-site">
           <div className="text-center max-w-2xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-secondary">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary">
               The Experience
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold mt-3">
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3">
               Two Days. Two Formats.
               <br />
               One Transformative Experience.
@@ -389,47 +396,39 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="rounded-2xl bg-white/5 border border-white/10 p-8 sm:p-10">
-              <span className="text-xs font-bold uppercase tracking-widest text-secondary">
+            <div className="rounded-2xl bg-primary-bg/30 border border-primary/10 p-8 sm:p-10">
+              <span className="text-xs font-bold uppercase tracking-widest text-primary">
                 Friday &mdash; May 29
               </span>
-              <h3 className="text-2xl font-bold mt-3 mb-4">Strategy Lab</h3>
-              <p className="text-white/60 leading-relaxed font-source">
+              <h3 className="text-2xl font-bold text-primary-dk mt-3 mb-4">Strategy Lab</h3>
+              <p className="text-foreground/60 leading-relaxed font-source">
                 A structured working session designed to engage real challenges
                 and accelerate connection through action. Participants are placed
                 into small groups to think through real-world problems and begin
                 identifying where alignment and collaboration are possible.
               </p>
-              <div className="mt-6 flex items-center gap-2 text-sm text-white/40">
+              <div className="mt-6 flex items-center gap-2 text-sm text-foreground/40">
                 <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.414L11 9.586V6z"
-                    clipRule="evenodd"
-                  />
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.414L11 9.586V6z" clipRule="evenodd" />
                 </svg>
                 <span>6:30 PM &ndash; 8:30 PM</span>
               </div>
             </div>
 
-            <div className="rounded-2xl bg-white/5 border border-white/10 p-8 sm:p-10">
-              <span className="text-xs font-bold uppercase tracking-widest text-secondary">
+            <div className="rounded-2xl bg-primary-bg/30 border border-primary/10 p-8 sm:p-10">
+              <span className="text-xs font-bold uppercase tracking-widest text-primary">
                 Saturday &mdash; May 30
               </span>
-              <h3 className="text-2xl font-bold mt-3 mb-4">Leadership Symposium</h3>
-              <p className="text-white/60 leading-relaxed font-source">
+              <h3 className="text-2xl font-bold text-primary-dk mt-3 mb-4">Leadership Symposium</h3>
+              <p className="text-foreground/60 leading-relaxed font-source">
                 A full-day, dialogue-driven experience focused on leadership,
                 collaboration, and how women build within and across systems.
                 Facilitated conversations, guided reflection, and intentionally
                 curated tables.
               </p>
-              <div className="mt-6 flex items-center gap-2 text-sm text-white/40">
+              <div className="mt-6 flex items-center gap-2 text-sm text-foreground/40">
                 <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path
-                    fillRule="evenodd"
-                    d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.414L11 9.586V6z"
-                    clipRule="evenodd"
-                  />
+                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.414L11 9.586V6z" clipRule="evenodd" />
                 </svg>
                 <span>9:30 AM &ndash; 4:00 PM</span>
               </div>
@@ -462,12 +461,21 @@ export default function Home() {
                   <p className="text-xs text-white/40 font-source">Strategy Lab</p>
                 </div>
               </div>
-              <div className="space-y-0 border-l-2 border-white/15 ml-5">
+              <div className="divide-y divide-white/10">
                 {FRIDAY_SCHEDULE.map((slot, i) => (
-                  <div key={i} className="flex gap-4 pl-6 pb-5 relative">
-                    <span className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-secondary" />
-                    <span className="text-sm text-white/40 w-[72px] shrink-0 font-source">{slot.time}</span>
-                    <p className="font-medium text-white text-sm">{slot.title}</p>
+                  <div key={i} className="flex items-start gap-4 py-4">
+                    <span className="text-sm text-white/50 w-[80px] shrink-0 font-source tabular-nums pt-0.5">{slot.time}</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bold text-white text-base leading-snug">{slot.title}</p>
+                      <span className={`inline-block mt-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                        slot.tag === "keynote" ? "bg-secondary/20 text-secondary" :
+                        slot.tag === "workshop" ? "bg-primary/40 text-primary-bg" :
+                        slot.tag === "break" ? "bg-white/10 text-white/50" :
+                        slot.tag === "arrival" ? "bg-white/10 text-white/50" :
+                        slot.tag === "close" ? "bg-white/10 text-white/50" :
+                        "bg-primary/30 text-primary-bg"
+                      }`}>{slot.tag}</span>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -484,12 +492,21 @@ export default function Home() {
                   <p className="text-xs text-white/40 font-source">Leadership Symposium</p>
                 </div>
               </div>
-              <div className="space-y-0 border-l-2 border-white/15 ml-5">
+              <div className="divide-y divide-white/10">
                 {SATURDAY_SCHEDULE.map((slot, i) => (
-                  <div key={i} className="flex gap-4 pl-6 pb-5 relative">
-                    <span className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-full bg-secondary" />
-                    <span className="text-sm text-white/40 w-[72px] shrink-0 font-source">{slot.time}</span>
-                    <p className="font-medium text-white text-sm">{slot.title}</p>
+                  <div key={i} className="flex items-start gap-4 py-4">
+                    <span className="text-sm text-white/50 w-[80px] shrink-0 font-source tabular-nums pt-0.5">{slot.time}</span>
+                    <div className="flex-1 min-w-0">
+                      <p className="font-bold text-white text-base leading-snug">{slot.title}</p>
+                      <span className={`inline-block mt-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
+                        slot.tag === "keynote" ? "bg-secondary/20 text-secondary" :
+                        slot.tag === "workshop" ? "bg-primary/40 text-primary-bg" :
+                        slot.tag === "break" ? "bg-white/10 text-white/50" :
+                        slot.tag === "arrival" ? "bg-white/10 text-white/50" :
+                        slot.tag === "close" ? "bg-white/10 text-white/50" :
+                        "bg-primary/30 text-primary-bg"
+                      }`}>{slot.tag}</span>
+                    </div>
                   </div>
                 ))}
               </div>
@@ -564,21 +581,6 @@ export default function Home() {
               sectors — brought together to exchange insight, challenge
               assumptions, and build what&apos;s next.
             </p>
-            <a
-              href="https://theupherroom.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 mt-6 text-sm font-semibold text-primary hover:text-primary-fg transition-colors"
-            >
-              Learn more about The UpHer Room
-              <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                <path
-                  fillRule="evenodd"
-                  d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                  clipRule="evenodd"
-                />
-              </svg>
-            </a>
           </div>
 
           <ContributorsCarousel />
@@ -707,7 +709,7 @@ export default function Home() {
                 </ul>
 
                 <a
-                  href="#"
+                  href="/checkout"
                   className={`mt-8 flex items-center justify-center h-11 rounded-full font-bold text-sm transition-colors ${
                     tier.highlighted
                       ? "bg-secondary text-primary-dk hover:bg-secondary/90"
@@ -776,48 +778,75 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Side-by-side sponsor write-ups */}
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5">
-              <div className="h-12 flex items-center">
-                <Image src="/images/truist.png" alt="Truist Foundation" width={160} height={48} className="object-contain max-h-10 w-auto" />
+          {/* Sponsor cards — triangle layout */}
+          <div className="max-w-5xl mx-auto">
+            {/* Top row: Truist + Watson */}
+            <div className="grid md:grid-cols-2 gap-8 mb-8">
+              <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5">
+                <div className="h-12 flex items-center">
+                  <Image src="/images/truist.png" alt="Truist Foundation" width={160} height={48} className="object-contain max-h-10 w-auto" />
+                </div>
+                <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">Lead Sponsor</p>
+                <p className="text-foreground/65 font-source leading-relaxed text-sm">
+                  Truist Foundation is committed to building thriving communities by investing in people and programs that create economic mobility and opportunity. Their support of Built for More reflects a deep belief in the power of women-led leadership to transform organizations, communities, and systems.
+                </p>
+                <a
+                  href="https://www.truistfoundation.org"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                >
+                  Learn more
+                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                </a>
               </div>
-              <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">Lead Sponsor</p>
-              <p className="text-foreground/65 font-source leading-relaxed text-sm">
-                Truist Foundation is committed to building thriving communities by investing in people and programs that create economic mobility and opportunity. Their support of Built for More reflects a deep belief in the power of women-led leadership to transform organizations, communities, and systems.
-              </p>
-              <a
-                href="https://www.truist.com/about/truist-foundation"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
-              >
-                Learn more
-                <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                </svg>
-              </a>
+
+              <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5">
+                <div className="h-12 flex items-center">
+                  <Image src="/images/watson.png" alt="Watson Institute" width={160} height={48} className="object-contain max-h-10 w-auto" />
+                </div>
+                <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">Strategic Partner</p>
+                <p className="text-foreground/65 font-source leading-relaxed text-sm">
+                  Watson Institute develops the next generation of leaders through experiential education and purpose-driven programming. As a strategic partner for Built for More, Watson Institute brings a framework of applied leadership development that deepens the impact of every conversation in the room.
+                </p>
+                <a
+                  href="https://www.watson.is"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                >
+                  Learn more
+                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                </a>
+              </div>
             </div>
 
-            <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5">
-              <div className="h-12 flex items-center">
-                <Image src="/images/watson.png" alt="Watson Institute" width={160} height={48} className="object-contain max-h-10 w-auto" />
+            {/* Bottom row: UpHer Room centered */}
+            <div className="flex justify-center">
+              <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5 w-full md:w-[calc(50%-1rem)]">
+                <div className="h-12 flex items-center">
+                  <Image src="/images/uhr-logo.png" alt="The UpHer Room" width={160} height={48} className="object-contain max-h-10 w-auto" />
+                </div>
+                <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">Host Organization</p>
+                <p className="text-foreground/65 font-source leading-relaxed text-sm">
+                  The UpHer Room Inc. is a leadership development organization dedicated to equipping and convening women who are building meaningful work in their communities. Built for More is a signature initiative of The UpHer Room.
+                </p>
+                <a
+                  href="https://www.theupherroom.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                >
+                  Visit The UpHer Room
+                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                </a>
               </div>
-              <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">Strategic Partner</p>
-              <p className="text-foreground/65 font-source leading-relaxed text-sm">
-                Watson Institute develops the next generation of leaders through experiential education and purpose-driven programming. As a strategic partner for Built for More, Watson Institute brings a framework of applied leadership development that deepens the impact of every conversation in the room.
-              </p>
-              <a
-                href="https://www.watson.is"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
-              >
-                Learn more
-                <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                </svg>
-              </a>
             </div>
           </div>
         </div>
