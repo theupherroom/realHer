@@ -165,6 +165,7 @@ export default function ContributorsCarousel() {
                 src={c.image}
                 alt={c.name}
                 fill
+                unoptimized
                 sizes="(max-width: 640px) 280px, 320px"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />

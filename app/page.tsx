@@ -275,16 +275,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── DIVIDER IMAGE ── */}
-      <div className="relative h-[220px] sm:h-[300px] md:h-[360px] lg:h-[420px] overflow-hidden">
-        <Image
-          src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1920&q=80"
-          alt="Women professionals in discussion"
-          fill
-          sizes="100vw"
-          className="object-cover object-center"
-        />
-        <div className="absolute inset-0 bg-primary-dk/30" />
+      {/* ── WOMEN MOSAIC ── */}
+      <div className="h-[400px] sm:h-[460px] overflow-hidden grid grid-cols-2 lg:grid-cols-5">
+        {[
+          { src: "photo-1563132337-f159f484226c", role: "Corporate Leader",     pos: "object-center" },
+          { src: "photo-1573497491765-dccce02b29df", role: "Nonprofit Founder", pos: "object-top" },
+          { src: "photo-1611432579402-7037e3e2c1e4", role: "Entrepreneur",      pos: "object-center" },
+          { src: "photo-1531123897727-8f129e1688ce", role: "Community Advocate", pos: "object-top" },
+          { src: "photo-1589156280159-27698a70f29e", role: "Emerging Leader",   pos: "object-[50%_20%]" },
+        ].map((w, i) => (
+          <div key={i} className={`relative overflow-hidden ${i === 4 ? "hidden lg:block" : ""}`}>
+            <Image
+              src={`https://images.unsplash.com/${w.src}?w=600&q=85`}
+              alt={w.role}
+              fill
+              unoptimized
+              sizes="(max-width: 1024px) 50vw, 20vw"
+              className={`object-cover ${w.pos}`}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-primary-dk/85 via-primary-dk/20 to-transparent" />
+            <div className="absolute bottom-0 inset-x-0 p-5">
+              <span className="block text-[10px] font-bold uppercase tracking-[0.18em] text-secondary mb-1">
+                {w.role}
+              </span>
+            </div>
+          </div>
+        ))}
       </div>
 
       {/* ── WHO SHOULD ATTEND ── */}
@@ -789,9 +805,10 @@ export default function Home() {
       {/* ── CLOSING CTA ── */}
       <section className="relative py-20 sm:py-28 overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1563132337-f159f484226c?w=1920&q=80"
           alt="Women at a leadership event"
           fill
+          unoptimized
           sizes="100vw"
           className="object-cover object-center"
         />
