@@ -3,12 +3,13 @@
 import { useState } from "react";
 
 const NAV = [
+  { label: "Event Details", href: "#event-details" },
   { label: "Overview", href: "#overview" },
   { label: "Who Should Attend", href: "#who" },
   { label: "Why Attend", href: "#why" },
-  { label: "Topics", href: "#topics" },
+  { label: "Topics Discussed", href: "#topics" },
   { label: "Schedule", href: "#schedule" },
-  { label: "Tickets", href: "#tickets" },
+  { label: "Sponsors & Partners", href: "#sponsors" },
   { label: "Contact", href: "#contact" },
 ];
 
