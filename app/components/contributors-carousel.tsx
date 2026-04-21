@@ -16,14 +16,14 @@ const CONTRIBUTORS: Contributor[] = [
     title: "Nonprofit Founder & Executive Director",
     org: "Community Impact Leader",
     image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
+      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80",
   },
   {
     name: "Speaker TBA",
     title: "Serial Entrepreneur & Business Strategist",
     org: "Women-Led Ventures",
     image:
-      "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80",
+      "https://images.unsplash.com/photo-1589156280159-27698a70f29e?w=600&q=80",
   },
   {
     name: "Speaker TBA",
@@ -37,21 +37,21 @@ const CONTRIBUTORS: Contributor[] = [
     title: "Ecosystem Builder & Policy Advocate",
     org: "Civic Innovation Leader",
     image:
-      "https://images.unsplash.com/photo-1589156280159-27698a70f29e?w=600&q=80",
+      "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=600&q=80",
   },
   {
     name: "Speaker TBA",
     title: "Social Impact Strategist",
     org: "Community Development Pioneer",
     image:
-      "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=600&q=80",
+      "https://images.unsplash.com/photo-1611432579699-484f7990b127?w=600&q=80",
   },
   {
     name: "Speaker TBA",
     title: "Emerging Leader & Founder",
     org: "Next-Gen Builder",
     image:
-      "https://images.unsplash.com/photo-1611432579699-484f7990b127?w=600&q=80",
+      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
   },
 ];
 

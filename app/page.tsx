@@ -7,12 +7,14 @@ import ContributorsCarousel from "./components/contributors-carousel";
 /* ─── data ──────────────────────────────────────────────── */
 
 const NAV = [
+  { label: "Event Details", href: "#event-details" },
   { label: "Overview", href: "#overview" },
   { label: "Who Should Attend", href: "#who" },
   { label: "Why Attend", href: "#why" },
-  { label: "Topics", href: "#topics" },
+  { label: "Topics Discussed", href: "#topics" },
+  { label: "Strategic Contributors", href: "#contributors" },
   { label: "Schedule", href: "#schedule" },
-  { label: "Tickets", href: "#tickets" },
+  { label: "Sponsors & Partners", href: "#sponsors" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -38,31 +40,28 @@ const AUDIENCE = [
     desc: "Mobilizing communities and building grassroots infrastructure for change.",
   },
   {
-    title: "High-Capacity Emerging Leaders",
+    title: "High-Capacity Emerging Women Leaders",
     desc: "Rising women ready to step into greater influence and responsibility.",
   },
 ];
 
 const WHY_POINTS = [
-  "Because many leaders are trying to solve structural problems with personal effort.",
-  "Because collaboration is often encouraged, but rarely structured well enough to produce real outcomes.",
-  "Because partnership can look aligned on the surface while quietly pulling you away from what you are actually called to build.",
-  "Because proximity to other leaders does not automatically create clarity, trust, or alignment.",
-];
-
-const READY_FOR = [
-  "understand where their work is being limited",
-  "recognize where alignment actually exists",
-  "engage in conversations that go beyond visibility",
-  "begin identifying what building differently could look like",
+  "You're doing strong work, but something in the way it's structured isn't working.",
+  "You've experienced collaboration that sounded right but didn't produce real outcomes.",
+  "You want to support other women without diluting your standards or your work.",
+  "You've felt the tension between building your vision and participating in someone else's.",
+  "You know there's overlap across what women are building, but no real coordination.",
+  "You're thinking more seriously about alignment, not just access.",
+  "You're starting to question where your time, energy, and resources are actually going.",
+  "You want to build in a way that allows more women to rise without lowering the level of what's being built.",
 ];
 
 const UNPACKING = [
-  "Where trust breaks down in leadership and collaboration",
-  "Why impact becomes fragmented across organizations",
-  "The difference between performative and productive collaboration",
-  "Navigating power and alignment in partnerships",
-  "Building without losing vision, identity, or direction",
+  "Where trust breaks down",
+  "Why impact becomes fragmented",
+  "What real collaboration actually requires",
+  "How power shows up in partnership",
+  "How to build without losing your standards",
 ];
 
 const LEAVE_WITH = [
@@ -70,8 +69,6 @@ const LEAVE_WITH = [
   "Language and perspective to approach collaboration, partnership, and growth differently",
   "Clarity on where your work connects within a broader ecosystem",
   "Relationships built through context, not surface-level connection",
-  "A Certificate in Strategic Leadership and Ecosystem Building",
-  "A gifted item from Legacy Goods, The UpHer Room\u2019s premier goods and gifting collection",
   "Participation in the Strategy Lab, where one team will be selected for recognition and a featured prize during the symposium",
 ];
 
@@ -113,6 +110,7 @@ const TICKETS = [
       "Certificate of completion",
     ],
     highlighted: false,
+    ticketKey: "symposium",
   },
   {
     name: "Full Experience",
@@ -128,6 +126,7 @@ const TICKETS = [
       "Priority seating on Saturday",
     ],
     highlighted: true,
+    ticketKey: "full",
   },
   {
     name: "Strategy Lab",
@@ -143,6 +142,7 @@ const TICKETS = [
       "Eligibility for featured recognition",
     ],
     highlighted: false,
+    ticketKey: "lab",
   },
 ];
 
@@ -163,12 +163,12 @@ export default function Home() {
               className="object-contain max-h-9 w-auto"
             />
           </a>
-          <nav className="hidden md2:flex items-center gap-6">
+          <nav className="hidden md2:flex items-center gap-4">
             {NAV.map((n) => (
               <a
                 key={n.href}
                 href={n.href}
-                className="text-[13px] font-medium text-foreground/60 hover:text-primary transition-colors"
+                className="text-[12px] font-medium text-foreground/60 hover:text-primary transition-colors whitespace-nowrap"
               >
                 {n.label}
               </a>
@@ -186,6 +186,7 @@ export default function Home() {
 
       {/* ── HERO ── */}
       <section
+        id="event-details"
         className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-16"
         style={{ background: "linear-gradient(135deg, #21172f 0%, #4a3468 40%, #8052a3 70%, #e7a8b2 100%)" }}
       >
@@ -202,9 +203,8 @@ export default function Home() {
           </p>
 
           <p className="text-base sm:text-lg text-white/70 max-w-2xl leading-relaxed font-source">
-            A two-day leadership experience for women navigating misalignment,
-            fragmentation, and the realities of building inside systems that are
-            in need of redesign.
+            A two-day diagnostic and strategic experience for women building
+            inside ecosystems that need redesign.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-2 text-sm text-white/50 font-source">
@@ -241,35 +241,29 @@ export default function Home() {
 
           <div className="mt-8 space-y-6 text-lg sm:text-xl leading-relaxed text-foreground/80 font-source">
             <p className="text-2xl sm:text-3xl font-bold text-primary-dk leading-snug font-sans">
-              You don&apos;t need more motivation.
+              Some women do not need more motivation.
               <br />
-              <span className="text-primary">What you&apos;ve been searching for is a clearer diagnosis.</span>
+              <span className="text-primary">They need a clearer diagnosis.</span>
             </p>
 
             <p>
-              It&apos;s not about talent.
+              Because the issue is not always talent.
               <br />
-              It&apos;s not about capacity.
+              Not always vision.
               <br />
-              It&apos;s not about vision.
+              Not always effort.
             </p>
 
             <p>
-              You&apos;ve already been building. You&apos;ve already been showing up.
-              You&apos;ve already been carrying more than most people see.
-            </p>
-
-            <p>
-              Sometimes the issue is broken trust, fragmented impact,
-              surface-level collaboration, and partnerships that look aligned on
-              paper but quietly cost you clarity, capacity, and voice.
+              Sometimes the issue is broken trust. Fragmented impact.
+              Surface-level collaboration. Partnerships that look aligned on
+              paper but quietly cost women their clarity, capacity, and voice.
             </p>
 
             <p>
               <strong className="text-primary-dk">Built for More</strong> is a
-              two-day leadership experience for women navigating misalignment,
-              fragmentation, and the realities of building inside systems that
-              need redesign.
+              two-day diagnostic and strategic experience for women who are
+              building inside ecosystems that need redesign.
             </p>
 
             <p>
@@ -284,7 +278,7 @@ export default function Home() {
       {/* ── DIVIDER IMAGE ── */}
       <div className="relative h-[220px] sm:h-[300px] md:h-[360px] lg:h-[420px] overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1598257006458-087169a1f08d?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=1920&q=80"
           alt="Women professionals in discussion"
           fill
           sizes="100vw"
@@ -332,57 +326,33 @@ export default function Home() {
 
       {/* ── WHY ATTEND ── */}
       <section id="why" className="py-20 sm:py-28 bg-white">
-        <div className="container-site">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                Why You Should Attend
-              </span>
-              <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3 leading-tight">
-                The Problem Isn&apos;t You.
-                <br />
-                <span className="text-primary">
-                  It&apos;s the System You&apos;re Building In.
+        <div className="container-site max-w-4xl">
+          <span className="text-xs font-bold uppercase tracking-widest text-primary">
+            Why You Should Attend
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3 leading-tight">
+            The Problem Isn&apos;t You.
+            <br />
+            <span className="text-primary">
+              It&apos;s the System You&apos;re Building In.
+            </span>
+          </h2>
+
+          <div className="mt-10 grid sm:grid-cols-2 gap-4">
+            {WHY_POINTS.map((point, i) => (
+              <div key={i} className="flex gap-3 items-start bg-primary-bg/20 rounded-xl p-5 border border-primary/8">
+                <span className="shrink-0 w-5 h-5 rounded-full bg-secondary/20 flex items-center justify-center mt-0.5">
+                  <span className="w-2 h-2 rounded-full bg-secondary-fg" />
                 </span>
-              </h2>
-
-              <div className="mt-8 space-y-4">
-                {WHY_POINTS.map((point, i) => (
-                  <div key={i} className="flex gap-4 items-start">
-                    <span className="shrink-0 w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center mt-0.5">
-                      <span className="w-2 h-2 rounded-full bg-secondary-fg" />
-                    </span>
-                    <p className="text-foreground/70 leading-relaxed font-source">{point}</p>
-                  </div>
-                ))}
+                <p className="text-foreground/70 leading-relaxed font-source text-sm">{point}</p>
               </div>
-            </div>
-
-            <div className="bg-primary-bg/40 rounded-2xl p-8 sm:p-10 border border-primary/8">
-              <h3 className="text-lg font-bold text-primary-dk mb-6">
-                Built for More is designed for women who are ready to:
-              </h3>
-              <div className="space-y-4">
-                {READY_FOR.map((item, i) => (
-                  <div key={i} className="flex gap-3 items-start">
-                    <svg className="w-5 h-5 shrink-0 text-primary mt-0.5" viewBox="0 0 20 20" fill="currentColor">
-                      <path
-                        fillRule="evenodd"
-                        d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <p className="text-foreground/70 font-source leading-relaxed">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ── TWO-DAY EXPERIENCE ── */}
-      <section className="py-20 sm:py-28 bg-white">
+      <section className="py-20 sm:py-28 bg-primary-bg/20">
         <div className="container-site">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-widest text-primary">
@@ -423,8 +393,6 @@ export default function Home() {
               <p className="text-foreground/60 leading-relaxed font-source">
                 A full-day, dialogue-driven experience focused on leadership,
                 collaboration, and how women build within and across systems.
-                Facilitated conversations, guided reflection, and intentionally
-                curated tables.
               </p>
               <div className="mt-6 flex items-center gap-2 text-sm text-foreground/40">
                 <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
@@ -463,19 +431,9 @@ export default function Home() {
               </div>
               <div className="divide-y divide-white/10">
                 {FRIDAY_SCHEDULE.map((slot, i) => (
-                  <div key={i} className="flex items-start gap-4 py-4">
-                    <span className="text-sm text-white/50 w-[80px] shrink-0 font-source tabular-nums pt-0.5">{slot.time}</span>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-bold text-white text-base leading-snug">{slot.title}</p>
-                      <span className={`inline-block mt-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                        slot.tag === "keynote" ? "bg-secondary/20 text-secondary" :
-                        slot.tag === "workshop" ? "bg-primary/40 text-primary-bg" :
-                        slot.tag === "break" ? "bg-white/10 text-white/50" :
-                        slot.tag === "arrival" ? "bg-white/10 text-white/50" :
-                        slot.tag === "close" ? "bg-white/10 text-white/50" :
-                        "bg-primary/30 text-primary-bg"
-                      }`}>{slot.tag}</span>
-                    </div>
+                  <div key={i} className="flex items-center gap-4 py-4">
+                    <span className="text-sm text-white/50 w-[80px] shrink-0 font-source tabular-nums">{slot.time}</span>
+                    <p className="font-bold text-white text-base leading-snug">{slot.title}</p>
                   </div>
                 ))}
               </div>
@@ -494,19 +452,9 @@ export default function Home() {
               </div>
               <div className="divide-y divide-white/10">
                 {SATURDAY_SCHEDULE.map((slot, i) => (
-                  <div key={i} className="flex items-start gap-4 py-4">
-                    <span className="text-sm text-white/50 w-[80px] shrink-0 font-source tabular-nums pt-0.5">{slot.time}</span>
-                    <div className="flex-1 min-w-0">
-                      <p className="font-bold text-white text-base leading-snug">{slot.title}</p>
-                      <span className={`inline-block mt-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${
-                        slot.tag === "keynote" ? "bg-secondary/20 text-secondary" :
-                        slot.tag === "workshop" ? "bg-primary/40 text-primary-bg" :
-                        slot.tag === "break" ? "bg-white/10 text-white/50" :
-                        slot.tag === "arrival" ? "bg-white/10 text-white/50" :
-                        slot.tag === "close" ? "bg-white/10 text-white/50" :
-                        "bg-primary/30 text-primary-bg"
-                      }`}>{slot.tag}</span>
-                    </div>
+                  <div key={i} className="flex items-center gap-4 py-4">
+                    <span className="text-sm text-white/50 w-[80px] shrink-0 font-source tabular-nums">{slot.time}</span>
+                    <p className="font-bold text-white text-base leading-snug">{slot.title}</p>
                   </div>
                 ))}
               </div>
@@ -522,7 +470,7 @@ export default function Home() {
             {/* What We're Unpacking */}
             <div>
               <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                What We&apos;re Unpacking
+                What We&apos;ll Discuss
               </span>
               <h2 className="text-2xl sm:text-3xl font-bold text-primary-dk mt-3 mb-8 leading-tight">
                 The Conversations That Matter
@@ -547,7 +495,7 @@ export default function Home() {
               <h2 className="text-2xl sm:text-3xl font-bold text-primary-dk mt-3 mb-8 leading-tight">
                 More Than Inspiration
               </h2>
-              <div className="space-y-4">
+              <div className="space-y-4 mb-8">
                 {LEAVE_WITH.map((item, i) => (
                   <div key={i} className="flex gap-3 items-start">
                     <svg className="w-5 h-5 shrink-0 text-secondary-fg mt-1" viewBox="0 0 20 20" fill="currentColor">
@@ -561,13 +509,40 @@ export default function Home() {
                   </div>
                 ))}
               </div>
+
+              {/* Hero deliverables */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="flex gap-4 items-start rounded-2xl bg-primary-bg/50 border border-primary/10 p-5">
+                  <div className="shrink-0 w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white">
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <circle cx="12" cy="8" r="6" /><path d="M8 14v7M16 14v7M4 21h16" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-bold text-primary-dk text-sm leading-snug">Certificate in Strategic Leadership &amp; Ecosystem Building</p>
+                    <p className="text-foreground/55 text-xs mt-1 font-source">Awarded upon completion of the symposium</p>
+                  </div>
+                </div>
+
+                <div className="flex gap-4 items-start rounded-2xl bg-secondary/10 border border-secondary/20 p-5">
+                  <div className="shrink-0 w-10 h-10 rounded-xl bg-secondary-fg flex items-center justify-center text-white">
+                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M20 12v10H4V12" /><path d="M22 7H2v5h20V7z" /><path d="M12 22V7" /><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" /><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
+                    </svg>
+                  </div>
+                  <div>
+                    <p className="font-bold text-primary-dk text-sm leading-snug">Gifted Item from Legacy Goods</p>
+                    <p className="text-foreground/55 text-xs mt-1 font-source">The UpHer Room&apos;s premier goods &amp; gifting collection</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* ── STRATEGIC CONTRIBUTORS ── */}
-      <section className="py-20 sm:py-28 bg-white">
+      <section id="contributors" className="hidden py-20 sm:py-28 bg-white">
         <div className="container-site">
           <div className="text-center max-w-2xl mx-auto">
             <span className="text-xs font-bold uppercase tracking-widest text-primary">
@@ -587,50 +562,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PROFESSIONAL DEVELOPMENT ── */}
-      <section className="py-16 bg-primary-bg/30">
-        <div className="container-site">
-          <div className="max-w-4xl mx-auto bg-white rounded-2xl p-8 sm:p-12 border border-primary/8">
-            <div className="grid sm:grid-cols-[1fr,auto] gap-8 items-center">
-              <div>
-                <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                  Professional Development / ERG Support
-                </span>
-                <h3 className="text-xl sm:text-2xl font-bold text-primary-dk mt-3">
-                  Your Organization May Cover This
-                </h3>
-                <p className="text-foreground/60 mt-3 leading-relaxed font-source">
-                  Many companies and organizations offer support for leadership
-                  development, employee resource group engagement, and
-                  professional growth experiences. Built for More may qualify for:
-                </p>
-                <ul className="mt-4 space-y-2 text-foreground/60 font-source text-sm">
-                  {[
-                    "Professional development budgets",
-                    "ERG-sponsored participation",
-                    "Leadership development support",
-                    "Community engagement funding",
-                  ].map((item) => (
-                    <li key={item} className="flex gap-2 items-center">
-                      <span className="w-1.5 h-1.5 rounded-full bg-primary shrink-0" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-              <div className="flex flex-col gap-3">
-                <button className="inline-flex items-center justify-center px-6 h-10 rounded-full bg-primary text-white text-sm font-semibold hover:bg-primary-fg transition-colors cursor-pointer whitespace-nowrap">
-                  Copy Employer Request Email
-                </button>
-                <button className="inline-flex items-center justify-center px-6 h-10 rounded-full border-2 border-primary/20 text-primary-dk text-sm font-semibold hover:bg-primary-bg/50 transition-colors cursor-pointer whitespace-nowrap">
-                  Download Support Template
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* ── PRICING ── */}
       <section id="tickets" className="py-20 sm:py-28 bg-white">
         <div className="container-site">
@@ -642,12 +573,11 @@ export default function Home() {
               Choose Your Experience
             </h2>
             <p className="text-foreground/60 max-w-xl mx-auto mt-4 font-source">
-              Many attendees may be able to utilize professional development or
-              ERG support to attend.
+              Space is limited to 50 participants. Secure your seat today.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
             {TICKETS.map((tier) => (
               <div
                 key={tier.name}
@@ -709,7 +639,7 @@ export default function Home() {
                 </ul>
 
                 <a
-                  href="/checkout"
+                  href={`/register?ticket=${tier.ticketKey}`}
                   className={`mt-8 flex items-center justify-center h-11 rounded-full font-bold text-sm transition-colors ${
                     tier.highlighted
                       ? "bg-secondary text-primary-dk hover:bg-secondary/90"
@@ -721,11 +651,15 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          <p className="text-center text-sm text-foreground/50 font-source max-w-xl mx-auto">
+            Many attendees may be able to utilize professional development or ERG support to attend.
+          </p>
         </div>
       </section>
 
       {/* ── SPONSORS ── */}
-      <section className="py-20 sm:py-28 bg-primary-bg/20 border-y border-primary/8 overflow-hidden">
+      <section id="sponsors" className="py-20 sm:py-28 bg-primary-bg/20 border-y border-primary/8 overflow-hidden">
         <div className="container-site">
           {/* Intro copy */}
           <div className="text-center max-w-2xl mx-auto mb-14">
@@ -855,7 +789,7 @@ export default function Home() {
       {/* ── CLOSING CTA ── */}
       <section className="relative py-20 sm:py-28 overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=1920&q=80"
+          src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=1920&q=80"
           alt="Women at a leadership event"
           fill
           sizes="100vw"
