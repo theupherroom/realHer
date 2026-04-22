@@ -1,13 +1,13 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useTransition, Suspense, useRef } from "react";
+import { useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 
-const TICKET_META: Record<string, { label: string; color: string; days: string; price: string }> = {
-  symposium: { label: "Symposium Pass", color: "bg-primary", days: "Saturday, May 30", price: "$95 early · $125 standard" },
-  full: { label: "Full Experience", color: "bg-primary-dk", days: "Friday May 29 + Saturday May 30", price: "$145 early · $175 standard" },
-  lab: { label: "Strategy Lab", color: "bg-secondary-fg", days: "Friday, May 29", price: "$45 early · $65 standard" },
+const TICKET_META: Record<string, { label: string; color: string; days: string }> = {
+  symposium: { label: "Symposium Pass", color: "bg-primary", days: "Saturday, May 30" },
+  full: { label: "Full Experience", color: "bg-primary-dk", days: "Friday May 29 + Saturday May 30" },
+  lab: { label: "Strategy Lab", color: "bg-secondary-fg", days: "Friday, May 29" },
 };
 
 const PRIORITY_OPTIONS = [
@@ -17,19 +17,7 @@ const PRIORITY_OPTIONS = [
   "Finding aligned partnerships",
 ];
 
-const MAX_FILE_BYTES = 4 * 1024 * 1024; // 4 MB
-
-function readFileAsBase64(file: File): Promise<string> {
-  return new Promise((resolve, reject) => {
-    const reader = new FileReader();
-    reader.onload = () => {
-      const result = reader.result as string;
-      resolve(result.split(",")[1]);
-    };
-    reader.onerror = reject;
-    reader.readAsDataURL(file);
-  });
-}
+const ADMIN_EMAIL = "admin@theupherroom.com";
 
 function RegisterForm() {
   const params = useSearchParams();
@@ -50,58 +38,59 @@ function RegisterForm() {
     dietaryRestrictions: "",
     accessibilityNeeds: "",
   });
-  const [headshotFile, setHeadshotFile] = useState<File | null>(null);
-  const [headshotError, setHeadshotError] = useState("");
-  const fileInputRef = useRef<HTMLInputElement>(null);
-  const [isPending, startTransition] = useTransition();
   const [error, setError] = useState("");
 
   const set = (k: keyof typeof fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) =>
     setFields((f) => ({ ...f, [k]: e.target.value }));
 
-  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0] ?? null;
-    setHeadshotError("");
-    if (!file) { setHeadshotFile(null); return; }
-    if (!file.type.startsWith("image/")) {
-      setHeadshotError("Please upload an image file (JPG, PNG, WEBP).");
-      setHeadshotFile(null);
-      return;
-    }
-    if (file.size > MAX_FILE_BYTES) {
-      setHeadshotError("File must be under 4 MB. Please resize and try again.");
-      setHeadshotFile(null);
-      return;
-    }
-    setHeadshotFile(file);
+  const buildMailto = () => {
+    const lines = [
+      `BUILT FOR MORE — Registration`,
+      ``,
+      `Ticket: ${meta.label} — ${meta.days}`,
+      ``,
+      `── Contact ──`,
+      `Full Name: ${fields.fullName}`,
+      `Email: ${fields.email}`,
+      `Organization: ${fields.organization}`,
+      `Role: ${fields.role}`,
+      ``,
+      `── Where You Are Right Now ──`,
+      `Current Priority: ${fields.currentPriority}`,
+      ``,
+      `Stretched / Limited:`,
+      fields.stretchedLimited,
+      ``,
+      `── What You Bring ──`,
+      `Strengths & Perspective: ${fields.strengthsPerspective}`,
+      `Looking to Connect With: ${fields.connectWith}`,
+      ``,
+      `── About You ──`,
+      `Short Bio:`,
+      fields.shortBio,
+      ``,
+      `Why This Is Relevant:`,
+      fields.whyRelevant,
+      ``,
+      `── Logistics ──`,
+      `Dietary Restrictions: ${fields.dietaryRestrictions || "None"}`,
+      `Accessibility Needs: ${fields.accessibilityNeeds || "None"}`,
+      ``,
+      `──────────`,
+      `📎 Please attach your headshot (JPG/PNG) to this email before sending.`,
+    ];
+    const subject = `Built for More Registration — ${fields.fullName} (${meta.label})`;
+    const body = lines.join("\n");
+    return `mailto:${ADMIN_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!headshotFile) {
-      setHeadshotError("Please upload your headshot.");
-      return;
-    }
     setError("");
-    startTransition(async () => {
-      try {
-        const headshotBase64 = await readFileAsBase64(headshotFile);
-        const res = await fetch("/api/register", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            ticket,
-            ...fields,
-            headshot: { filename: headshotFile.name, content: headshotBase64 },
-          }),
-        });
-        const data = await res.json();
-        if (!res.ok) throw new Error(data.error ?? "Submission failed");
-        window.location.href = data.checkoutUrl;
-      } catch (err) {
-        setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
-      }
-    });
+    window.location.href = buildMailto();
+    setTimeout(() => {
+      window.location.href = "/register/success";
+    }, 600);
   };
 
   const inputCls = "w-full rounded-xl border border-primary/15 bg-white px-4 py-3 text-sm text-foreground placeholder:text-foreground/35 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition font-source";
@@ -139,7 +128,7 @@ function RegisterForm() {
             <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
               <path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v2a1 1 0 01-1 1 1 1 0 000 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2a1 1 0 000-2 1 1 0 011-1V6z" />
             </svg>
-            {meta.label} &nbsp;·&nbsp; {meta.days} &nbsp;·&nbsp; {meta.price}
+            {meta.label} &nbsp;·&nbsp; {meta.days}
           </div>
         </div>
 
@@ -226,51 +215,25 @@ function RegisterForm() {
               <textarea required rows={4} value={fields.shortBio} onChange={set("shortBio")} placeholder="Who you are and what you're building..." className={textareaCls} />
             </div>
 
-            {/* Headshot upload */}
+            {/* Headshot instruction */}
             <div>
-              <label className={labelCls}>
-                Upload Your Headshot <span className="text-secondary-fg">*</span>
-              </label>
-              <p className={optionalCls + " block mb-3"}>JPG, PNG, or WEBP · max 4 MB · professional photo preferred</p>
-
-              <div
-                onClick={() => fileInputRef.current?.click()}
-                className={`flex flex-col items-center justify-center w-full h-32 rounded-xl border-2 border-dashed cursor-pointer transition-colors ${
-                  headshotFile
-                    ? "border-primary/40 bg-primary-bg/20"
-                    : "border-primary/20 bg-primary-bg/10 hover:border-primary/40"
-                }`}
-              >
-                {headshotFile ? (
-                  <div className="text-center px-4">
-                    <svg className="w-6 h-6 text-primary mx-auto mb-1.5" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+              <label className={labelCls}>Headshot <span className="text-secondary-fg">*</span></label>
+              <div className="rounded-xl border border-primary/15 bg-primary-bg/20 p-5">
+                <div className="flex items-start gap-3">
+                  <div className="shrink-0 w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
+                    <svg className="w-5 h-5 text-primary" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12" />
                     </svg>
-                    <p className="text-sm font-bold text-primary">{headshotFile.name}</p>
-                    <p className="text-xs text-foreground/40 font-source mt-0.5">
-                      {(headshotFile.size / 1024).toFixed(0)} KB · Click to change
+                  </div>
+                  <div>
+                    <p className="text-sm font-bold text-primary-dk">Attach to the email that opens</p>
+                    <p className="text-xs text-foreground/55 font-source mt-1 leading-relaxed">
+                      When you submit, your email client will open with your registration details pre-filled.
+                      Attach a <strong>professional headshot</strong> (JPG or PNG) before clicking send.
                     </p>
                   </div>
-                ) : (
-                  <div className="text-center px-4">
-                    <svg className="w-6 h-6 text-primary/40 mx-auto mb-2" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
-                    </svg>
-                    <p className="text-sm font-bold text-foreground/50">Click to upload headshot</p>
-                    <p className="text-xs text-foreground/35 font-source mt-0.5">JPG, PNG, WEBP up to 4 MB</p>
-                  </div>
-                )}
+                </div>
               </div>
-              <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/jpeg,image/png,image/webp"
-                className="hidden"
-                onChange={handleFile}
-              />
-              {headshotError && (
-                <p className="text-xs text-red-600 mt-2 font-source">{headshotError}</p>
-              )}
             </div>
 
             <div>
@@ -300,15 +263,14 @@ function RegisterForm() {
 
           <button
             type="submit"
-            disabled={isPending}
-            className="w-full h-14 rounded-full bg-primary text-white font-bold text-base hover:bg-primary-fg transition-colors disabled:opacity-60 disabled:cursor-not-allowed"
+            className="w-full h-14 rounded-full bg-primary text-white font-bold text-base hover:bg-primary-fg transition-colors"
           >
-            {isPending ? "Submitting…" : "Submit & Proceed to Payment"}
+            Submit Registration
           </button>
 
           <p className="text-center text-xs text-foreground/40 font-source leading-relaxed">
-            By submitting, your information will be shared with The UpHer Room Inc. for event planning purposes.
-            You will be redirected to our secure payment page to complete your registration.
+            Submitting opens your email app with the registration pre-filled.
+            Attach your headshot and hit send to complete.
           </p>
         </form>
       </div>

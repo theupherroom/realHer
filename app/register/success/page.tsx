@@ -12,30 +12,39 @@ export default function RegisterSuccess() {
         </div>
 
         <div className="bg-white rounded-2xl border border-primary/8 p-10 shadow-sm">
-          <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-6">
-            <svg className="w-8 h-8 text-primary" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+          <div className="w-16 h-16 rounded-full bg-secondary/20 flex items-center justify-center mx-auto mb-6">
+            <svg className="w-8 h-8 text-secondary-fg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
             </svg>
           </div>
 
           <h1 className="text-2xl sm:text-3xl font-bold text-primary-dk mb-3">
-            You&apos;re registered.
+            Almost there.
           </h1>
           <p className="text-foreground/60 leading-relaxed font-source mb-6">
-            Your application for <strong className="text-primary-dk">Built for More</strong> has been received. The UpHer Room team will be in touch with payment instructions and event details.
+            Your email app should now be open with your <strong className="text-primary-dk">Built for More</strong> registration pre-filled.
           </p>
 
-          <div className="bg-primary-bg/40 rounded-xl p-5 text-left space-y-2 text-sm font-source mb-8">
-            <p className="text-foreground/60"><strong className="text-primary-dk">Event:</strong> Built for More — Leadership Symposium</p>
-            <p className="text-foreground/60"><strong className="text-primary-dk">Date:</strong> May 29–30, 2026</p>
-            <p className="text-foreground/60"><strong className="text-primary-dk">Location:</strong> Indianapolis, Indiana</p>
-            <p className="text-foreground/60"><strong className="text-primary-dk">Questions?</strong> benedicta@theupherroom.com</p>
+          <div className="bg-primary-bg/40 rounded-xl p-5 text-left space-y-3 text-sm font-source mb-6">
+            <p className="font-bold text-primary-dk text-[13px] uppercase tracking-wider">To complete your registration:</p>
+            <div className="flex gap-3 items-start">
+              <span className="shrink-0 w-5 h-5 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center">1</span>
+              <p className="text-foreground/70">Attach your <strong className="text-primary-dk">professional headshot</strong> (JPG or PNG).</p>
+            </div>
+            <div className="flex gap-3 items-start">
+              <span className="shrink-0 w-5 h-5 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center">2</span>
+              <p className="text-foreground/70">Review the pre-filled details.</p>
+            </div>
+            <div className="flex gap-3 items-start">
+              <span className="shrink-0 w-5 h-5 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center">3</span>
+              <p className="text-foreground/70">Click <strong className="text-primary-dk">Send</strong>. The UpHer Room team will be in touch.</p>
+            </div>
           </div>
 
-          <p className="text-xs text-foreground/40 font-source mb-6">
-            A confirmation has been sent to your email. Please also email your headshot to{" "}
-            <strong className="text-primary">benedicta@theupherroom.com</strong>{" "}
-            with subject &ldquo;Headshot — [Your Name]&rdquo;.
+          <p className="text-xs text-foreground/50 font-source mb-6 leading-relaxed">
+            Didn&apos;t see an email window open? Send your details manually to{" "}
+            <a href="mailto:admin@theupherroom.com" className="text-primary font-bold hover:underline">admin@theupherroom.com</a>.
           </p>
 
           <Link

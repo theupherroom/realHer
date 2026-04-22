@@ -99,8 +99,6 @@ const TICKETS = [
   {
     name: "Symposium Pass",
     subtitle: "Saturday Only",
-    earlyPrice: "$95",
-    price: "$125",
     desc: "Full access to the leadership symposium",
     features: [
       "All keynote sessions & panels",
@@ -115,8 +113,6 @@ const TICKETS = [
   {
     name: "Full Experience",
     subtitle: "Friday + Saturday",
-    earlyPrice: "$145",
-    price: "$175",
     desc: "Access to both experiences",
     features: [
       "Everything in Symposium Pass",
@@ -131,8 +127,6 @@ const TICKETS = [
   {
     name: "Strategy Lab",
     subtitle: "Friday Evening",
-    earlyPrice: "$45",
-    price: "$65",
     desc: "Structured pre-symposium experience",
     features: [
       "Strategy Lab working session",
@@ -593,7 +587,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-8">
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {TICKETS.map((tier) => (
               <div
                 key={tier.name}
@@ -617,21 +611,7 @@ export default function Home() {
                   </p>
                 </div>
 
-                <div className="mt-5">
-                  <div className="flex items-baseline gap-2">
-                    <span className={`text-3xl font-bold ${tier.highlighted ? "text-white" : "text-primary-dk"}`}>
-                      {tier.earlyPrice}
-                    </span>
-                    <span className={`text-sm ${tier.highlighted ? "text-white/40" : "text-foreground/40"}`}>
-                      early access
-                    </span>
-                  </div>
-                  <p className={`text-sm mt-1 ${tier.highlighted ? "text-white/50" : "text-foreground/50"}`}>
-                    {tier.price} standard
-                  </p>
-                </div>
-
-                <p className={`mt-4 text-sm font-source ${tier.highlighted ? "text-white/60" : "text-foreground/55"}`}>
+                <p className={`mt-5 text-sm font-source ${tier.highlighted ? "text-white/60" : "text-foreground/55"}`}>
                   {tier.desc}
                 </p>
 
@@ -667,10 +647,6 @@ export default function Home() {
               </div>
             ))}
           </div>
-
-          <p className="text-center text-sm text-foreground/50 font-source max-w-xl mx-auto">
-            Many attendees may be able to utilize professional development or ERG support to attend.
-          </p>
         </div>
       </section>
 
