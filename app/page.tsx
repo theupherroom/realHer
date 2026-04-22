@@ -69,75 +69,48 @@ const LEAVE_WITH = [
   "Language and perspective to approach collaboration, partnership, and growth differently",
   "Clarity on where your work connects within a broader ecosystem",
   "Relationships built through context, not surface-level connection",
-  "Participation in the Strategy Lab, where one team will be selected for recognition and a featured prize during the symposium",
+  "Participation in the Build Lab, where one team will be selected for recognition and a featured moment during the experience",
+];
+
+const INCLUDES = [
+  "Full access to both days of the experience",
+  "All keynote and facilitated sessions",
+  "Collaborative Build Lab participation",
+  "Curated table conversations and working sessions",
+  "Meals and refreshments (Friday + Saturday)",
+  "Legacy Goods experience",
+  "Opportunity for Strategy Lab recognition",
+  "Certificate of completion",
+  "Continued connection with women in the room",
 ];
 
 const FRIDAY_SCHEDULE = [
-  { time: "6:30 PM", title: "Arrival", tag: "arrival" },
-  { time: "6:45 PM", title: "Opening", tag: "session" },
-  { time: "7:00 PM", title: "Strategy Lab Begins", tag: "workshop" },
-  { time: "7:50 PM", title: "Presentations", tag: "session" },
-  { time: "8:10 PM", title: "Room Reflection", tag: "session" },
-  { time: "8:20 PM", title: "Saturday Preview", tag: "break" },
-  { time: "8:30 PM", title: "Close", tag: "close" },
+  { time: "6:00 PM", title: "Arrival + Check-In" },
+  { time: "6:10 PM", title: "Opening Welcome" },
+  { time: "6:15 PM", title: "Identity Without Titles" },
+  { time: "6:30 PM", title: "Reflection Moment" },
+  { time: "6:40 PM", title: "The Moment of Truth" },
+  { time: "6:55 PM", title: "Keynote" },
+  { time: "7:00 PM", title: "Dinner Served" },
+  { time: "7:10 PM", title: "Creative Interruption" },
+  { time: "7:20 PM", title: "The 1st Exchange" },
+  { time: "7:35 PM", title: "Reflection + Read Aloud" },
+  { time: "7:50 PM", title: "“I See You”" },
+  { time: "8:10 PM", title: "Closing Moment" },
+  { time: "8:20 PM", title: "Photos + Light Networking" },
 ];
 
 const SATURDAY_SCHEDULE = [
-  { time: "9:30 AM", title: "Arrival + Check-In", tag: "arrival" },
-  { time: "10:00 AM", title: "Opening", tag: "session" },
-  { time: "10:30 AM", title: "Built for More", tag: "keynote" },
-  { time: "11:15 AM", title: "What Are We Building?", tag: "session" },
-  { time: "12:00 PM", title: "Lunch + Table Conversations", tag: "break" },
-  { time: "1:00 PM", title: "Featured Conversation", tag: "keynote" },
-  { time: "2:00 PM", title: "Working Session", tag: "workshop" },
-  { time: "3:00 PM", title: "Room Reflections", tag: "session" },
-  { time: "3:30 PM", title: "What Comes Next", tag: "session" },
-  { time: "4:00 PM", title: "Close", tag: "close" },
-];
-
-const TICKETS = [
-  {
-    name: "Symposium Pass",
-    subtitle: "Saturday Only",
-    desc: "Full access to the leadership symposium",
-    features: [
-      "All keynote sessions & panels",
-      "Table conversations & working sessions",
-      "Lunch & refreshments",
-      "Legacy Goods gifted item",
-      "Certificate of completion",
-    ],
-    highlighted: false,
-    ticketKey: "symposium",
-  },
-  {
-    name: "Full Experience",
-    subtitle: "Friday + Saturday",
-    desc: "Access to both experiences",
-    features: [
-      "Everything in Symposium Pass",
-      "Friday Strategy Lab session",
-      "Eligibility for Strategy Lab recognition & prize",
-      "Extended networking & connection",
-      "Priority seating on Saturday",
-    ],
-    highlighted: true,
-    ticketKey: "full",
-  },
-  {
-    name: "Strategy Lab",
-    subtitle: "Friday Evening",
-    desc: "Structured pre-symposium experience",
-    features: [
-      "Strategy Lab working session",
-      "Small group problem-solving",
-      "Team presentations",
-      "Saturday preview & connection",
-      "Eligibility for featured recognition",
-    ],
-    highlighted: false,
-    ticketKey: "lab",
-  },
+  { time: "9:00 AM", title: "Arrival + Morning Fuel" },
+  { time: "9:15 AM", title: "Formal Introductions" },
+  { time: "9:35 AM", title: "Opening Keynote" },
+  { time: "10:00 AM", title: "The Open Window" },
+  { time: "10:45 AM", title: "The 2nd Exchange · Build Lab" },
+  { time: "1:15 PM", title: "Lunch + Informal Dialogue" },
+  { time: "2:00 PM", title: "Group Share + Reflection" },
+  { time: "3:00 PM", title: "Signature Conversation" },
+  { time: "4:40 PM", title: "“Leaving Different”" },
+  { time: "5:00 PM", title: "Close" },
 ];
 
 /* ─── page ──────────────────────────────────────────────── */
@@ -189,11 +162,11 @@ export default function Home() {
             May 29 &ndash; 30, 2026 &middot; Indianapolis, Indiana
           </span>
 
-          <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold text-white leading-[1.08] max-w-4xl">
-            Built for More
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] max-w-5xl">
+            Built for More: <span className="text-secondary">The XxCHANGE</span>
           </h1>
-          <p className="text-xl sm:text-2xl text-secondary font-semibold max-w-2xl -mt-2">
-            A Leadership Symposium for Women Who Build
+          <p className="text-xl sm:text-2xl text-white/85 font-semibold max-w-2xl">
+            A Leadership Experience for Women Who Build
           </p>
 
           <p className="text-base sm:text-lg text-white/70 max-w-2xl leading-relaxed font-source">
@@ -380,18 +353,18 @@ export default function Home() {
               <span className="text-xs font-bold uppercase tracking-widest text-primary">
                 Friday &mdash; May 29
               </span>
-              <h3 className="text-2xl font-bold text-primary-dk mt-3 mb-4">Strategy Lab</h3>
+              <h3 className="text-2xl font-bold text-primary-dk mt-3 mb-4">The Unveiling</h3>
               <p className="text-foreground/60 leading-relaxed font-source">
-                A structured working session designed to engage real challenges
-                and accelerate connection through action. Participants are placed
-                into small groups to think through real-world problems and begin
-                identifying where alignment and collaboration are possible.
+                An evening of identity, truth, and connection. Participants move
+                beyond titles to meet one another as women — recognizing shared
+                experience and the tensions of building inside systems that need
+                redesign.
               </p>
               <div className="mt-6 flex items-center gap-2 text-sm text-foreground/40">
                 <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.414L11 9.586V6z" clipRule="evenodd" />
                 </svg>
-                <span>6:30 PM &ndash; 8:30 PM</span>
+                <span>6:00 PM &ndash; 8:30 PM</span>
               </div>
             </div>
 
@@ -399,16 +372,17 @@ export default function Home() {
               <span className="text-xs font-bold uppercase tracking-widest text-primary">
                 Saturday &mdash; May 30
               </span>
-              <h3 className="text-2xl font-bold text-primary-dk mt-3 mb-4">Leadership Symposium</h3>
+              <h3 className="text-2xl font-bold text-primary-dk mt-3 mb-4">The Build Lab</h3>
               <p className="text-foreground/60 leading-relaxed font-source">
-                A full-day, dialogue-driven experience focused on leadership,
-                collaboration, and how women build within and across systems.
+                A full day of alignment, collaboration, and collective building.
+                Structured dialogue and a collaborative Build Lab move participants
+                from recognition into the real work of building something together.
               </p>
               <div className="mt-6 flex items-center gap-2 text-sm text-foreground/40">
                 <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.414L11 9.586V6z" clipRule="evenodd" />
                 </svg>
-                <span>9:30 AM &ndash; 4:00 PM</span>
+                <span>9:00 AM &ndash; 5:00 PM</span>
               </div>
             </div>
           </div>
@@ -436,7 +410,7 @@ export default function Home() {
                 </div>
                 <div>
                   <h3 className="font-bold text-white">Friday &mdash; May 29</h3>
-                  <p className="text-xs text-white/40 font-source">Strategy Lab</p>
+                  <p className="text-xs text-white/40 font-source">The Unveiling &middot; 6:00 – 8:30 PM</p>
                 </div>
               </div>
               <div className="divide-y divide-white/10">
@@ -457,7 +431,7 @@ export default function Home() {
                 </div>
                 <div>
                   <h3 className="font-bold text-white">Saturday &mdash; May 30</h3>
-                  <p className="text-xs text-white/40 font-source">Leadership Symposium</p>
+                  <p className="text-xs text-white/40 font-source">The Build Lab &middot; 9:00 AM – 5:00 PM</p>
                 </div>
               </div>
               <div className="divide-y divide-white/10">
@@ -572,80 +546,67 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── PRICING ── */}
+      {/* ── SAVE YOUR SEAT ── */}
       <section id="tickets" className="py-20 sm:py-28 bg-white">
         <div className="container-site">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <span className="text-xs font-bold uppercase tracking-widest text-primary">
               Reserve Your Seat
             </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3">
-              Choose Your Experience
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3 leading-tight">
+              Built for More: <span className="text-primary">The XxCHANGE</span>
             </h2>
-            <p className="text-foreground/60 max-w-xl mx-auto mt-4 font-source">
-              Space is limited to 50 participants. Secure your seat today.
+            <p className="text-foreground/60 max-w-2xl mx-auto mt-5 font-source leading-relaxed">
+              A two-day experience for women building at capacity and ready for
+              alignment, collaboration, and real expansion.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {TICKETS.map((tier) => (
-              <div
-                key={tier.name}
-                className={`rounded-2xl p-8 flex flex-col relative ${
-                  tier.highlighted
-                    ? "bg-primary-dk text-white ring-2 ring-primary/40 md:scale-[1.04]"
-                    : "bg-primary-bg/20 border border-primary/10"
-                }`}
-              >
-                {tier.highlighted && (
-                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-secondary text-primary-dk text-xs font-bold uppercase tracking-wider">
-                    Best Value
-                  </span>
-                )}
-                <div>
-                  <h3 className={`text-lg font-bold ${tier.highlighted ? "text-secondary" : "text-primary"}`}>
-                    {tier.name}
-                  </h3>
-                  <p className={`text-xs mt-1 ${tier.highlighted ? "text-white/50" : "text-foreground/40"}`}>
-                    {tier.subtitle}
-                  </p>
-                </div>
+          <div className="max-w-2xl mx-auto rounded-2xl bg-primary-bg/30 border border-primary/10 p-8 sm:p-10">
+            <div className="text-center space-y-2 font-source mb-8">
+              <p className="text-primary-dk font-bold text-base">
+                Space is intentionally limited to 50 women.
+              </p>
+              <p className="text-foreground/65 text-sm leading-relaxed">
+                This is a full experience. Friday and Saturday are designed to work together.
+              </p>
+            </div>
 
-                <p className={`mt-5 text-sm font-source ${tier.highlighted ? "text-white/60" : "text-foreground/55"}`}>
-                  {tier.desc}
-                </p>
+            <div className="border-t border-primary/10 pt-8">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-primary mb-5">
+                Your Experience Includes
+              </h3>
+              <ul className="space-y-3">
+                {INCLUDES.map((item) => (
+                  <li key={item} className="flex items-start gap-3 text-sm">
+                    <svg
+                      className="w-5 h-5 shrink-0 text-primary mt-0.5"
+                      viewBox="0 0 20 20"
+                      fill="currentColor"
+                    >
+                      <path
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
+                      />
+                    </svg>
+                    <span className="text-foreground/75 font-source leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
 
-                <ul className="mt-6 space-y-3 flex-1">
-                  {tier.features.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-sm">
-                      <svg
-                        className={`w-4 h-4 shrink-0 mt-0.5 ${tier.highlighted ? "text-secondary" : "text-primary"}`}
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      <span className={tier.highlighted ? "text-white/75" : "text-foreground/65"}>{f}</span>
-                    </li>
-                  ))}
-                </ul>
+            <a
+              href="/register"
+              className="mt-10 flex items-center justify-center h-14 rounded-full bg-primary text-white font-bold text-base hover:bg-primary-fg transition-colors"
+            >
+              Save Your Seat
+            </a>
 
-                <a
-                  href={`/register?ticket=${tier.ticketKey}`}
-                  className={`mt-8 flex items-center justify-center h-11 rounded-full font-bold text-sm transition-colors ${
-                    tier.highlighted
-                      ? "bg-secondary text-primary-dk hover:bg-secondary/90"
-                      : "bg-primary text-white hover:bg-primary-fg"
-                  }`}
-                >
-                  Register
-                </a>
-              </div>
-            ))}
+            <p className="mt-5 text-center text-xs text-foreground/50 font-source leading-relaxed">
+              Once you register, you&apos;ll receive next steps and preparation details
+              for the experience — including exact address.
+            </p>
           </div>
         </div>
       </section>
@@ -803,10 +764,10 @@ export default function Home() {
             shift &mdash; this room was built with that in mind.
           </p>
           <a
-            href="#tickets"
+            href="/register"
             className="inline-flex items-center justify-center px-8 h-12 rounded-full bg-secondary text-primary-dk font-bold hover:bg-secondary/90 transition-colors mt-8 text-base"
           >
-            Reserve Your Seat
+            Save Your Seat
           </a>
         </div>
       </section>
@@ -882,9 +843,9 @@ export default function Home() {
         <div className="container-site">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
             <div className="lg:col-span-2">
-              <h3 className="font-bold text-2xl">Built for More</h3>
+              <h3 className="font-bold text-2xl">Built for More: The XxCHANGE</h3>
               <p className="text-white/50 text-sm mt-3 leading-relaxed font-source max-w-md">
-                A Leadership Symposium for Women Who Build
+                A Leadership Experience for Women Who Build
               </p>
               <div className="mt-4 space-y-1 text-sm text-white/40 font-source">
                 <p>May 29 &ndash; 30, 2026</p>
