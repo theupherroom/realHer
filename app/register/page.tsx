@@ -1,14 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, Suspense } from "react";
-import { useSearchParams } from "next/navigation";
-
-const TICKET_META: Record<string, { label: string; color: string; days: string }> = {
-  symposium: { label: "Symposium Pass", color: "bg-primary", days: "Saturday, May 30" },
-  full: { label: "Full Experience", color: "bg-primary-dk", days: "Friday May 29 + Saturday May 30" },
-  lab: { label: "Strategy Lab", color: "bg-secondary-fg", days: "Friday, May 29" },
-};
+import { useState } from "react";
 
 const PRIORITY_OPTIONS = [
   "Clarity on direction",
@@ -19,11 +12,7 @@ const PRIORITY_OPTIONS = [
 
 const ADMIN_EMAIL = "admin@theupherroom.com";
 
-function RegisterForm() {
-  const params = useSearchParams();
-  const ticket = params.get("ticket") ?? "full";
-  const meta = TICKET_META[ticket] ?? TICKET_META.full;
-
+export default function RegisterPage() {
   const [fields, setFields] = useState({
     fullName: "",
     email: "",
@@ -45,9 +34,8 @@ function RegisterForm() {
 
   const buildMailto = () => {
     const lines = [
-      `BUILT FOR MORE — Registration`,
-      ``,
-      `Ticket: ${meta.label} — ${meta.days}`,
+      `BUILT FOR MORE: THE XxCHANGE — Registration`,
+      `May 29–30, 2026 · Indianapolis, Indiana`,
       ``,
       `── Contact ──`,
       `Full Name: ${fields.fullName}`,
@@ -79,7 +67,7 @@ function RegisterForm() {
       `──────────`,
       `📎 Please attach your headshot (JPG/PNG) to this email before sending.`,
     ];
-    const subject = `Built for More Registration — ${fields.fullName} (${meta.label})`;
+    const subject = `Built for More: The XxCHANGE — Registration — ${fields.fullName}`;
     const body = lines.join("\n");
     return `mailto:${ADMIN_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
@@ -107,7 +95,7 @@ function RegisterForm() {
             <Image src="/images/uhr-logo.png" alt="The UpHer Room" width={110} height={36} className="object-contain max-h-8 w-auto" />
           </a>
           <a href="/#tickets" className="text-sm text-foreground/50 hover:text-primary transition-colors font-source">
-            ← Back to tickets
+            ← Back
           </a>
         </div>
       </header>
@@ -115,20 +103,19 @@ function RegisterForm() {
       <div className="container-site max-w-2xl py-12 sm:py-16">
         {/* Header */}
         <div className="mb-10">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary">Built for More · Registration</span>
+          <span className="text-xs font-bold uppercase tracking-widest text-primary">Registration</span>
           <h1 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3 leading-tight">
-            Reserve Your Seat
+            Built for More: <span className="text-primary">The XxCHANGE</span>
           </h1>
           <p className="text-foreground/60 mt-3 font-source leading-relaxed">
             May 29–30, 2026 &middot; Indianapolis, Indiana &middot; 50 Participants
           </p>
 
-          {/* Ticket badge */}
-          <div className={`inline-flex items-center gap-2.5 mt-5 px-4 py-2.5 rounded-full text-white text-sm font-bold ${meta.color}`}>
+          <div className="inline-flex items-center gap-2.5 mt-5 px-4 py-2.5 rounded-full bg-primary text-white text-sm font-bold">
             <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
               <path d="M2 6a2 2 0 012-2h12a2 2 0 012 2v2a1 1 0 01-1 1 1 1 0 000 2v2a2 2 0 01-2 2H4a2 2 0 01-2-2v-2a1 1 0 000-2 1 1 0 011-1V6z" />
             </svg>
-            {meta.label} &nbsp;·&nbsp; {meta.days}
+            Full Experience &nbsp;·&nbsp; Friday May 29 + Saturday May 30
           </div>
         </div>
 
@@ -275,13 +262,5 @@ function RegisterForm() {
         </form>
       </div>
     </div>
-  );
-}
-
-export default function RegisterPage() {
-  return (
-    <Suspense>
-      <RegisterForm />
-    </Suspense>
   );
 }
