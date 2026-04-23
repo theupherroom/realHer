@@ -3,18 +3,19 @@ import Countdown from "./components/countdown";
 import ContactForm from "./components/contact-form";
 import MobileNav from "./components/mobile-nav";
 import ContributorsCarousel from "./components/contributors-carousel";
+import ScheduleSection from "./components/schedule-section";
 
 /* ─── data ──────────────────────────────────────────────── */
 
 const NAV = [
-  { label: "Event Details", href: "#event-details" },
+  { label: "Details", href: "#event-details" },
   { label: "Overview", href: "#overview" },
-  { label: "Who Should Attend", href: "#who" },
+  { label: "Who Attends", href: "#who" },
   { label: "Why Attend", href: "#why" },
-  { label: "Topics Discussed", href: "#topics" },
-  { label: "Strategic Contributors", href: "#contributors" },
+  { label: "Topics", href: "#topics" },
+  { label: "Contributors", href: "#contributors" },
   { label: "Schedule", href: "#schedule" },
-  { label: "Sponsors & Partners", href: "#sponsors" },
+  { label: "Sponsors", href: "#sponsors" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -85,32 +86,32 @@ const INCLUDES = [
 ];
 
 const FRIDAY_SCHEDULE = [
-  { time: "6:00 PM", title: "Arrival + Check-In" },
-  { time: "6:10 PM", title: "Opening Welcome" },
-  { time: "6:15 PM", title: "Identity Without Titles" },
-  { time: "6:30 PM", title: "Reflection Moment" },
-  { time: "6:40 PM", title: "The Moment of Truth" },
-  { time: "6:55 PM", title: "Keynote" },
-  { time: "7:00 PM", title: "Dinner Served" },
-  { time: "7:10 PM", title: "Creative Interruption" },
-  { time: "7:20 PM", title: "The 1st Exchange" },
-  { time: "7:35 PM", title: "Reflection + Read Aloud" },
-  { time: "7:50 PM", title: "“I See You”" },
-  { time: "8:10 PM", title: "Closing Moment" },
-  { time: "8:20 PM", title: "Photos + Light Networking" },
+  { time: "6:00 PM", title: "Arrival + Check-In", desc: "Guests arrive, are welcomed, and seated. Light music, wine, and hors d’oeuvres." },
+  { time: "6:10 PM", title: "Opening Welcome", desc: "Host sets tone for the room. “This is not a performance. This is a room for real women.”" },
+  { time: "6:15 PM", title: "Identity Without Titles", desc: "“Who are you without what you do?” Small table introductions — no titles, no orgs, no achievements." },
+  { time: "6:30 PM", title: "Reflection Moment", desc: "“What did you notice?” Quick table discussion." },
+  { time: "6:40 PM", title: "The Moment of Truth", desc: "“Step Forward If…” Participants respond to prompts on partnership, visibility, and tension." },
+  { time: "6:55 PM", title: "Keynote", desc: "Short keynote and grounding moment." },
+  { time: "7:00 PM", title: "Dinner Served", desc: "Shared meal." },
+  { time: "7:10 PM", title: "Creative Interruption", desc: "Spoken word or artistic element." },
+  { time: "7:20 PM", title: "The 1st Exchange", desc: "“What do you want her to know?” Participants write anonymous messages." },
+  { time: "7:35 PM", title: "Reflection + Read Aloud", desc: "Cards redistributed and read. Table discussion follows." },
+  { time: "7:50 PM", title: "“I See You”", desc: "Paired interaction — one speaks, one affirms. Then switch." },
+  { time: "8:10 PM", title: "Closing Moment", desc: "Host anchors the evening and previews Saturday." },
+  { time: "8:20 PM", title: "Photos + Light Networking", desc: "Legacy Goods preview and distribution." },
 ];
 
 const SATURDAY_SCHEDULE = [
-  { time: "9:00 AM", title: "Arrival + Morning Fuel" },
-  { time: "9:15 AM", title: "Formal Introductions" },
-  { time: "9:35 AM", title: "Opening Keynote" },
-  { time: "10:00 AM", title: "The Open Window" },
-  { time: "10:45 AM", title: "The 2nd Exchange · Build Lab" },
-  { time: "1:15 PM", title: "Lunch + Informal Dialogue" },
-  { time: "2:00 PM", title: "Group Share + Reflection" },
-  { time: "3:00 PM", title: "Signature Conversation" },
-  { time: "4:40 PM", title: "“Leaving Different”" },
-  { time: "5:00 PM", title: "Close" },
+  { time: "9:00 AM", title: "Arrival + Morning Fuel", desc: "Breakfast and informal connection." },
+  { time: "9:15 AM", title: "Formal Introductions", desc: "Participants share name, what they’re building, and affiliations." },
+  { time: "9:35 AM", title: "Opening Keynote", desc: "“Why are we here? Why are we building?”" },
+  { time: "10:00 AM", title: "The Open Window", desc: "“What are you building?” (anonymous). Participants share impact, audience, and needs — no names or orgs attached." },
+  { time: "10:45 AM", title: "The 2nd Exchange · Build Lab", desc: "Groups formed by alignment. Set aside individual agendas and build a shared concept or solution together." },
+  { time: "1:15 PM", title: "Lunch + Informal Dialogue", desc: "Shared meal and continued conversation." },
+  { time: "2:00 PM", title: "Group Share + Reflection", desc: "Each group presents — key insights and shifts." },
+  { time: "3:00 PM", title: "Signature Conversation", desc: "“What does real collaboration actually look like?” / “What does it mean to be a girl’s girl?” Facilitated discussion." },
+  { time: "4:40 PM", title: "“Leaving Different”", desc: "Blindfold and affirmation experience." },
+  { time: "5:00 PM", title: "Close", desc: "Host anchors the full experience." },
 ];
 
 /* ─── page ──────────────────────────────────────────────── */
@@ -120,8 +121,8 @@ export default function Home() {
     <>
       {/* ── NAVBAR ── */}
       <header className="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary/8">
-        <div className="container-site flex items-center justify-between h-16">
-          <a href="#" className="flex items-center">
+        <div className="container-site flex items-center justify-between h-16 gap-4">
+          <a href="#" className="flex items-center shrink-0">
             <Image
               src="/images/uhr-logo.png"
               alt="The UpHer Room"
@@ -130,20 +131,20 @@ export default function Home() {
               className="object-contain max-h-9 w-auto"
             />
           </a>
-          <nav className="hidden md2:flex items-center gap-4">
+          <nav className="hidden xl:flex items-center gap-5 2xl:gap-6 flex-1 justify-center min-w-0">
             {NAV.map((n) => (
               <a
                 key={n.href}
                 href={n.href}
-                className="text-[12px] font-medium text-foreground/60 hover:text-primary transition-colors whitespace-nowrap"
+                className="text-[13px] font-medium text-foreground/60 hover:text-primary transition-colors whitespace-nowrap"
               >
                 {n.label}
               </a>
             ))}
           </nav>
           <a
-            href="#tickets"
-            className="hidden sm:inline-flex items-center px-5 h-9 rounded-full bg-primary text-white text-sm font-semibold hover:bg-primary-fg transition-colors"
+            href="/register"
+            className="hidden sm:inline-flex items-center justify-center shrink-0 px-5 h-9 rounded-full bg-primary text-white text-[13px] font-semibold hover:bg-primary-fg transition-colors whitespace-nowrap"
           >
             Register Now
           </a>
@@ -157,15 +158,17 @@ export default function Home() {
         className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-16"
         style={{ background: "linear-gradient(135deg, #21172f 0%, #4a3468 40%, #8052a3 70%, #e7a8b2 100%)" }}
       >
-        <div className="relative z-10 container-site text-center flex flex-col items-center gap-6 py-20">
+        <div className="relative z-10 container-site text-center flex flex-col items-center gap-5 sm:gap-6 py-16 sm:py-20">
           <span className="inline-block px-5 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/80 text-xs sm:text-sm font-medium tracking-wide border border-white/10">
             May 29 &ndash; 30, 2026 &middot; Indianapolis, Indiana
           </span>
 
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] max-w-5xl">
-            Built for More: <span className="text-secondary">The XxCHANGE</span>
+          <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] max-w-5xl px-2">
+            Built for More:
+            <br />
+            <span className="text-secondary">The XxCHANGE</span>
           </h1>
-          <p className="text-xl sm:text-2xl text-white/85 font-semibold max-w-2xl">
+          <p className="text-lg sm:text-xl md:text-2xl text-white/85 font-semibold max-w-2xl px-2">
             A Leadership Experience for Women Who Build
           </p>
 
@@ -401,49 +404,7 @@ export default function Home() {
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
-            {/* Friday */}
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-white/10 border border-white/20 flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">Fri</span>
-                </div>
-                <div>
-                  <h3 className="font-bold text-white">Friday &mdash; May 29</h3>
-                  <p className="text-xs text-white/40 font-source">The Unveiling &middot; 6:00 – 8:30 PM</p>
-                </div>
-              </div>
-              <div className="divide-y divide-white/10">
-                {FRIDAY_SCHEDULE.map((slot, i) => (
-                  <div key={i} className="flex items-center gap-4 py-4">
-                    <span className="text-sm text-white/50 w-[80px] shrink-0 font-source tabular-nums">{slot.time}</span>
-                    <p className="font-bold text-white text-base leading-snug">{slot.title}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* Saturday */}
-            <div>
-              <div className="flex items-center gap-3 mb-6">
-                <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                  <span className="text-white text-sm font-bold">Sat</span>
-                </div>
-                <div>
-                  <h3 className="font-bold text-white">Saturday &mdash; May 30</h3>
-                  <p className="text-xs text-white/40 font-source">The Build Lab &middot; 9:00 AM – 5:00 PM</p>
-                </div>
-              </div>
-              <div className="divide-y divide-white/10">
-                {SATURDAY_SCHEDULE.map((slot, i) => (
-                  <div key={i} className="flex items-center gap-4 py-4">
-                    <span className="text-sm text-white/50 w-[80px] shrink-0 font-source tabular-nums">{slot.time}</span>
-                    <p className="font-bold text-white text-base leading-snug">{slot.title}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
+          <ScheduleSection friday={FRIDAY_SCHEDULE} saturday={SATURDAY_SCHEDULE} />
         </div>
       </section>
 
