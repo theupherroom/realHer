@@ -34,7 +34,7 @@ export default function RegisterPage() {
 
   const buildMailto = () => {
     const lines = [
-      `BUILT FOR MORE: THE XxCHANGE — Registration`,
+      `BUILT FOR MORE:  THE XxCHANGE — Registration`,
       `May 29–30, 2026 · Indianapolis, Indiana`,
       ``,
       `── Contact ──`,

@@ -8,6 +8,7 @@ const NAV = [
   { label: "Who Should Attend", href: "#who" },
   { label: "Why Attend", href: "#why" },
   { label: "Topics Discussed", href: "#topics" },
+  { label: "Strategic Contributors", href: "#contributors" },
   { label: "Schedule", href: "#schedule" },
   { label: "Sponsors & Partners", href: "#sponsors" },
   { label: "Contact", href: "#contact" },
@@ -20,7 +21,7 @@ export default function MobileNav() {
     <>
       <button
         onClick={() => setOpen(!open)}
-        className="md2:hidden flex flex-col gap-1.5 p-2 cursor-pointer"
+        className="xl:hidden flex flex-col gap-1.5 p-2 cursor-pointer"
         aria-label="Toggle menu"
       >
         <span
@@ -35,7 +36,7 @@ export default function MobileNav() {
       </button>
 
       {open && (
-        <div className="md2:hidden absolute top-full left-0 right-0 bg-white border-b border-primary/10 shadow-lg">
+        <div className="xl:hidden absolute top-full left-0 right-0 bg-white border-b border-primary/10 shadow-lg">
           <nav className="container-site py-4 flex flex-col gap-1">
             {NAV.map((n) => (
               <a
