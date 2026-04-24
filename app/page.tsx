@@ -86,32 +86,32 @@ const INCLUDES = [
 ];
 
 const FRIDAY_SCHEDULE = [
-  { time: "6:00 PM", title: "Arrival + Check-In", desc: "Guests arrive, are welcomed, and seated. Light music, wine, and hors d’oeuvres." },
-  { time: "6:10 PM", title: "Opening Welcome", desc: "Host sets tone for the room. “This is not a performance. This is a room for real women.”" },
-  { time: "6:15 PM", title: "Identity Without Titles", desc: "“Who are you without what you do?” Small table introductions — no titles, no orgs, no achievements." },
-  { time: "6:30 PM", title: "Reflection Moment", desc: "“What did you notice?” Quick table discussion." },
-  { time: "6:40 PM", title: "The Moment of Truth", desc: "“Step Forward If…” Participants respond to prompts on partnership, visibility, and tension." },
-  { time: "6:55 PM", title: "Keynote", desc: "Short keynote and grounding moment." },
-  { time: "7:00 PM", title: "Dinner Served", desc: "Shared meal." },
-  { time: "7:10 PM", title: "Creative Interruption", desc: "Spoken word or artistic element." },
-  { time: "7:20 PM", title: "The 1st Exchange", desc: "“What do you want her to know?” Participants write anonymous messages." },
-  { time: "7:35 PM", title: "Reflection + Read Aloud", desc: "Cards redistributed and read. Table discussion follows." },
-  { time: "7:50 PM", title: "“I See You”", desc: "Paired interaction — one speaks, one affirms. Then switch." },
-  { time: "8:10 PM", title: "Closing Moment", desc: "Host anchors the evening and previews Saturday." },
-  { time: "8:20 PM", title: "Photos + Light Networking", desc: "Legacy Goods preview and distribution." },
+  { time: "6:00 PM", title: "Arrival + Check-In" },
+  { time: "6:10 PM", title: "Opening Welcome" },
+  { time: "6:15 PM", title: "Activation 1: Identity Without Titles" },
+  { time: "6:30 PM", title: "Reflection Moment" },
+  { time: "6:40 PM", title: "Activation 2: The Moment of Truth" },
+  { time: "6:55 PM", title: "Keynote" },
+  { time: "7:00 PM", title: "Dinner Served" },
+  { time: "7:10 PM", title: "Creative Interruption" },
+  { time: "7:20 PM", title: "Activation 3: The 1st Exchange" },
+  { time: "7:35 PM", title: "Reflection + Read Aloud" },
+  { time: "7:50 PM", title: "Activation 4: “I See You”" },
+  { time: "8:10 PM", title: "Closing Moment" },
+  { time: "8:20 PM", title: "Photos + Light Networking" },
 ];
 
 const SATURDAY_SCHEDULE = [
-  { time: "9:00 AM", title: "Arrival + Morning Fuel", desc: "Breakfast and informal connection." },
-  { time: "9:15 AM", title: "Formal Introductions", desc: "Participants share name, what they’re building, and affiliations." },
-  { time: "9:35 AM", title: "Opening Keynote", desc: "“Why are we here? Why are we building?”" },
-  { time: "10:00 AM", title: "The Open Window", desc: "“What are you building?” (anonymous). Participants share impact, audience, and needs — no names or orgs attached." },
-  { time: "10:45 AM", title: "The 2nd Exchange · Build Lab", desc: "Groups formed by alignment. Set aside individual agendas and build a shared concept or solution together." },
-  { time: "1:15 PM", title: "Lunch + Informal Dialogue", desc: "Shared meal and continued conversation." },
-  { time: "2:00 PM", title: "Group Share + Reflection", desc: "Each group presents — key insights and shifts." },
-  { time: "3:00 PM", title: "Signature Conversation", desc: "“What does real collaboration actually look like?” / “What does it mean to be a girl’s girl?” Facilitated discussion." },
-  { time: "4:40 PM", title: "“Leaving Different”", desc: "Blindfold and affirmation experience." },
-  { time: "5:00 PM", title: "Close", desc: "Host anchors the full experience." },
+  { time: "9:00 AM", title: "Arrival + Morning Fuel" },
+  { time: "9:15 AM", title: "Activation 1: Formal Introductions" },
+  { time: "9:35 AM", title: "Opening Keynote" },
+  { time: "10:00 AM", title: "Activation 2: The Open Window" },
+  { time: "10:45 AM", title: "Activation 3: The 2nd Exchange" },
+  { time: "1:15 PM", title: "Lunch + Informal Dialogue" },
+  { time: "2:00 PM", title: "Group Share + Reflection" },
+  { time: "3:00 PM", title: "Signature Conversation" },
+  { time: "4:40 PM", title: "Activation 4: “Leaving Different”" },
+  { time: "5:00 PM", title: "Close" },
 ];
 
 /* ─── page ──────────────────────────────────────────────── */
@@ -146,7 +146,7 @@ export default function Home() {
             href="/register"
             className="hidden sm:inline-flex items-center justify-center shrink-0 px-5 h-9 rounded-full bg-primary text-white text-[13px] font-semibold hover:bg-primary-fg transition-colors whitespace-nowrap"
           >
-            Register Now
+            Apply Now
           </a>
           <MobileNav />
         </div>
@@ -156,7 +156,7 @@ export default function Home() {
       <section
         id="event-details"
         className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-16"
-        style={{ background: "linear-gradient(135deg, #21172f 0%, #4a3468 40%, #8052a3 70%, #e7a8b2 100%)" }}
+        style={{ background: "linear-gradient(135deg, #4a3468 0%, #8052a3 25%, #cd3a70 60%, #e7a8b2 100%)" }}
       >
         <div className="relative z-10 container-site text-center flex flex-col items-center gap-5 sm:gap-6 py-16 sm:py-20">
           <span className="inline-block px-5 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/80 text-xs sm:text-sm font-medium tracking-wide border border-white/10">
@@ -164,9 +164,7 @@ export default function Home() {
           </span>
 
           <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] max-w-5xl px-2">
-            Built for More:
-            <br />
-            <span className="text-secondary">The XxCHANGE</span>
+            Built for More
           </h1>
           <p className="text-lg sm:text-xl md:text-2xl text-white/85 font-semibold max-w-2xl px-2">
             A Leadership Experience for Women Who Build
@@ -187,10 +185,10 @@ export default function Home() {
 
           <div className="flex flex-col sm:flex-row gap-4 mt-2">
             <a
-              href="#tickets"
+              href="/register"
               className="inline-flex items-center justify-center px-8 h-12 rounded-full bg-secondary text-primary-dk font-bold hover:bg-secondary/90 transition-colors text-base"
             >
-              Reserve Your Seat
+              Apply Now
             </a>
             <a
               href="#overview"
@@ -211,29 +209,38 @@ export default function Home() {
 
           <div className="mt-8 space-y-6 text-lg sm:text-xl leading-relaxed text-foreground/80 font-source">
             <p className="text-2xl sm:text-3xl font-bold text-primary-dk leading-snug font-sans">
-              Some women do not need more motivation.
+              You don&apos;t need more motivation.
               <br />
-              <span className="text-primary">They need a clearer diagnosis.</span>
+              <span className="text-primary">What you&apos;ve been searching for is a clearer diagnosis.</span>
             </p>
 
             <p>
-              Because the issue is not always talent.
+              It&apos;s not about talent.
               <br />
-              Not always vision.
+              It&apos;s not about capacity.
               <br />
-              Not always effort.
+              It&apos;s not about vision.
             </p>
 
             <p>
-              Sometimes the issue is broken trust. Fragmented impact.
-              Surface-level collaboration. Partnerships that look aligned on
-              paper but quietly cost women their clarity, capacity, and voice.
+              You&apos;ve already been building.
+              <br />
+              You&apos;ve already been showing up.
+              <br />
+              You&apos;ve already been carrying more than most people see.
+            </p>
+
+            <p>
+              Sometimes the issue is broken trust, fragmented impact,
+              surface-level collaboration, and partnerships that look aligned on
+              paper but quietly cost you clarity, capacity, and voice.
             </p>
 
             <p>
               <strong className="text-primary-dk">Built for More</strong> is a
-              two-day diagnostic and strategic experience for women who are
-              building inside ecosystems that need redesign.
+              two-day leadership experience for women navigating misalignment,
+              fragmentation, and the realities of building inside systems that
+              need redesign.
             </p>
 
             <p>
@@ -250,18 +257,17 @@ export default function Home() {
         {[
           { src: "photo-1563132337-f159f484226c", role: "Corporate Leader",     pos: "object-center" },
           { src: "photo-1573497491765-dccce02b29df", role: "Nonprofit Founder", pos: "object-top" },
-          { src: "photo-1611432579402-7037e3e2c1e4", role: "Entrepreneur",      pos: "object-center" },
-          { src: "photo-1531123897727-8f129e1688ce", role: "Community Advocate", pos: "object-top" },
-          { src: "photo-1589156280159-27698a70f29e", role: "Emerging Leader",   pos: "object-[50%_20%]" },
+          { src: "photo-1534751516642-a1af1ef26a56", role: "Entrepreneur",      pos: "object-top" },
+          { src: "photo-1611432579402-7037e3e2c1e4", role: "Community Advocate", pos: "object-center" },
+          { src: "photo-1580489944761-15a19d654956", role: "Emerging Leader",   pos: "object-top" },
         ].map((w, i) => (
           <div key={i} className={`relative overflow-hidden ${i === 4 ? "hidden lg:block" : ""}`}>
-            <Image
-              src={`https://images.unsplash.com/${w.src}?w=600&q=85`}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={`https://images.unsplash.com/${w.src}?w=800&q=85&auto=format&fit=crop`}
               alt={w.role}
-              fill
-              unoptimized
-              sizes="(max-width: 1024px) 50vw, 20vw"
-              className={`object-cover ${w.pos}`}
+              loading="lazy"
+              className={`absolute inset-0 w-full h-full object-cover ${w.pos}`}
             />
             <div className="absolute inset-0 bg-gradient-to-t from-primary-dk/85 via-primary-dk/20 to-transparent" />
             <div className="absolute bottom-0 inset-x-0 p-5">
@@ -465,7 +471,7 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="font-bold text-primary-dk text-sm leading-snug">Certificate in Strategic Leadership &amp; Ecosystem Building</p>
-                    <p className="text-foreground/55 text-xs mt-1 font-source">Awarded upon completion of the symposium</p>
+                    <p className="text-foreground/55 text-xs mt-1 font-source">Awarded after the convening</p>
                   </div>
                 </div>
 
@@ -512,10 +518,10 @@ export default function Home() {
         <div className="container-site">
           <div className="text-center mb-12">
             <span className="text-xs font-bold uppercase tracking-widest text-primary">
-              Reserve Your Seat
+              Apply to Attend
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3 leading-tight">
-              Built for More: <span className="text-primary">The XxCHANGE</span>
+              Built for <span className="text-primary">More</span>
             </h2>
             <p className="text-foreground/60 max-w-2xl mx-auto mt-5 font-source leading-relaxed">
               A two-day experience for women building at capacity and ready for
@@ -561,7 +567,7 @@ export default function Home() {
               href="/register"
               className="mt-10 flex items-center justify-center h-14 rounded-full bg-primary text-white font-bold text-base hover:bg-primary-fg transition-colors"
             >
-              Save Your Seat
+              Apply Now
             </a>
 
             <p className="mt-5 text-center text-xs text-foreground/50 font-source leading-relaxed">
@@ -626,10 +632,34 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Sponsor cards — triangle layout */}
+          {/* Sponsor cards — UpHer Room on top, Truist + Watson below */}
           <div className="max-w-5xl mx-auto">
-            {/* Top row: Truist + Watson */}
-            <div className="grid md:grid-cols-2 gap-8 mb-8">
+            {/* Top: UpHer Room centered */}
+            <div className="flex justify-center mb-8">
+              <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5 w-full md:w-[calc(50%-1rem)]">
+                <div className="h-12 flex items-center">
+                  <Image src="/images/uhr-logo.png" alt="The UpHer Room" width={160} height={48} className="object-contain max-h-10 w-auto" />
+                </div>
+                <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">Host Organization</p>
+                <p className="text-foreground/65 font-source leading-relaxed text-sm">
+                  The UpHer Room Inc. is a leadership development organization dedicated to equipping and convening women who are building meaningful work in their communities. Built for More is a signature initiative of The UpHer Room.
+                </p>
+                <a
+                  href="https://www.theupherroom.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                >
+                  Visit The UpHer Room
+                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+
+            {/* Bottom row: Truist + Watson */}
+            <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5">
                 <div className="h-12 flex items-center">
                   <Image src="/images/truist.png" alt="Truist Foundation" width={160} height={48} className="object-contain max-h-10 w-auto" />
@@ -672,30 +702,6 @@ export default function Home() {
                 </a>
               </div>
             </div>
-
-            {/* Bottom row: UpHer Room centered */}
-            <div className="flex justify-center">
-              <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5 w-full md:w-[calc(50%-1rem)]">
-                <div className="h-12 flex items-center">
-                  <Image src="/images/uhr-logo.png" alt="The UpHer Room" width={160} height={48} className="object-contain max-h-10 w-auto" />
-                </div>
-                <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">Host Organization</p>
-                <p className="text-foreground/65 font-source leading-relaxed text-sm">
-                  The UpHer Room Inc. is a leadership development organization dedicated to equipping and convening women who are building meaningful work in their communities. Built for More is a signature initiative of The UpHer Room.
-                </p>
-                <a
-                  href="https://www.theupherroom.com"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
-                >
-                  Visit The UpHer Room
-                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                  </svg>
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -728,7 +734,7 @@ export default function Home() {
             href="/register"
             className="inline-flex items-center justify-center px-8 h-12 rounded-full bg-secondary text-primary-dk font-bold hover:bg-secondary/90 transition-colors mt-8 text-base"
           >
-            Save Your Seat
+            Apply Now
           </a>
         </div>
       </section>
@@ -804,7 +810,7 @@ export default function Home() {
         <div className="container-site">
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
             <div className="lg:col-span-2">
-              <h3 className="font-bold text-2xl">Built for More: The XxCHANGE</h3>
+              <h3 className="font-bold text-2xl">Built for More</h3>
               <p className="text-white/50 text-sm mt-3 leading-relaxed font-source max-w-md">
                 A Leadership Experience for Women Who Build
               </p>
