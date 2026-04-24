@@ -16,9 +16,9 @@ const sourceSans = Source_Sans_3({
 
 export const metadata: Metadata = {
   title:
-    "Built for More — A Leadership Symposium for Women Who Build | The UpHer Room",
+    "Built for More — A Leadership Experience for Women Who Build | The UpHer Room",
   description:
-    "A two-day diagnostic and strategic experience for women building inside ecosystems that need redesign. May 29–30, 2026 in Indianapolis, Indiana. Hosted by The UpHer Room Inc.",
+    "A two-day leadership experience for women navigating misalignment, fragmentation, and the realities of building inside systems that need redesign. May 29–30, 2026 in Indianapolis, Indiana. Hosted by The UpHer Room Inc.",
 };
 
 export default function RootLayout({

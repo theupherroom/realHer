@@ -121,10 +121,6 @@ export default function ScheduleSection({ friday, saturday }: Props) {
         heading="Saturday — May 30"
         subheading="The Build Lab · 9:00 AM – 5:00 PM"
       />
-
-      <p className="md:col-span-2 text-center text-xs text-white/40 font-source pt-2">
-        Tap or hover any session to read more.
-      </p>
     </div>
   );
 }

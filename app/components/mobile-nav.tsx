@@ -49,11 +49,11 @@ export default function MobileNav() {
               </a>
             ))}
             <a
-              href="#tickets"
+              href="/register"
               onClick={() => setOpen(false)}
               className="mt-2 flex items-center justify-center px-5 h-10 rounded-full bg-primary text-white text-sm font-semibold"
             >
-              Register Now
+              Apply Now
             </a>
           </nav>
         </div>

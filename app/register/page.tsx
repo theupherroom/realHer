@@ -34,7 +34,7 @@ export default function RegisterPage() {
 
   const buildMailto = () => {
     const lines = [
-      `BUILT FOR MORE:  THE XxCHANGE — Registration`,
+      `BUILT FOR MORE — Application`,
       `May 29–30, 2026 · Indianapolis, Indiana`,
       ``,
       `── Contact ──`,
@@ -67,7 +67,7 @@ export default function RegisterPage() {
       `──────────`,
       `📎 Please attach your headshot (JPG/PNG) to this email before sending.`,
     ];
-    const subject = `Built for More: The XxCHANGE — Registration — ${fields.fullName}`;
+    const subject = `Built for More — Application — ${fields.fullName}`;
     const body = lines.join("\n");
     return `mailto:${ADMIN_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
   };
@@ -103,9 +103,9 @@ export default function RegisterPage() {
       <div className="container-site max-w-2xl py-12 sm:py-16">
         {/* Header */}
         <div className="mb-10">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary">Registration</span>
+          <span className="text-xs font-bold uppercase tracking-widest text-primary">Application</span>
           <h1 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3 leading-tight">
-            Built for More: <span className="text-primary">The XxCHANGE</span>
+            Apply to <span className="text-primary">Built for More</span>
           </h1>
           <p className="text-foreground/60 mt-3 font-source leading-relaxed">
             May 29–30, 2026 &middot; Indianapolis, Indiana &middot; 50 Participants
@@ -252,7 +252,7 @@ export default function RegisterPage() {
             type="submit"
             className="w-full h-14 rounded-full bg-primary text-white font-bold text-base hover:bg-primary-fg transition-colors"
           >
-            Submit Registration
+            Submit Application
           </button>
 
           <p className="text-center text-xs text-foreground/40 font-source leading-relaxed">
