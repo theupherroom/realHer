@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /c/Users/USER/realher log main --oneline -10)",
+      "Bash(git -C /c/Users/USER/realher show main:app/page.tsx)",
+      "Bash(git -C /c/Users/USER/realher show a9730d5:app/page.tsx)"
+    ]
+  }
+}
