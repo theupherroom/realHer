@@ -153,7 +153,7 @@ export default function Home() {
       <section
         id="event-details"
         className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-16"
-        style={{ background: "linear-gradient(135deg, #21172f 0%, #4a3468 25%, #8052a3 55%, #cd3a70 100%)" }}
+        style={{ background: "linear-gradient(135deg, #21172f 0%, #4a3468 25%, #8052a3 55%, #e6a7b0 100%)" }}
       >
         <div className="relative z-10 container-site text-center flex flex-col items-center gap-5 sm:gap-6 py-16 sm:py-20">
           <span className="inline-block px-5 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/80 text-xs sm:text-sm font-medium tracking-wide border border-white/10">
