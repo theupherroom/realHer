@@ -42,10 +42,10 @@ export default function RegisterPage() {
           <iframe
             data-tally-src="https://tally.so/r/VL9kxy?transparentBackground=1&formEventsForwarding=1"
             width="100%"
-            height="1400"
+            height={1400}
             frameBorder="0"
-            marginHeight="0"
-            marginWidth="0"
+            marginHeight={0}
+            marginWidth={0}
             title="Built for More — Application"
             className="rounded-lg"
           />
