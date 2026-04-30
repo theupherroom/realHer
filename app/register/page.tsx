@@ -40,16 +40,15 @@ export default function RegisterPage() {
         {/* Tally Form Embed */}
         <div className="bg-white rounded-2xl border border-primary/8 p-6 sm:p-8">
           <iframe
-            data-tally-src="https://tally.so/r/VL9kxy?transparentBackground=1&formEventsForwarding=1"
+            src="https://tally.so/embed/VL9kxy?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
             width="100%"
-            height={1400}
             frameBorder="0"
             marginHeight={0}
             marginWidth={0}
             title="Built for More — Application"
-            className="rounded-lg"
+            className="rounded-lg w-full"
+            style={{ minHeight: "500px" }}
           />
-          <script async src="https://app.tally.so/tally.js" />
         </div>
       </div>
     </div>
