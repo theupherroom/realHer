@@ -86,16 +86,16 @@ const INCLUDES = [
 ];
 
 const FRIDAY_SCHEDULE = [
-  { time: "5:30 PM", title: "Check-In" },
-  { time: "6:00 PM", title: "Opening Welcome" },
-  { time: "6:15 PM", title: "Activation 1: Identity Without Titles" },
-  { time: "6:40 PM", title: "Activation 2: The Moment of Truth" },
-  { time: "6:55 PM", title: "Keynote" },
-  { time: "7:00 PM", title: "Dinner Served" },
-  { time: "7:10 PM", title: "Creative Arts Performance" },
-  { time: "7:30 PM", title: "Activation 3: The 1st Exchange" },
-  { time: "7:50 PM", title: "Activation 4: “I See You”" },
-  { time: "8:15 PM", title: "Close" },
+  { time: "1:00 PM", title: "Check-In" },
+  { time: "1:15 PM", title: "Opening Welcome" },
+  { time: "1:30 PM", title: "Activation 1: Identity Without Titles" },
+  { time: "1:50 PM", title: "Activation 2: The Moment of Truth" },
+  { time: "2:15 PM", title: "Keynote" },
+  { time: "2:20 PM", title: "Lunch Served" },
+  { time: "2:35 PM", title: "Creative Arts Performance" },
+  { time: "2:55 PM", title: "Activation 3: The 1st Exchange" },
+  { time: "3:25 PM", title: "Activation 4: “I See You”" },
+  { time: "3:45 PM", title: "Close" },
 ];
 
 const SATURDAY_SCHEDULE = [
@@ -361,7 +361,7 @@ export default function Home() {
               </span>
               <h3 className="text-2xl font-bold text-primary-dk mt-3 mb-4">The Unveiling</h3>
               <p className="text-foreground/60 leading-relaxed font-source">
-                An evening of identity, truth, and connection. Participants move
+                An afternoon of identity, truth, and connection. Participants move
                 beyond titles to meet one another as women — recognizing shared
                 experience and the tensions of building inside systems that need
                 redesign.
@@ -370,7 +370,7 @@ export default function Home() {
                 <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
                   <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.414L11 9.586V6z" clipRule="evenodd" />
                 </svg>
-                <span>6:00 PM &ndash; 8:30 PM</span>
+                <span>1:00 PM &ndash; 4:00 PM</span>
               </div>
             </div>
 
