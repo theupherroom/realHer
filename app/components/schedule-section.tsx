@@ -113,7 +113,7 @@ export default function ScheduleSection({ friday, saturday }: Props) {
         slots={friday}
         badge={{ label: "Fri", tone: "muted" }}
         heading="Friday — May 29"
-        subheading="The Unveiling · 6:00 – 8:30 PM"
+        subheading="The Unveiling · 1:00 – 4:00 PM"
       />
       <DayColumn
         slots={saturday}
