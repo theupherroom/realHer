@@ -7,51 +7,31 @@ interface Contributor {
   name: string;
   title: string;
   org: string;
+  bio: string;
   image: string;
 }
 
 const CONTRIBUTORS: Contributor[] = [
   {
-    name: "Speaker TBA",
-    title: "Nonprofit Founder & Executive Director",
-    org: "Community Impact Leader",
-    image:
-      "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=80",
+    name: "Dr. Benedicta Ajah",
+    title: "CEO",
+    org: "The UpHer Room Inc.",
+    bio: "Global Ecosystem Builder | Change Architect | Speaker | Women's Advocate",
+    image: "/images/benedicta.png",
   },
   {
-    name: "Speaker TBA",
-    title: "Serial Entrepreneur & Business Strategist",
-    org: "Women-Led Ventures",
-    image:
-      "https://images.unsplash.com/photo-1589156280159-27698a70f29e?w=600&q=80",
+    name: "Andie Hines-Lagemann",
+    title: "Director of Engagement",
+    org: "Elevate Ventures",
+    bio: "Emotional Intelligence Practitioner, Entrepreneur Resource Connector, Advocate for Women & People with Disabilities",
+    image: "/images/andie.png",
   },
   {
-    name: "Speaker TBA",
-    title: "Corporate Leadership & DEI Executive",
-    org: "Fortune 500 Change Agent",
-    image:
-      "https://images.unsplash.com/photo-1531123897727-8f129e1688ce?w=600&q=80",
-  },
-  {
-    name: "Speaker TBA",
-    title: "Ecosystem Builder & Policy Advocate",
-    org: "Civic Innovation Leader",
-    image:
-      "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=600&q=80",
-  },
-  {
-    name: "Speaker TBA",
-    title: "Social Impact Strategist",
-    org: "Community Development Pioneer",
-    image:
-      "https://images.unsplash.com/photo-1611432579699-484f7990b127?w=600&q=80",
-  },
-  {
-    name: "Speaker TBA",
-    title: "Emerging Leader & Founder",
-    org: "Next-Gen Builder",
-    image:
-      "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80",
+    name: "Kristle Brooks",
+    title: "Founder",
+    org: "Kristle Brooks Investments LLC",
+    bio: "Award-winning Financial Wellness Consultant | Speaker | Life Insurance Advisor | Certified Financial Education Instructor",
+    image: "/images/kristle-brooks.png",
   },
 ];
 
@@ -148,7 +128,7 @@ export default function ContributorsCarousel() {
       {/* scrollable track */}
       <div
         ref={scrollRef}
-        className="flex gap-6 overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory"
+        className="flex justify-center gap-6 overflow-x-auto pb-4 scroll-smooth snap-x snap-mandatory"
         style={{
           scrollbarWidth: "none",
           msOverflowStyle: "none",
@@ -169,14 +149,14 @@ export default function ContributorsCarousel() {
                 sizes="(max-width: 640px) 280px, 320px"
                 className="object-cover transition-transform duration-500 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary-dk/90 via-primary-dk/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary-dk/95 via-primary-dk/40 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-6">
-                <h3 className="text-white font-bold text-lg">{c.name}</h3>
-                <p className="text-secondary text-sm font-medium mt-1">
-                  {c.title}
+                <h3 className="text-white font-bold text-lg leading-snug">{c.name}</h3>
+                <p className="text-secondary text-sm font-semibold mt-1.5">
+                  {c.title} <span className="text-white/60 font-normal">| {c.org}</span>
                 </p>
-                <p className="text-white/50 text-xs mt-1 font-source">
-                  {c.org}
+                <p className="text-white/70 text-xs mt-2 font-source leading-relaxed">
+                  {c.bio}
                 </p>
               </div>
             </div>
