@@ -395,6 +395,27 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ── STRATEGIC CONTRIBUTORS ── */}
+      <section id="contributors" className="py-20 sm:py-28 bg-white">
+        <div className="container-site">
+          <div className="text-center max-w-2xl mx-auto">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary">
+              Strategic Contributors
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3">
+              A Curated Room of Leaders
+            </h2>
+            <p className="text-foreground/60 mt-5 leading-relaxed font-source max-w-xl mx-auto">
+              Women leaders across nonprofit, corporate, and entrepreneurial
+              sectors — brought together to exchange insight, challenge
+              assumptions, and build what&apos;s next.
+            </p>
+          </div>
+
+          <ContributorsCarousel />
+        </div>
+      </section>
+
       {/* ── SCHEDULE ── */}
       <section id="schedule" className="py-20 sm:py-28 bg-primary-dk">
         <div className="container-site">
@@ -486,27 +507,6 @@ export default function Home() {
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* ── STRATEGIC CONTRIBUTORS ── */}
-      <section id="contributors" className="py-20 sm:py-28 bg-white">
-        <div className="container-site">
-          <div className="text-center max-w-2xl mx-auto">
-            <span className="text-xs font-bold uppercase tracking-widest text-primary">
-              Strategic Contributors
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3">
-              A Curated Room of Leaders
-            </h2>
-            <p className="text-foreground/60 mt-5 leading-relaxed font-source max-w-xl mx-auto">
-              Women leaders across nonprofit, corporate, and entrepreneurial
-              sectors — brought together to exchange insight, challenge
-              assumptions, and build what&apos;s next.
-            </p>
-          </div>
-
-          <ContributorsCarousel />
         </div>
       </section>
 
