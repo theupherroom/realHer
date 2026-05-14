@@ -608,10 +608,12 @@ export default function Home() {
                     { src: "/images/watson.png", alt: "Watson Institute", w: 140 },
                     { src: "/images/uhr-logo.png", alt: "The UpHer Room", w: 120 },
                     { src: "/images/10-east-arts.png", alt: "10 East Arts", w: 140 },
+                    { src: "/images/bella-tech.png", alt: "Bella Tech", w: 140 },
                     { src: "/images/truist.png", alt: "Truist Foundation", w: 140 },
                     { src: "/images/watson.png", alt: "Watson Institute", w: 140 },
                     { src: "/images/uhr-logo.png", alt: "The UpHer Room", w: 120 },
                     { src: "/images/10-east-arts.png", alt: "10 East Arts", w: 140 },
+                    { src: "/images/bella-tech.png", alt: "Bella Tech", w: 140 },
                   ].map((logo, i) => (
                     <div
                       key={i}
@@ -657,8 +659,8 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Bottom row: Truist + Watson + 10 East Arts */}
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {/* Bottom row: Truist + Watson + 10 East Arts + Bella Tech */}
+            <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5">
                 <div className="h-12 flex items-center">
                   <Image src="/images/truist.png" alt="Truist Foundation" width={160} height={48} className="object-contain max-h-10 w-auto" />
@@ -720,6 +722,16 @@ export default function Home() {
                     <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
                   </svg>
                 </a>
+              </div>
+
+              <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5">
+                <div className="h-12 flex items-center">
+                  <Image src="/images/bella-tech.png" alt="Bella Tech" width={160} height={48} className="object-contain max-h-10 w-auto" />
+                </div>
+                <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">Technology Partner</p>
+                <p className="text-foreground/65 font-source leading-relaxed text-sm">
+                  Bella Tech is a software development and AI company. We design, build, and deploy custom software for businesses that refuse to settle for off-the-shelf solutions — from intelligent AI-powered platforms to scalable web and mobile applications.
+                </p>
               </div>
             </div>
           </div>
