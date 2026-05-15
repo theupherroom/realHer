@@ -732,6 +732,17 @@ export default function Home() {
                 <p className="text-foreground/65 font-source leading-relaxed text-sm">
                   Bella Tech is a software development and AI company. We design, build, and deploy custom software for businesses that refuse to settle for off-the-shelf solutions — from intelligent AI-powered platforms to scalable web and mobile applications.
                 </p>
+                <a
+                  href="https://www.linkedin.com/in/hephzibah-a-9b09a760"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                >
+                  Learn more
+                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
+                  </svg>
+                </a>
               </div>
             </div>
           </div>

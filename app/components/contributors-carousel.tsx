@@ -10,13 +10,6 @@ interface Contributor {
 
 const CONTRIBUTORS: Contributor[] = [
   {
-    name: "Dr. Benedicta Ajah",
-    title: "CEO",
-    org: "The UpHer Room Inc.",
-    bio: "Global Ecosystem Builder | Change Architect | Speaker | Women's Advocate",
-    image: "/images/benedicta.png",
-  },
-  {
     name: "Andie Hines-Lagemann",
     title: "Director of Engagement",
     org: "Elevate Ventures",
@@ -36,6 +29,13 @@ const CONTRIBUTORS: Contributor[] = [
     org: "Hanalyzer.ai & Bella Tech",
     bio: "Technology Executive & Enterprise Architect | AI, Cloud & Intelligent Systems | Digital Transformation Specialist",
     image: "/images/hephzibah.png",
+  },
+  {
+    name: "Dr. Benedicta Ajah",
+    title: "CEO",
+    org: "The UpHer Room Inc.",
+    bio: "Global Ecosystem Builder | Change Architect | Speaker | Women's Advocate",
+    image: "/images/benedicta.png",
   },
 ];
 
