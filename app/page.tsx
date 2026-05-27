@@ -116,8 +116,31 @@ const SATURDAY_SCHEDULE = [
 export default function Home() {
   return (
     <>
+      {/* ── POSTPONEMENT BANNER ── */}
+      <div className="fixed top-0 inset-x-0 z-[60] bg-secondary text-white overflow-hidden border-b border-secondary-fg/20">
+        <div className="flex">
+          {[0, 1].map((pass) => (
+            <div
+              key={pass}
+              aria-hidden={pass === 1}
+              className="flex shrink-0 items-center gap-10 animate-marquee py-2 whitespace-nowrap"
+            >
+              {Array.from({ length: 6 }).map((_, i) => (
+                <span key={i} className="text-sm font-semibold flex items-center gap-3 px-2">
+                  <svg className="w-4 h-4 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9 9a1 1 0 012 0v3a1 1 0 11-2 0V9zm1-5a1 1 0 100 2 1 1 0 000-2z" clipRule="evenodd" />
+                  </svg>
+                  Event Postponed &mdash; New Dates: October 9 &ndash; 10, 2026
+                  <span className="text-white/50">&bull;</span>
+                </span>
+              ))}
+            </div>
+          ))}
+        </div>
+      </div>
+
       {/* ── NAVBAR ── */}
-      <header className="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary/8">
+      <header className="fixed top-9 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary/8">
         <div className="container-site flex items-center justify-between h-16 gap-4">
           <a href="#" className="flex items-center shrink-0">
             <Image
@@ -152,12 +175,12 @@ export default function Home() {
       {/* ── HERO ── */}
       <section
         id="event-details"
-        className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-16"
+        className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-[100px]"
         style={{ background: "linear-gradient(135deg, #21172f 0%, #4a3468 25%, #8052a3 55%, #e6a7b0 100%)" }}
       >
         <div className="relative z-10 container-site text-center flex flex-col items-center gap-5 sm:gap-6 py-16 sm:py-20">
           <span className="inline-block px-5 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/80 text-xs sm:text-sm font-medium tracking-wide border border-white/10">
-            May 29 &ndash; 30, 2026 &middot; Indianapolis, Indiana
+            October 9 &ndash; 10, 2026 &middot; Indianapolis, Indiana
           </span>
 
           <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] max-w-5xl px-2">
@@ -357,7 +380,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             <div className="rounded-2xl bg-primary-bg/30 border border-primary/10 p-8 sm:p-10">
               <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                Friday &mdash; May 29
+                Friday &mdash; October 9
               </span>
               <h3 className="text-2xl font-bold text-primary-dk mt-3 mb-4">The Unveiling</h3>
               <p className="text-foreground/60 leading-relaxed font-source">
@@ -376,7 +399,7 @@ export default function Home() {
 
             <div className="rounded-2xl bg-primary-bg/30 border border-primary/10 p-8 sm:p-10">
               <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                Saturday &mdash; May 30
+                Saturday &mdash; October 10
               </span>
               <h3 className="text-2xl font-bold text-primary-dk mt-3 mb-4">The Build Lab</h3>
               <p className="text-foreground/60 leading-relaxed font-source">
@@ -858,7 +881,7 @@ export default function Home() {
                 A Leadership Experience for Women Who Build
               </p>
               <div className="mt-4 space-y-1 text-sm text-white/40 font-source">
-                <p>May 29 &ndash; 30, 2026</p>
+                <p>October 9 &ndash; 10, 2026</p>
                 <p>Indianapolis, Indiana</p>
               </div>
               <div className="mt-4 space-y-1 text-sm text-white/40 font-source">
