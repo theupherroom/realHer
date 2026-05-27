@@ -123,11 +123,11 @@ export default function Home() {
             <div
               key={pass}
               aria-hidden={pass === 1}
-              className="flex shrink-0 items-center gap-10 animate-marquee py-2 whitespace-nowrap"
+              className="flex shrink-0 items-center gap-10 animate-marquee py-4 whitespace-nowrap"
             >
               {Array.from({ length: 6 }).map((_, i) => (
-                <span key={i} className="text-sm font-semibold flex items-center gap-3 px-2">
-                  <svg className="w-4 h-4 shrink-0" viewBox="0 0 20 20" fill="currentColor">
+                <span key={i} className="text-base font-semibold flex items-center gap-3 px-2">
+                  <svg className="w-5 h-5 shrink-0" viewBox="0 0 20 20" fill="currentColor">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9 9a1 1 0 012 0v3a1 1 0 11-2 0V9zm1-5a1 1 0 100 2 1 1 0 000-2z" clipRule="evenodd" />
                   </svg>
                   Event Postponed &mdash; New Dates: October 9 &ndash; 10, 2026
@@ -140,7 +140,7 @@ export default function Home() {
       </div>
 
       {/* ── NAVBAR ── */}
-      <header className="fixed top-9 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary/8">
+      <header className="fixed top-14 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary/8">
         <div className="container-site flex items-center justify-between h-16 gap-4">
           <a href="#" className="flex items-center shrink-0">
             <Image
@@ -175,7 +175,7 @@ export default function Home() {
       {/* ── HERO ── */}
       <section
         id="event-details"
-        className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-[100px]"
+        className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-[120px]"
         style={{ background: "linear-gradient(135deg, #21172f 0%, #4a3468 25%, #8052a3 55%, #e6a7b0 100%)" }}
       >
         <div className="relative z-10 container-site text-center flex flex-col items-center gap-5 sm:gap-6 py-16 sm:py-20">
