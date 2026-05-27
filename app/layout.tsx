@@ -19,11 +19,11 @@ export const metadata: Metadata = {
   title:
     "Built for More — A Leadership Experience for Women Who Build | The UpHer Room",
   description:
-    "A two-day leadership experience for women navigating misalignment, fragmentation, and the realities of building inside systems that need redesign. May 29–30, 2026 in Indianapolis, Indiana. Hosted by The UpHer Room Inc.",
+    "A two-day leadership experience for women navigating misalignment, fragmentation, and the realities of building inside systems that need redesign. October 9–10, 2026 in Indianapolis, Indiana. Hosted by The UpHer Room Inc.",
   openGraph: {
     title: "Built for More — A Leadership Experience for Women Who Build",
     description:
-      "A two-day leadership experience for women building inside systems that need redesign. May 29–30, 2026 · Indianapolis, Indiana.",
+      "A two-day leadership experience for women building inside systems that need redesign. October 9–10, 2026 · Indianapolis, Indiana.",
     url: "https://builtformore.theupherroom.com",
     siteName: "The UpHer Room",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Built for More — May 29-30, 2026 · Indianapolis, Indiana",
+        alt: "Built for More — October 9-10, 2026 · Indianapolis, Indiana",
       },
     ],
     locale: "en_US",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Built for More — A Leadership Experience for Women Who Build",
     description:
-      "A two-day leadership experience for women building inside systems that need redesign. May 29–30, 2026 · Indianapolis, Indiana.",
+      "A two-day leadership experience for women building inside systems that need redesign. October 9–10, 2026 · Indianapolis, Indiana.",
     images: ["/opengraph-image"],
   },
 };
