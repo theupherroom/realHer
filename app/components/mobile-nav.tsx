@@ -3,14 +3,14 @@
 import { useState } from "react";
 
 const NAV = [
-  { label: "Event Details", href: "#event-details" },
-  { label: "Overview", href: "#overview" },
-  { label: "Who Should Attend", href: "#who" },
-  { label: "Why Attend", href: "#why" },
-  { label: "Topics Discussed", href: "#topics" },
-  { label: "Strategic Contributors", href: "#contributors" },
-  { label: "Schedule", href: "#schedule" },
+  { label: "Why Built for More", href: "#why" },
+  { label: "Who It's For", href: "#who" },
+  { label: "What You'll Experience", href: "#experience" },
+  { label: "Why It Matters", href: "#why-it-matters" },
+  { label: "About", href: "#about" },
+  { label: "Get Involved", href: "#get-involved" },
   { label: "Sponsors & Partners", href: "#sponsors" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -53,7 +53,7 @@ export default function MobileNav() {
               onClick={() => setOpen(false)}
               className="mt-2 flex items-center justify-center px-5 h-10 rounded-full bg-primary text-white text-sm font-semibold"
             >
-              Apply Now
+              Register Now
             </a>
           </nav>
         </div>

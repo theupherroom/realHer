@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "Built for More — October 9-10, 2026 · Indianapolis, Indiana";
+export const alt = "Built for More — October 9-10, 2026 · Northwest Indiana";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -55,7 +55,8 @@ export default async function Image() {
               lineHeight: 1.3,
             }}
           >
-            A Leadership Experience for Women Who Build
+            Indiana&apos;s premier leadership and entrepreneurship experience for
+            college women
           </div>
         </div>
 
@@ -83,7 +84,7 @@ export default async function Image() {
               color: "rgba(255,255,255,0.7)",
             }}
           >
-            Indianapolis, Indiana
+            Northwest Indiana
           </div>
         </div>
       </div>

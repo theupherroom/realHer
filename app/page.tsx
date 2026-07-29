@@ -2,145 +2,183 @@ import Image from "next/image";
 import Countdown from "./components/countdown";
 import ContactForm from "./components/contact-form";
 import MobileNav from "./components/mobile-nav";
-import ContributorsCarousel from "./components/contributors-carousel";
-import ScheduleSection from "./components/schedule-section";
+// Hidden for now — restore alongside the "Meet Our Community" section below.
+// import ContributorsCarousel from "./components/contributors-carousel";
+import FAQ from "./components/faq";
 
 /* ─── data ──────────────────────────────────────────────── */
 
 const NAV = [
-  { label: "Details", href: "#event-details" },
-  { label: "Overview", href: "#overview" },
-  { label: "Who Attends", href: "#who" },
-  { label: "Why Attend", href: "#why" },
-  { label: "Topics", href: "#topics" },
-  { label: "Contributors", href: "#contributors" },
-  { label: "Schedule", href: "#schedule" },
-  { label: "Sponsors", href: "#sponsors" },
+  { label: "Why", href: "#why" },
+  { label: "Who It's For", href: "#who" },
+  { label: "Experience", href: "#experience" },
+  { label: "About", href: "#about" },
+  { label: "Get Involved", href: "#get-involved" },
+  { label: "FAQ", href: "#faq" },
   { label: "Contact", href: "#contact" },
 ];
 
-const AUDIENCE = [
-  {
-    title: "Nonprofit Founders & Executive Directors",
-    desc: "Leading organizations that expand access and opportunity for women and communities.",
-  },
-  {
-    title: "Women Entrepreneurs & Business Owners",
-    desc: "Building businesses that create economic pathways and redefine industry norms.",
-  },
-  {
-    title: "Corporate Leaders & Managers",
-    desc: "Driving change within organizations and championing inclusive leadership.",
-  },
-  {
-    title: "Heads of People, Culture & Engagement",
-    desc: "Women shaping workplace culture and employee development strategies.",
-  },
-  {
-    title: "Community Leaders & Advocates",
-    desc: "Mobilizing communities and building grassroots infrastructure for change.",
-  },
-  {
-    title: "High-Capacity Emerging Women Leaders",
-    desc: "Rising women ready to step into greater influence and responsibility.",
-  },
+const WHO_ITS_FOR = [
+  "College women from every major and discipline",
+  "First-generation college students",
+  "Aspiring entrepreneurs",
+  "Future business and community leaders",
+  "Women exploring their next career step",
+  "Recent graduates beginning their professional journey",
 ];
 
-const WHY_POINTS = [
-  "You're doing strong work, but something in the way it's structured isn't working.",
-  "You've experienced collaboration that sounded right but didn't produce real outcomes.",
-  "You want to support other women without diluting your standards or your work.",
-  "You've felt the tension between building your vision and participating in someone else's.",
-  "You know there's overlap across what women are building, but no real coordination.",
-  "You're thinking more seriously about alignment, not just access.",
-  "You're starting to question where your time, energy, and resources are actually going.",
-  "You want to build in a way that allows more women to rise without lowering the level of what's being built.",
-];
-
-const UNPACKING = [
-  "Where trust breaks down",
-  "Why impact becomes fragmented",
-  "What real collaboration actually requires",
-  "How power shows up in partnership",
-  "How to build without losing your standards",
+const EXPERIENCE = [
+  {
+    title: "Leadership Keynotes",
+    icon: (
+      <>
+        <path d="M12 2a3 3 0 0 0-3 3v6a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z" />
+        <path d="M19 10v1a7 7 0 0 1-14 0v-1M12 18v4M8 22h8" />
+      </>
+    ),
+  },
+  {
+    title: "Learning Labs",
+    icon: (
+      <>
+        <path d="M9 2v6.5L4.5 17A2.5 2.5 0 0 0 6.7 20.7h10.6A2.5 2.5 0 0 0 19.5 17L15 8.5V2" />
+        <path d="M8 2h8M7 14h10" />
+      </>
+    ),
+  },
+  {
+    title: "Mentor Roundtables",
+    icon: (
+      <>
+        <circle cx="9" cy="8" r="3" />
+        <path d="M3 20a6 6 0 0 1 12 0" />
+        <path d="M16 5.5a3 3 0 0 1 0 5.8M18 20a6 6 0 0 0-3-5.2" />
+      </>
+    ),
+  },
+  {
+    title: "Student Marketplace",
+    icon: (
+      <>
+        <path d="M3 9h18l-1.5 11.2A2 2 0 0 1 17.5 22h-11a2 2 0 0 1-2-1.8z" />
+        <path d="M3 9l2-5h14l2 5M9 13v4M15 13v4" />
+      </>
+    ),
+  },
+  {
+    title: "Experience Lounge",
+    icon: (
+      <>
+        <path d="M4 13V8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5" />
+        <path d="M2 16a3 3 0 0 1 3-3h14a3 3 0 0 1 3 3v3H2zM6 19v2M18 19v2" />
+      </>
+    ),
+  },
+  {
+    title: "Your Built for More Blueprint",
+    icon: (
+      <>
+        <path d="M14 2H7a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7z" />
+        <path d="M14 2v5h5M9 13h6M9 17h4" />
+      </>
+    ),
+  },
 ];
 
 const LEAVE_WITH = [
-  "A sharper understanding of where your work is being limited and where alignment actually exists",
-  "Language and perspective to approach collaboration, partnership, and growth differently",
-  "Clarity on where your work connects within a broader ecosystem",
-  "Relationships built through context, not surface-level connection",
-  "Participation in the Build Lab, where one team will be selected for recognition and a featured moment during the experience",
+  "New mentors",
+  "Professional connections",
+  "Career clarity",
+  "Leadership confidence",
+  "Entrepreneurship resources",
+  "Practical skills",
+  "Actionable next steps",
+  "A supportive community",
 ];
 
-const INCLUDES = [
-  "Full access to both days of the experience",
-  "All keynote and facilitated sessions",
-  "Collaborative Build Lab participation",
-  "Curated table conversations and working sessions",
-  "Meals and refreshments (Friday + Saturday)",
-  "Legacy Goods experience",
-  "Opportunity for Strategy Lab recognition",
-  "Certificate of completion",
-  "Continued connection with women in the room",
+const HIGHLIGHTS = [
+  "Interactive learning",
+  "Networking",
+  "Professional headshots",
+  "Student marketplace",
+  "AI experiences",
+  "Career conversations",
+  "Community partners",
+  "Giveaways",
+  "Food & refreshments",
 ];
 
-const FRIDAY_SCHEDULE = [
-  { time: "1:00 PM", title: "Check-In" },
-  { time: "1:15 PM", title: "Opening Welcome" },
-  { time: "1:30 PM", title: "Activation 1: Identity Without Titles" },
-  { time: "1:50 PM", title: "Activation 2: The Moment of Truth" },
-  { time: "2:15 PM", title: "Keynote" },
-  { time: "2:20 PM", title: "Lunch Served" },
-  { time: "2:35 PM", title: "Creative Arts Performance" },
-  { time: "2:55 PM", title: "Activation 3: The 1st Exchange" },
-  { time: "3:25 PM", title: "Activation 4: “I See You”" },
-  { time: "3:45 PM", title: "Close" },
+const STUDENT_REASONS = [
+  "Build your network",
+  "Meet mentors",
+  "Gain practical skills",
+  "Discover internships",
+  "Explore entrepreneurship",
+  "Connect with employers",
+  "Leave with an action plan",
 ];
 
-const SATURDAY_SCHEDULE = [
-  { time: "9:00 AM", title: "Arrival + Morning Fuel" },
-  { time: "9:15 AM", title: "Activation 1: Formal Introductions" },
-  { time: "9:35 AM", title: "Opening Keynote" },
-  { time: "10:00 AM", title: "Activation 2: The Open Window" },
-  { time: "10:45 AM", title: "Activation 3: The 2nd Exchange" },
-  { time: "1:15 PM", title: "Lunch + Informal Dialogue" },
-  { time: "2:00 PM", title: "Group Share + Reflection" },
-  { time: "3:00 PM", title: "Signature Conversation" },
-  { time: "4:40 PM", title: "Activation 4: “Leaving Different”" },
-  { time: "5:00 PM", title: "Close" },
+const PARTNERSHIP_OPTIONS = [
+  "Financial Sponsorship",
+  "In-Kind Sponsorship",
+  "Student Marketplace",
+  "Experience Partner",
+  "University Partner",
+  "Community Partner",
 ];
+
+const VOLUNTEER_AREAS = [
+  "Event operations",
+  "Community outreach",
+  "Partnerships",
+  "Leadership",
+  "Marketing",
+  "Project management",
+];
+
+const SPONSOR_SUPPORTS = [
+  "Student scholarships",
+  "Meals",
+  "Professional headshots",
+  "Learning experiences",
+  "Career resources",
+  "Leadership programming",
+  "Marketplace opportunities",
+];
+
+/* ─── shared bits ───────────────────────────────────────── */
+
+function Check({ className = "" }: { className?: string }) {
+  return (
+    <svg viewBox="0 0 20 20" fill="currentColor" className={className}>
+      <path
+        fillRule="evenodd"
+        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
+
+function Arrow() {
+  return (
+    <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
+      <path
+        fillRule="evenodd"
+        d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z"
+        clipRule="evenodd"
+      />
+    </svg>
+  );
+}
 
 /* ─── page ──────────────────────────────────────────────── */
 
 export default function Home() {
   return (
     <>
-      {/* ── POSTPONEMENT BANNER ── */}
-      <div className="fixed top-0 inset-x-0 z-[60] bg-secondary text-white overflow-hidden border-b border-secondary-fg/20">
-        <div className="flex">
-          {[0, 1].map((pass) => (
-            <div
-              key={pass}
-              aria-hidden={pass === 1}
-              className="flex shrink-0 items-center gap-10 animate-marquee py-4 whitespace-nowrap"
-            >
-              {Array.from({ length: 6 }).map((_, i) => (
-                <span key={i} className="text-base font-semibold flex items-center gap-3 px-2">
-                  <svg className="w-5 h-5 shrink-0" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9 9a1 1 0 012 0v3a1 1 0 11-2 0V9zm1-5a1 1 0 100 2 1 1 0 000-2z" clipRule="evenodd" />
-                  </svg>
-                  Event Postponed &mdash; New Dates: October 9 &ndash; 10, 2026
-                  <span className="text-white/50">&bull;</span>
-                </span>
-              ))}
-            </div>
-          ))}
-        </div>
-      </div>
-
       {/* ── NAVBAR ── */}
-      <header className="fixed top-14 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary/8">
+      <header className="fixed top-0 inset-x-0 z-50 bg-white/90 backdrop-blur-md border-b border-primary/8">
         <div className="container-site flex items-center justify-between h-16 gap-4">
           <a href="#" className="flex items-center shrink-0">
             <Image
@@ -166,7 +204,7 @@ export default function Home() {
             href="/register"
             className="hidden sm:inline-flex items-center justify-center shrink-0 px-5 h-9 rounded-full bg-primary text-white text-[13px] font-semibold hover:bg-primary-fg transition-colors whitespace-nowrap"
           >
-            Apply Now
+            Register Now
           </a>
           <MobileNav />
         </div>
@@ -174,31 +212,49 @@ export default function Home() {
 
       {/* ── HERO ── */}
       <section
-        id="event-details"
-        className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-[120px]"
-        style={{ background: "linear-gradient(135deg, #21172f 0%, #4a3468 25%, #8052a3 55%, #e6a7b0 100%)" }}
+        id="hero"
+        className="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-24"
+        style={{
+          background:
+            "linear-gradient(135deg, #21172f 0%, #4a3468 25%, #8052a3 55%, #e6a7b0 100%)",
+        }}
       >
         <div className="relative z-10 container-site text-center flex flex-col items-center gap-5 sm:gap-6 py-16 sm:py-20">
           <span className="inline-block px-5 py-2 rounded-full bg-white/10 backdrop-blur-sm text-white/80 text-xs sm:text-sm font-medium tracking-wide border border-white/10">
-            October 9 &ndash; 10, 2026 &middot; Indianapolis, Indiana
+            October 9 &ndash; 10, 2026 &middot; Northwest Indiana
           </span>
 
-          <h1 className="text-[2.5rem] sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-[1.05] max-w-5xl px-2">
-            Built for More
+          <h1 className="px-2">
+            <Image
+              src="/images/hero-wordmark.png"
+              alt="Built for More"
+              width={538}
+              height={481}
+              priority
+              className="h-32 sm:h-40 md:h-48 lg:h-56 w-auto"
+            />
           </h1>
-          <p className="text-lg sm:text-xl md:text-2xl text-white/85 font-semibold max-w-2xl px-2">
-            A Leadership Experience for Women Who Build
+
+          <p className="text-lg sm:text-xl md:text-2xl text-white/85 font-semibold max-w-3xl px-2">
+            Indiana&apos;s premier leadership and entrepreneurship experience for
+            college women.
           </p>
 
           <p className="text-base sm:text-lg text-white/70 max-w-2xl leading-relaxed font-source">
-            A two-day diagnostic and strategic experience for women building
-            inside ecosystems that need redesign.
+            Discover opportunities. Build meaningful relationships. Leave with the
+            confidence and plan to shape what&apos;s next.
           </p>
 
           <div className="flex flex-col sm:flex-row items-center gap-2 text-sm text-white/50 font-source">
-            <span>Hosted by <strong className="text-white/70">The UpHer Room Inc.</strong></span>
+            <span>
+              Hosted by{" "}
+              <strong className="text-white/70">The UpHer Room Inc.</strong>
+            </span>
             <span className="hidden sm:inline">&middot;</span>
-            <span>Powered by <strong className="text-white/70">Truist Foundation</strong> &amp; <strong className="text-white/70">Watson Institute</strong></span>
+            <span>
+              Powered by <strong className="text-white/70">Truist Foundation</strong>{" "}
+              &amp; <strong className="text-white/70">Watson Institute</strong>
+            </span>
           </div>
 
           <Countdown />
@@ -208,65 +264,41 @@ export default function Home() {
               href="/register"
               className="inline-flex items-center justify-center px-8 h-12 rounded-full bg-secondary text-primary-dk font-bold hover:bg-secondary/90 transition-colors text-base"
             >
-              Apply Now
+              Register Now
             </a>
             <a
-              href="#overview"
+              href="#get-involved"
               className="inline-flex items-center justify-center px-8 h-12 rounded-full border-2 border-white/20 text-white font-semibold hover:bg-white/10 transition-colors text-base"
             >
-              Learn More
+              Partner With Us
             </a>
           </div>
         </div>
       </section>
 
-      {/* ── OVERVIEW ── */}
-      <section id="overview" className="py-20 sm:py-28 bg-white">
+      {/* ── WHY BUILT FOR MORE ── */}
+      <section id="why" className="py-20 sm:py-28 bg-white">
         <div className="container-site max-w-4xl">
           <span className="text-xs font-bold uppercase tracking-widest text-primary">
-            Event Overview
+            Why Built for More?
           </span>
 
-          <div className="mt-8 space-y-6 text-lg sm:text-xl leading-relaxed text-foreground/80 font-source">
-            <p className="text-2xl sm:text-3xl font-bold text-primary-dk leading-snug font-sans">
-              You don&apos;t need more motivation.
-              <br />
-              <span className="text-primary">What you&apos;ve been searching for is a clearer diagnosis.</span>
-            </p>
+          <h2 className="mt-6 text-3xl sm:text-4xl md:text-5xl font-bold text-primary-dk leading-tight">
+            You&apos;re Built for More
+            <br />
+            <span className="text-primary">Than Just a Degree.</span>
+          </h2>
 
+          <div className="mt-8 space-y-6 text-lg sm:text-xl leading-relaxed text-foreground/75 font-source">
             <p>
-              It&apos;s not about talent.
-              <br />
-              It&apos;s not about capacity.
-              <br />
-              It&apos;s not about vision.
+              College prepares you for graduation. Built for More prepares you for
+              what&apos;s next.
             </p>
-
             <p>
-              You&apos;ve already been building.
-              <br />
-              You&apos;ve already been showing up.
-              <br />
-              You&apos;ve already been carrying more than most people see.
-            </p>
-
-            <p>
-              Sometimes the issue is broken trust, fragmented impact,
-              surface-level collaboration, and partnerships that look aligned on
-              paper but quietly cost you clarity, capacity, and voice.
-            </p>
-
-            <p>
-              <strong className="text-primary-dk">Built for More</strong> is a
-              two-day leadership experience for women navigating misalignment,
-              fragmentation, and the realities of building inside systems that
-              need redesign.
-            </p>
-
-            <p>
-              This is a room for women who are no longer interested in misnaming
-              structural problems as personal limitations, and who are ready to
-              build with greater clarity, alignment, and strength.
+              Whether your goal is to launch a business, secure an internship, lead
+              on campus, or build a meaningful career, you&apos;ll gain practical
+              skills, meaningful connections, and direct access to people and
+              opportunities that can accelerate your journey.
             </p>
           </div>
         </div>
@@ -275,11 +307,11 @@ export default function Home() {
       {/* ── WOMEN MOSAIC ── */}
       <div className="h-[400px] sm:h-[460px] overflow-hidden grid grid-cols-2 lg:grid-cols-5">
         {[
-          { src: "photo-1563132337-f159f484226c", role: "Corporate Leader",     pos: "object-center" },
-          { src: "photo-1573497491765-dccce02b29df", role: "Nonprofit Founder", pos: "object-top" },
-          { src: "photo-1534751516642-a1af1ef26a56", role: "Entrepreneur",      pos: "object-top" },
-          { src: "photo-1611432579402-7037e3e2c1e4", role: "Community Advocate", pos: "object-center" },
-          { src: "photo-1580489944761-15a19d654956", role: "Emerging Leader",   pos: "object-top" },
+          { src: "photo-1573497491765-dccce02b29df", role: "First-Gen Student", pos: "object-top" },
+          { src: "photo-1534751516642-a1af1ef26a56", role: "Aspiring Entrepreneur", pos: "object-top" },
+          { src: "photo-1563132337-f159f484226c", role: "Campus Leader", pos: "object-center" },
+          { src: "photo-1611432579402-7037e3e2c1e4", role: "Career Explorer", pos: "object-center" },
+          { src: "photo-1580489944761-15a19d654956", role: "Recent Graduate", pos: "object-top" },
         ].map((w, i) => (
           <div key={i} className={`relative overflow-hidden ${i === 4 ? "hidden lg:block" : ""}`}>
             {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -299,309 +331,388 @@ export default function Home() {
         ))}
       </div>
 
-      {/* ── WHO SHOULD ATTEND ── */}
+      {/* ── WHO IT'S FOR ── */}
       <section id="who" className="py-20 sm:py-28 bg-primary-bg/30">
         <div className="container-site">
           <div className="max-w-2xl mb-14">
             <span className="text-xs font-bold uppercase tracking-widest text-primary">
-              Who Should Attend
+              Who It&apos;s For
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3 leading-tight">
-              This Room Is Curated
+              Designed for Women
               <br />
-              for Women Who Build
+              Ready to Build What&apos;s Next
             </h2>
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {AUDIENCE.map((a) => (
+            {WHO_ITS_FOR.map((a) => (
               <div
-                key={a.title}
-                className="group rounded-2xl border border-primary/8 bg-white p-7 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+                key={a}
+                className="group flex items-start gap-4 rounded-2xl border border-primary/8 bg-white p-7 hover:border-primary/20 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
               >
-                <div className="w-10 h-10 rounded-lg bg-primary-bg flex items-center justify-center text-primary mb-5 group-hover:bg-primary group-hover:text-white transition-colors duration-300">
-                  <svg viewBox="0 0 20 20" fill="currentColor" className="w-5 h-5">
-                    <path
-                      fillRule="evenodd"
-                      d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-base font-bold text-primary-dk mb-2">{a.title}</h3>
-                <p className="text-foreground/55 text-sm leading-relaxed font-source">{a.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── WHY ATTEND ── */}
-      <section id="why" className="py-20 sm:py-28 bg-white">
-        <div className="container-site max-w-4xl">
-          <span className="text-xs font-bold uppercase tracking-widest text-primary">
-            Why You Should Attend
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3 leading-tight">
-            The Problem Isn&apos;t You.
-            <br />
-            <span className="text-primary">
-              It&apos;s the System You&apos;re Building In.
-            </span>
-          </h2>
-
-          <div className="mt-10 grid sm:grid-cols-2 gap-4">
-            {WHY_POINTS.map((point, i) => (
-              <div key={i} className="flex gap-3 items-start bg-primary-bg/20 rounded-xl p-5 border border-primary/8">
-                <span className="shrink-0 w-5 h-5 rounded-full bg-secondary/20 flex items-center justify-center mt-0.5">
-                  <span className="w-2 h-2 rounded-full bg-secondary-fg" />
+                <span className="shrink-0 w-10 h-10 rounded-lg bg-primary-bg flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-white transition-colors duration-300">
+                  <Check className="w-5 h-5" />
                 </span>
-                <p className="text-foreground/70 leading-relaxed font-source text-sm">{point}</p>
+                <p className="text-base font-semibold text-primary-dk leading-snug pt-2">
+                  {a}
+                </p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── TWO-DAY EXPERIENCE ── */}
-      <section className="py-20 sm:py-28 bg-primary-bg/20">
+      {/* ── WHAT YOU'LL EXPERIENCE ── */}
+      <section id="experience" className="py-20 sm:py-28 bg-white">
         <div className="container-site">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-xs font-bold uppercase tracking-widest text-primary">
-              The Experience
+              What You&apos;ll Experience
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3">
-              Two Days. Two Formats.
-              <br />
-              One Transformative Experience.
+              Two Days. Built Around You.
             </h2>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            <div className="rounded-2xl bg-primary-bg/30 border border-primary/10 p-8 sm:p-10">
-              <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                Friday &mdash; October 9
-              </span>
-              <h3 className="text-2xl font-bold text-primary-dk mt-3 mb-4">The Unveiling</h3>
-              <p className="text-foreground/60 leading-relaxed font-source">
-                An afternoon of identity, truth, and connection. Participants move
-                beyond titles to meet one another as women — recognizing shared
-                experience and the tensions of building inside systems that need
-                redesign.
-              </p>
-              <div className="mt-6 flex items-center gap-2 text-sm text-foreground/40">
-                <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.414L11 9.586V6z" clipRule="evenodd" />
-                </svg>
-                <span>1:00 PM &ndash; 4:00 PM</span>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
+            {EXPERIENCE.map((e, i) => (
+              <div
+                key={e.title}
+                className="group relative rounded-2xl border border-primary/10 bg-primary-bg/25 p-8 hover:bg-white hover:shadow-lg hover:shadow-primary/5 transition-all duration-300"
+              >
+                <span className="absolute top-6 right-7 text-4xl font-bold text-primary/10 tabular-nums">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div className="w-12 h-12 rounded-xl bg-primary flex items-center justify-center text-white mb-6">
+                  <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="1.8"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    className="w-6 h-6"
+                  >
+                    {e.icon}
+                  </svg>
+                </div>
+                <h3 className="text-lg font-bold text-primary-dk leading-snug pr-10">
+                  {e.title}
+                </h3>
               </div>
+            ))}
+          </div>
+
+          {/* What you'll leave with */}
+          <div className="mt-20 max-w-5xl mx-auto rounded-3xl bg-primary-dk p-8 sm:p-12">
+            <div className="text-center mb-10">
+              <span className="text-xs font-bold uppercase tracking-widest text-secondary">
+                What You&apos;ll Leave With
+              </span>
+              <h3 className="text-2xl sm:text-3xl font-bold text-white mt-3">
+                More Than a Weekend
+              </h3>
             </div>
 
-            <div className="rounded-2xl bg-primary-bg/30 border border-primary/10 p-8 sm:p-10">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {LEAVE_WITH.map((item) => (
+                <div
+                  key={item}
+                  className="flex items-center gap-3 rounded-xl bg-white/5 border border-white/10 px-5 py-4"
+                >
+                  <Check className="w-5 h-5 shrink-0 text-secondary" />
+                  <span className="text-white/85 font-source text-sm leading-snug">
+                    {item}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── WHY IT MATTERS ── */}
+      <section id="why-it-matters" className="py-20 sm:py-28 bg-primary-bg/30">
+        <div className="container-site">
+          <div className="grid lg:grid-cols-2 gap-14 lg:gap-20 items-start max-w-6xl mx-auto">
+            <div>
               <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                Saturday &mdash; October 10
+                Why It Matters
               </span>
-              <h3 className="text-2xl font-bold text-primary-dk mt-3 mb-4">The Build Lab</h3>
-              <p className="text-foreground/60 leading-relaxed font-source">
-                A full day of alignment, collaboration, and collective building.
-                Structured dialogue and a collaborative Build Lab move participants
-                from recognition into the real work of building something together.
+              <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3 leading-tight">
+                The Right Opportunity
+                <br />
+                <span className="text-primary">Can Change Everything.</span>
+              </h2>
+              <p className="mt-7 text-lg text-foreground/75 leading-relaxed font-source">
+                Too many students graduate without discovering the people,
+                programs, internships, funding, or communities that could have
+                changed their journey. Built for More bridges that gap by
+                connecting college women with the resources, relationships, and
+                opportunities already available to them.
               </p>
-              <div className="mt-6 flex items-center gap-2 text-sm text-foreground/40">
-                <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                  <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.414L11 9.586V6z" clipRule="evenodd" />
-                </svg>
-                <span>9:00 AM &ndash; 5:00 PM</span>
+            </div>
+
+            <div>
+              <span className="text-xs font-bold uppercase tracking-widest text-primary">
+                Event Highlights
+              </span>
+              <div className="mt-6 flex flex-wrap gap-3">
+                {HIGHLIGHTS.map((h) => (
+                  <span
+                    key={h}
+                    className="inline-flex items-center gap-2 rounded-full bg-white border border-primary/10 px-5 py-2.5 text-sm font-medium text-primary-dk"
+                  >
+                    <span className="w-1.5 h-1.5 rounded-full bg-secondary-fg" />
+                    {h}
+                  </span>
+                ))}
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* ── STRATEGIC CONTRIBUTORS ── */}
-      <section id="contributors" className="py-20 sm:py-28 bg-white">
+      {/* ── MEET OUR COMMUNITY (hidden for now) ──
+        Restore by uncommenting this block, the ContributorsCarousel import at the
+        top of this file, and the "Community" / "Meet Our Community" nav entries in
+        NAV above and in mobile-nav.tsx.
+
+      <section id="community" className="py-20 sm:py-28 bg-white">
         <div className="container-site">
           <div className="text-center max-w-2xl mx-auto">
             <span className="text-xs font-bold uppercase tracking-widest text-primary">
-              Strategic Contributors
+              Meet Our Community
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3">
-              A Curated Room of Leaders
+              Conversations, Not Presentations
             </h2>
             <p className="text-foreground/60 mt-5 leading-relaxed font-source max-w-xl mx-auto">
-              Women leaders across nonprofit, corporate, and entrepreneurial
-              sectors — brought together to exchange insight, challenge
-              assumptions, and build what&apos;s next.
+              Learn from entrepreneurs, executives, founders, community leaders,
+              researchers, creatives, and innovators through meaningful
+              conversations, not just presentations.
             </p>
           </div>
 
           <ContributorsCarousel />
         </div>
       </section>
+      ── end hidden section ── */}
 
-      {/* ── SCHEDULE ── */}
-      <section id="schedule" className="py-20 sm:py-28 bg-primary-dk">
-        <div className="container-site">
-          <div className="text-center mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-secondary">
-              Schedule
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mt-3">
-              The Flow of the Experience
-            </h2>
-          </div>
+      {/* ── ABOUT ── */}
+      <section id="about" className="py-20 sm:py-28 bg-primary-dk">
+        <div className="container-site max-w-5xl">
+          <span className="text-xs font-bold uppercase tracking-widest text-secondary">
+            About
+          </span>
+          <p className="mt-6 text-xl sm:text-2xl text-white leading-relaxed font-source">
+            Built for More is The UpHer Room&apos;s signature leadership and
+            entrepreneurship experience designed to help college women discover
+            opportunities, build meaningful relationships, and prepare for life
+            beyond graduation.
+          </p>
 
-          <ScheduleSection friday={FRIDAY_SCHEDULE} saturday={SATURDAY_SCHEDULE} />
-        </div>
-      </section>
-
-      {/* ── TOPICS ── */}
-      <section id="topics" className="py-20 sm:py-28 bg-primary-bg/30">
-        <div className="container-site">
-          <div className="grid lg:grid-cols-2 gap-16">
-            {/* What We're Unpacking */}
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                What We&apos;ll Discuss
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-primary-dk mt-3 mb-8 leading-tight">
-                The Conversations That Matter
-              </h2>
-              <div className="space-y-4">
-                {UNPACKING.map((item, i) => (
-                  <div key={i} className="flex gap-4 items-start bg-white rounded-xl p-5 border border-primary/8">
-                    <span className="shrink-0 w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-sm font-bold">
-                      {String(i + 1).padStart(2, "0")}
-                    </span>
-                    <p className="text-foreground/70 font-source leading-relaxed pt-1">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* What You'll Leave With */}
-            <div>
-              <span className="text-xs font-bold uppercase tracking-widest text-primary">
-                What You&apos;ll Leave With
-              </span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-primary-dk mt-3 mb-8 leading-tight">
-                More Than Inspiration
-              </h2>
-              <div className="space-y-4 mb-8">
-                {LEAVE_WITH.map((item, i) => (
-                  <div key={i} className="flex gap-3 items-start">
-                    <svg className="w-5 h-5 shrink-0 text-secondary-fg mt-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <p className="text-foreground/70 font-source leading-relaxed">{item}</p>
-                  </div>
-                ))}
-              </div>
-
-              {/* Hero deliverables */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex gap-4 items-start rounded-2xl bg-primary-bg/50 border border-primary/10 p-5">
-                  <div className="shrink-0 w-10 h-10 rounded-xl bg-primary flex items-center justify-center text-white">
-                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="12" cy="8" r="6" /><path d="M8 14v7M16 14v7M4 21h16" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-bold text-primary-dk text-sm leading-snug">Certificate in Strategic Leadership &amp; Ecosystem Building</p>
-                    <p className="text-foreground/55 text-xs mt-1 font-source">Awarded after the convening</p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4 items-start rounded-2xl bg-secondary/10 border border-secondary/20 p-5">
-                  <div className="shrink-0 w-10 h-10 rounded-xl bg-secondary-fg flex items-center justify-center text-white">
-                    <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M20 12v10H4V12" /><path d="M22 7H2v5h20V7z" /><path d="M12 22V7" /><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z" /><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z" />
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-bold text-primary-dk text-sm leading-snug">Gifted Item from Legacy Goods</p>
-                    <p className="text-foreground/55 text-xs mt-1 font-source">The UpHer Room&apos;s premier goods &amp; gifting collection</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* ── SAVE YOUR SEAT ── */}
-      <section id="tickets" className="py-20 sm:py-28 bg-white">
-        <div className="container-site">
-          <div className="text-center mb-12">
-            <span className="text-xs font-bold uppercase tracking-widest text-primary">
-              Apply to Attend
-            </span>
-            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3 leading-tight">
-              Built for <span className="text-primary">More</span>
-            </h2>
-            <p className="text-foreground/60 max-w-2xl mx-auto mt-5 font-source leading-relaxed">
-              A two-day experience for women building at capacity and ready for
-              alignment, collaboration, and real expansion.
-            </p>
-          </div>
-
-          <div className="max-w-2xl mx-auto rounded-2xl bg-primary-bg/30 border border-primary/10 p-8 sm:p-10">
-            <div className="text-center space-y-2 font-source mb-8">
-              <p className="text-primary-dk font-bold text-base">
-                Space is intentionally limited to 50 women.
-              </p>
-              <p className="text-foreground/65 text-sm leading-relaxed">
-                This is a full experience. Friday and Saturday are designed to work together.
-              </p>
-            </div>
-
-            <div className="border-t border-primary/10 pt-8">
-              <h3 className="text-xs font-bold uppercase tracking-widest text-primary mb-5">
-                Your Experience Includes
+          <div className="mt-12 grid md:grid-cols-2 gap-6">
+            <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-secondary mb-4">
+                Mission
               </h3>
-              <ul className="space-y-3">
-                {INCLUDES.map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-sm">
-                    <svg
-                      className="w-5 h-5 shrink-0 text-primary mt-0.5"
-                      viewBox="0 0 20 20"
-                      fill="currentColor"
-                    >
-                      <path
-                        fillRule="evenodd"
-                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                        clipRule="evenodd"
-                      />
-                    </svg>
-                    <span className="text-foreground/75 font-source leading-relaxed">{item}</span>
-                  </li>
-                ))}
-              </ul>
+              <p className="text-white/75 leading-relaxed font-source">
+                Equip college women with the relationships, resources, skills, and
+                confidence needed to thrive as leaders, entrepreneurs, and
+                professionals.
+              </p>
             </div>
 
-            <a
-              href="/register"
-              className="mt-10 flex items-center justify-center h-14 rounded-full bg-primary text-white font-bold text-base hover:bg-primary-fg transition-colors"
-            >
-              Apply Now
-            </a>
+            <div className="rounded-2xl bg-white/5 border border-white/10 p-8">
+              <h3 className="text-xs font-bold uppercase tracking-widest text-secondary mb-4">
+                Vision
+              </h3>
+              <p className="text-white/75 leading-relaxed font-source">
+                A future where every college woman has access to the opportunities,
+                networks, and support needed to build a meaningful career and life.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <p className="mt-5 text-center text-xs text-foreground/50 font-source leading-relaxed">
-              Once you register, you&apos;ll receive next steps and preparation details
-              for the experience — including exact address.
-            </p>
+      {/* ── GET INVOLVED ── */}
+      <section id="get-involved" className="py-20 sm:py-28 bg-primary-bg/20">
+        <div className="container-site">
+          <div className="text-center max-w-2xl mx-auto mb-14">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary">
+              Get Involved
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3">
+              There&apos;s a Way In for Everyone
+            </h2>
+          </div>
+
+          <div className="max-w-6xl mx-auto space-y-6">
+            {/* Students — feature card */}
+            <div className="rounded-3xl bg-white border border-primary/10 p-8 sm:p-12">
+              <div className="grid lg:grid-cols-2 gap-10 items-center">
+                <div>
+                  <span className="text-xs font-bold uppercase tracking-widest text-primary">
+                    For Students
+                  </span>
+                  <h3 className="text-2xl sm:text-3xl font-bold text-primary-dk mt-3 leading-tight">
+                    Why Attend?
+                  </h3>
+                  <a
+                    href="/register"
+                    className="mt-7 inline-flex items-center justify-center px-7 h-12 rounded-full bg-primary text-white font-bold hover:bg-primary-fg transition-colors"
+                  >
+                    Register Now
+                  </a>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-3">
+                  {STUDENT_REASONS.map((r) => (
+                    <div
+                      key={r}
+                      className="flex items-center gap-3 rounded-xl bg-primary-bg/40 px-5 py-3.5"
+                    >
+                      <Check className="w-4 h-4 shrink-0 text-primary" />
+                      <span className="text-sm font-medium text-primary-dk">{r}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Partner + Sponsor */}
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="rounded-3xl bg-white border border-primary/10 p-8 sm:p-10 flex flex-col">
+                <span className="text-xs font-bold uppercase tracking-widest text-primary">
+                  For Partners
+                </span>
+                <h3 className="text-2xl font-bold text-primary-dk mt-3 leading-tight">
+                  Why Partner With Built for More?
+                </h3>
+                <p className="mt-4 text-foreground/65 leading-relaxed font-source">
+                  Invest in the next generation of women leaders while connecting
+                  directly with ambitious college students across Indiana.
+                </p>
+
+                <h4 className="mt-8 text-xs font-bold uppercase tracking-widest text-foreground/40">
+                  Partnership Opportunities
+                </h4>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {PARTNERSHIP_OPTIONS.map((p) => (
+                    <span
+                      key={p}
+                      className="rounded-full bg-primary-bg/50 border border-primary/10 px-4 py-2 text-sm font-medium text-primary-dk"
+                    >
+                      {p}
+                    </span>
+                  ))}
+                </div>
+
+                <a
+                  href="#contact"
+                  className="mt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                >
+                  Start a partnership conversation
+                  <Arrow />
+                </a>
+              </div>
+
+              <div className="rounded-3xl bg-white border border-primary/10 p-8 sm:p-10 flex flex-col">
+                <span className="text-xs font-bold uppercase tracking-widest text-primary">
+                  For Sponsors
+                </span>
+                <h3 className="text-2xl font-bold text-primary-dk mt-3 leading-tight">
+                  Invest in Indiana&apos;s Next Generation of Women Leaders.
+                </h3>
+                <p className="mt-4 text-foreground/65 leading-relaxed font-source">
+                  Sponsorship directly supports:
+                </p>
+
+                <ul className="mt-5 space-y-2.5">
+                  {SPONSOR_SUPPORTS.map((s) => (
+                    <li key={s} className="flex items-start gap-3 text-sm">
+                      <Check className="w-4 h-4 shrink-0 text-secondary-fg mt-0.5" />
+                      <span className="text-foreground/70 font-source">{s}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <a
+                  href="#contact"
+                  className="mt-auto pt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                >
+                  Become a sponsor
+                  <Arrow />
+                </a>
+              </div>
+            </div>
+
+            {/* Universities + Volunteers */}
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="rounded-3xl bg-primary-bg/40 border border-primary/10 p-8 sm:p-10 flex flex-col">
+                <span className="text-xs font-bold uppercase tracking-widest text-primary">
+                  For Universities
+                </span>
+                <h3 className="text-2xl font-bold text-primary-dk mt-3 leading-tight">
+                  Extend the Impact of Your Investment
+                </h3>
+                <p className="mt-4 text-foreground/65 leading-relaxed font-source">
+                  Built for More helps universities extend the impact of their
+                  investments in entrepreneurship, leadership development, career
+                  readiness, and student success by connecting students with
+                  opportunities that continue long after the event.
+                </p>
+                <a
+                  href="#contact"
+                  className="mt-auto pt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                >
+                  Talk to us about your campus
+                  <Arrow />
+                </a>
+              </div>
+
+              <div className="rounded-3xl bg-primary-bg/40 border border-primary/10 p-8 sm:p-10 flex flex-col">
+                <span className="text-xs font-bold uppercase tracking-widest text-primary">
+                  For Volunteers
+                </span>
+                <h3 className="text-2xl font-bold text-primary-dk mt-3 leading-tight">
+                  Join the Dream Team.
+                </h3>
+                <p className="mt-4 text-foreground/65 leading-relaxed font-source">
+                  Gain experience in:
+                </p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {VOLUNTEER_AREAS.map((v) => (
+                    <span
+                      key={v}
+                      className="rounded-full bg-white border border-primary/10 px-4 py-2 text-sm font-medium text-primary-dk"
+                    >
+                      {v}
+                    </span>
+                  ))}
+                </div>
+                <a
+                  href="#contact"
+                  className="mt-auto pt-8 inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
+                >
+                  Volunteer with us
+                  <Arrow />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* ── SPONSORS ── */}
-      <section id="sponsors" className="py-20 sm:py-28 bg-primary-bg/20 border-y border-primary/8 overflow-hidden">
+      <section
+        id="sponsors"
+        className="py-20 sm:py-28 bg-white border-y border-primary/8 overflow-hidden"
+      >
         <div className="container-site">
-          {/* Intro copy */}
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-xs font-bold uppercase tracking-widest text-primary">
               Sponsors &amp; Partners
@@ -609,16 +720,16 @@ export default function Home() {
             <p className="mt-5 text-foreground/65 font-source leading-relaxed text-base sm:text-lg">
               Built for More is powered by{" "}
               <strong className="text-primary-dk">Truist Foundation</strong> and{" "}
-              <strong className="text-primary-dk">Watson Institute</strong> and is
-              designed to convene women leaders, founders, and ecosystem builders
-              for meaningful dialogue and strategic collaboration.
+              <strong className="text-primary-dk">Watson Institute</strong>, and is
+              built alongside universities, employers, and community organizations
+              across Indiana.
             </p>
           </div>
 
           {/* Flowing logo marquee */}
           <div className="relative mb-16">
-            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-primary-bg/20 to-transparent" />
-            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-primary-bg/20 to-transparent" />
+            <div className="pointer-events-none absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-white to-transparent" />
+            <div className="pointer-events-none absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-white to-transparent" />
             <div className="flex overflow-hidden">
               {[0, 1].map((pass) => (
                 <div
@@ -626,18 +737,13 @@ export default function Home() {
                   aria-hidden={pass === 1}
                   className="flex shrink-0 items-center gap-14 animate-marquee"
                 >
-                  {[
-                    { src: "/images/truist.png", alt: "Truist Foundation", w: 140 },
-                    { src: "/images/watson.png", alt: "Watson Institute", w: 140 },
-                    { src: "/images/uhr-logo.png", alt: "The UpHer Room", w: 120 },
-                    { src: "/images/10-east-arts.png", alt: "10 East Arts", w: 140 },
-                    { src: "/images/bella-tech.png", alt: "Bella Tech", w: 140 },
-                    { src: "/images/truist.png", alt: "Truist Foundation", w: 140 },
-                    { src: "/images/watson.png", alt: "Watson Institute", w: 140 },
-                    { src: "/images/uhr-logo.png", alt: "The UpHer Room", w: 120 },
-                    { src: "/images/10-east-arts.png", alt: "10 East Arts", w: 140 },
-                    { src: "/images/bella-tech.png", alt: "Bella Tech", w: 140 },
-                  ].map((logo, i) => (
+                  {Array.from({ length: 4 })
+                    .flatMap(() => [
+                      { src: "/images/truist.png", alt: "Truist Foundation", w: 140 },
+                      { src: "/images/watson.png", alt: "Watson Institute", w: 140 },
+                      { src: "/images/uhr-logo.png", alt: "The UpHer Room", w: 120 },
+                    ])
+                    .map((logo, i) => (
                     <div
                       key={i}
                       className="shrink-0 h-14 flex items-center justify-center px-4 py-2 rounded-xl shadow-sm border bg-white border-primary/8"
@@ -656,17 +762,27 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Sponsor cards — UpHer Room on top, Truist + Watson below */}
+          {/* Sponsor cards */}
           <div className="max-w-5xl mx-auto">
-            {/* Top: UpHer Room centered */}
             <div className="flex justify-center mb-8">
-              <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5 w-full md:w-[calc(50%-1rem)]">
+              <div className="bg-primary-bg/25 rounded-2xl p-8 border border-primary/8 flex flex-col gap-5 w-full md:w-[calc(50%-1rem)]">
                 <div className="h-12 flex items-center">
-                  <Image src="/images/uhr-logo.png" alt="The UpHer Room" width={160} height={48} className="object-contain max-h-10 w-auto" />
+                  <Image
+                    src="/images/uhr-logo.png"
+                    alt="The UpHer Room"
+                    width={160}
+                    height={48}
+                    className="object-contain max-h-10 w-auto"
+                  />
                 </div>
-                <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">Host Organization</p>
+                <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">
+                  Host Organization
+                </p>
                 <p className="text-foreground/65 font-source leading-relaxed text-sm">
-                  The UpHer Room Inc. is a leadership development organization dedicated to equipping and convening women who are building meaningful work in their communities. Built for More is a signature initiative of The UpHer Room.
+                  The UpHer Room Inc. is a leadership development organization
+                  dedicated to equipping and convening women who are building
+                  meaningful work in their communities. Built for More is a
+                  signature initiative of The UpHer Room.
                 </p>
                 <a
                   href="https://www.theupherroom.com"
@@ -675,22 +791,31 @@ export default function Home() {
                   className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
                 >
                   Visit The UpHer Room
-                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                  </svg>
+                  <Arrow />
                 </a>
               </div>
             </div>
 
-            {/* Bottom row: Truist + Watson + 10 East Arts + Bella Tech */}
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5">
+              <div className="bg-primary-bg/25 rounded-2xl p-8 border border-primary/8 flex flex-col gap-5">
                 <div className="h-12 flex items-center">
-                  <Image src="/images/truist.png" alt="Truist Foundation" width={160} height={48} className="object-contain max-h-10 w-auto" />
+                  <Image
+                    src="/images/truist.png"
+                    alt="Truist Foundation"
+                    width={160}
+                    height={48}
+                    className="object-contain max-h-10 w-auto"
+                  />
                 </div>
-                <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">Lead Sponsor</p>
+                <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">
+                  Lead Sponsor
+                </p>
                 <p className="text-foreground/65 font-source leading-relaxed text-sm">
-                  Truist Foundation is committed to building thriving communities by investing in people and programs that create economic mobility and opportunity. Their support of Built for More reflects a deep belief in the power of women-led leadership to transform organizations, communities, and systems.
+                  Truist Foundation is committed to building thriving communities by
+                  investing in people and programs that create economic mobility and
+                  opportunity. Their support of Built for More reflects a deep belief
+                  in the power of women-led leadership to transform organizations,
+                  communities, and systems.
                 </p>
                 <a
                   href="https://www.truistfoundation.org"
@@ -699,19 +824,29 @@ export default function Home() {
                   className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
                 >
                   Learn more
-                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                  </svg>
+                  <Arrow />
                 </a>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5">
+              <div className="bg-primary-bg/25 rounded-2xl p-8 border border-primary/8 flex flex-col gap-5">
                 <div className="h-12 flex items-center">
-                  <Image src="/images/watson.png" alt="Watson Institute" width={160} height={48} className="object-contain max-h-10 w-auto" />
+                  <Image
+                    src="/images/watson.png"
+                    alt="Watson Institute"
+                    width={160}
+                    height={48}
+                    className="object-contain max-h-10 w-auto"
+                  />
                 </div>
-                <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">Strategic Partner</p>
+                <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">
+                  Strategic Partner
+                </p>
                 <p className="text-foreground/65 font-source leading-relaxed text-sm">
-                  Watson Institute develops the next generation of leaders through experiential education and purpose-driven programming. As a strategic partner for Built for More, Watson Institute brings a framework of applied leadership development that deepens the impact of every conversation in the room.
+                  Watson Institute develops the next generation of leaders through
+                  experiential education and purpose-driven programming. As a
+                  strategic partner for Built for More, Watson Institute brings a
+                  framework of applied leadership development that deepens the impact
+                  of every conversation in the room.
                 </p>
                 <a
                   href="https://www.watson.is"
@@ -720,63 +855,36 @@ export default function Home() {
                   className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
                 >
                   Learn more
-                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                  </svg>
+                  <Arrow />
                 </a>
               </div>
 
-              <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5">
-                <div className="h-12 flex items-center">
-                  <Image src="/images/10-east-arts.png" alt="10 East Arts" width={160} height={48} className="object-contain max-h-10 w-auto" />
-                </div>
-                <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">Venue Partner</p>
-                <p className="text-foreground/65 font-source leading-relaxed text-sm">
-                  10 East Arts is an initiative by the John Boner Neighborhood Centers whose goal is creating a vibrant, thriving, equitable neighborhood district in which creativity, arts and culture enrich the quality of life for existing eastside residents and visitors.
-                </p>
-                <a
-                  href="https://www.10eastarts.org/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
-                >
-                  Learn more
-                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                  </svg>
-                </a>
-              </div>
-
-              <div className="bg-white rounded-2xl p-8 border border-primary/8 flex flex-col gap-5">
-                <div className="h-12 flex items-center">
-                  <Image src="/images/bella-tech.png" alt="Bella Tech" width={160} height={48} className="object-contain max-h-10 w-auto" />
-                </div>
-                <p className="text-xs text-foreground/40 font-source uppercase tracking-wide -mt-2">Technology Partner</p>
-                <p className="text-foreground/65 font-source leading-relaxed text-sm">
-                  Bella Tech is a software development and AI company. We design, build, and deploy custom software for businesses that refuse to settle for off-the-shelf solutions — from intelligent AI-powered platforms to scalable web and mobile applications.
-                </p>
-                <a
-                  href="https://www.linkedin.com/in/hephzibah-a-9b09a760"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="mt-auto inline-flex items-center gap-1.5 text-sm font-semibold text-primary hover:underline"
-                >
-                  Learn more
-                  <svg className="w-4 h-4" viewBox="0 0 20 20" fill="currentColor">
-                    <path fillRule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clipRule="evenodd" />
-                  </svg>
-                </a>
-              </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* ── FAQ ── */}
+      <section id="faq" className="py-20 sm:py-28 bg-primary-bg/20">
+        <div className="container-site">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="text-xs font-bold uppercase tracking-widest text-primary">
+              Frequently Asked Questions
+            </span>
+            <h2 className="text-3xl sm:text-4xl font-bold text-primary-dk mt-3">
+              Good Questions to Ask First
+            </h2>
+          </div>
+
+          <FAQ />
         </div>
       </section>
 
       {/* ── CLOSING CTA ── */}
       <section className="relative py-20 sm:py-28 overflow-hidden">
         <Image
-          src="https://images.unsplash.com/photo-1563132337-f159f484226c?w=1920&q=80"
-          alt="Women at a leadership event"
+          src="https://images.unsplash.com/photo-1573497491765-dccce02b29df?w=1920&q=80"
+          alt="College women at a leadership event"
           fill
           unoptimized
           sizes="100vw"
@@ -784,23 +892,19 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-primary-dk/85" />
         <div className="relative z-10 container-site max-w-3xl text-center text-white">
-          <h2 className="text-3xl sm:text-4xl font-bold leading-snug">
-            This is not about doing more.
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-snug">
+            Your Future
             <br />
-            <span className="text-secondary">
-              It&apos;s about building in a way that actually works.
-            </span>
+            <span className="text-secondary">Won&apos;t Build Itself.</span>
           </h2>
-          <p className="mt-6 text-white/65 text-lg leading-relaxed font-source max-w-2xl mx-auto">
-            If you&apos;ve been carrying more than you should, questioning
-            what&apos;s not working, or sensing that something deeper needs to
-            shift &mdash; this room was built with that in mind.
+          <p className="mt-6 text-white/70 text-lg leading-relaxed font-source max-w-2xl mx-auto">
+            Take the next step toward the future you&apos;re building.
           </p>
           <a
             href="/register"
             className="inline-flex items-center justify-center px-8 h-12 rounded-full bg-secondary text-primary-dk font-bold hover:bg-secondary/90 transition-colors mt-8 text-base"
           >
-            Apply Now
+            Register Today
           </a>
         </div>
       </section>
@@ -817,9 +921,9 @@ export default function Home() {
                 Let&apos;s Connect
               </h2>
               <p className="text-foreground/60 mt-4 leading-relaxed font-source">
-                Whether you have a question about registration, want to explore
-                a partnership, or are interested in sponsoring — we&apos;d love
-                to hear from you.
+                Whether you have a question about registration, want to bring your
+                campus, are exploring a partnership, or want to volunteer, we&apos;d
+                love to hear from you.
               </p>
 
               <div className="mt-8 space-y-5">
@@ -831,8 +935,12 @@ export default function Home() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-primary-dk">General Contact</p>
-                    <p className="text-sm text-foreground/50 font-source mt-0.5">admin@theupherroom.com</p>
+                    <p className="text-sm font-semibold text-primary-dk">
+                      General &amp; Student Questions
+                    </p>
+                    <p className="text-sm text-foreground/50 font-source mt-0.5">
+                      admin@theupherroom.com
+                    </p>
                   </div>
                 </div>
 
@@ -847,8 +955,12 @@ export default function Home() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-primary-dk">Partnership &amp; Sponsorship</p>
-                    <p className="text-sm text-foreground/50 font-source mt-0.5">whitney@theupherroom.com</p>
+                    <p className="text-sm font-semibold text-primary-dk">
+                      Partnership, Sponsorship &amp; Universities
+                    </p>
+                    <p className="text-sm text-foreground/50 font-source mt-0.5">
+                      whitney@theupherroom.com
+                    </p>
                   </div>
                 </div>
 
@@ -860,7 +972,9 @@ export default function Home() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold text-primary-dk">Phone</p>
-                    <p className="text-sm text-foreground/50 font-source mt-0.5">(317) 721-8460</p>
+                    <p className="text-sm text-foreground/50 font-source mt-0.5">
+                      (317) 721-8460
+                    </p>
                   </div>
                 </div>
               </div>
@@ -878,32 +992,41 @@ export default function Home() {
             <div className="lg:col-span-2">
               <h3 className="font-bold text-2xl">Built for More</h3>
               <p className="text-white/50 text-sm mt-3 leading-relaxed font-source max-w-md">
-                A Leadership Experience for Women Who Build
+                Indiana&apos;s premier leadership and entrepreneurship experience
+                for college women.
               </p>
               <div className="mt-4 space-y-1 text-sm text-white/40 font-source">
                 <p>October 9 &ndash; 10, 2026</p>
-                <p>Indianapolis, Indiana</p>
+                <p>Northwest Indiana</p>
               </div>
               <div className="mt-4 space-y-1 text-sm text-white/40 font-source">
-                <p>Hosted by <span className="text-white/60">The UpHer Room Inc.</span></p>
                 <p>
-                  Powered by <span className="text-white/60">Truist Foundation</span> &amp;{" "}
-                  <span className="text-white/60">Watson Institute</span>
+                  Hosted by <span className="text-white/60">The UpHer Room Inc.</span>
+                </p>
+                <p>
+                  Powered by <span className="text-white/60">Truist Foundation</span>{" "}
+                  &amp; <span className="text-white/60">Watson Institute</span>
                 </p>
               </div>
             </div>
 
             <div>
-              <h4 className="font-bold text-sm uppercase tracking-wider text-white/60 mb-4">Quick Links</h4>
+              <h4 className="font-bold text-sm uppercase tracking-wider text-white/60 mb-4">
+                Quick Links
+              </h4>
               <ul className="space-y-2.5 text-sm">
                 {[
-                  { label: "Register", href: "#tickets" },
-                  { label: "Schedule", href: "#schedule" },
-                  { label: "Overview", href: "#overview" },
+                  { label: "Register", href: "/register" },
+                  { label: "Who It's For", href: "#who" },
+                  { label: "Get Involved", href: "#get-involved" },
+                  { label: "FAQ", href: "#faq" },
                   { label: "Contact", href: "#contact" },
                 ].map((n) => (
                   <li key={n.href}>
-                    <a href={n.href} className="text-white/40 hover:text-secondary transition-colors">
+                    <a
+                      href={n.href}
+                      className="text-white/40 hover:text-secondary transition-colors"
+                    >
                       {n.label}
                     </a>
                   </li>
@@ -912,7 +1035,9 @@ export default function Home() {
             </div>
 
             <div>
-              <h4 className="font-bold text-sm uppercase tracking-wider text-white/60 mb-4">Connect</h4>
+              <h4 className="font-bold text-sm uppercase tracking-wider text-white/60 mb-4">
+                Connect
+              </h4>
               <div className="flex gap-4">
                 {[
                   {
@@ -961,8 +1086,12 @@ export default function Home() {
           <div className="mt-12 pt-8 border-t border-white/8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-white/30">
             <p>&copy; 2026 The UpHer Room Inc. All rights reserved.</p>
             <div className="flex gap-6">
-              <a href="#" className="hover:text-white/60 transition-colors">Privacy Policy</a>
-              <a href="#" className="hover:text-white/60 transition-colors">Terms of Service</a>
+              <a href="#" className="hover:text-white/60 transition-colors">
+                Privacy Policy
+              </a>
+              <a href="#" className="hover:text-white/60 transition-colors">
+                Terms of Service
+              </a>
             </div>
           </div>
         </div>
