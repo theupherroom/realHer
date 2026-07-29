@@ -17,13 +17,13 @@ const sourceSans = Source_Sans_3({
 export const metadata: Metadata = {
   metadataBase: new URL("https://builtformore.theupherroom.com"),
   title:
-    "Built for More — A Leadership Experience for Women Who Build | The UpHer Room",
+    "Built for More — Leadership & Entrepreneurship for College Women | The UpHer Room",
   description:
-    "A two-day leadership experience for women navigating misalignment, fragmentation, and the realities of building inside systems that need redesign. October 9–10, 2026 in Indianapolis, Indiana. Hosted by The UpHer Room Inc.",
+    "Indiana's premier leadership and entrepreneurship experience for college women. Discover opportunities, build meaningful relationships, and leave with the confidence and plan to shape what's next. October 9–10, 2026 in Northwest Indiana. Hosted by The UpHer Room Inc.",
   openGraph: {
-    title: "Built for More — A Leadership Experience for Women Who Build",
+    title: "Built for More — Leadership & Entrepreneurship for College Women",
     description:
-      "A two-day leadership experience for women building inside systems that need redesign. October 9–10, 2026 · Indianapolis, Indiana.",
+      "Indiana's premier leadership and entrepreneurship experience for college women. October 9–10, 2026 · Northwest Indiana.",
     url: "https://builtformore.theupherroom.com",
     siteName: "The UpHer Room",
     images: [
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
         url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Built for More — October 9-10, 2026 · Indianapolis, Indiana",
+        alt: "Built for More — October 9-10, 2026 · Northwest Indiana",
       },
     ],
     locale: "en_US",
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Built for More — A Leadership Experience for Women Who Build",
+    title: "Built for More — Leadership & Entrepreneurship for College Women",
     description:
-      "A two-day leadership experience for women building inside systems that need redesign. October 9–10, 2026 · Indianapolis, Indiana.",
+      "Indiana's premier leadership and entrepreneurship experience for college women. October 9–10, 2026 · Northwest Indiana.",
     images: ["/opengraph-image"],
   },
 };
