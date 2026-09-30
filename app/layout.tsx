@@ -15,9 +15,9 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
-  title: "RealHER Conference 2026 — Empowering Women Leaders",
+  title: "RealHER Conference 2026 — Registration Closed",
   description:
-    "Join Africa's premier women leadership conference. Network, learn, and grow with trailblazing women across industries.",
+    "RealHER Conference 2026 has concluded. Registration is now closed. Thank you to everyone who joined us.",
 };
 
 export default function RootLayout({
